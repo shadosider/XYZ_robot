@@ -1,0 +1,676 @@
+<POU name="POU1" pageType="COMMON" language="ST" type="PROGRAM">
+  <STRoot>
+    <code>// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// PRG_STF_Axis1
+// 单轴 PP 位置控制
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+// 读取启动上升沿
+StartMoveEdge := StartMove AND NOT StartMoveOld;
+StartMoveOld := StartMove;
+
+// 默认清除完成标志
+MoveDone := FALSE;
+
+TON1(IN := T_NewSetpoint,PET := pet,Q =&gt; Timeout,ET =&gt; et); 
+// MC_Power(Axis_num := ,Enable := ,Mode := ,Axis_numOut =&gt; ,Valid =&gt; ,Error =&gt; ,ErrorID =&gt; ,Now_mode =&gt; ) 
+
+// 状态机
+CASE Step OF
+
+    // 0 : 初始化 / 等待
+    0 :
+        Step := 20;
+
+    // 20 : Shutdown
+    20 :
+        STF_ControlWord := 16#0006;
+
+        IF (STF_StatusWord AND 16#006F) = 16#0021 THEN
+            Step := 30;
+        END_IF;
+
+
+    // 30: Switch On
+    30:
+        STF_ControlWord := 16#0007;
+
+        IF (STF_StatusWord AND 16#006F) = 16#0023 THEN
+            Step := 40;
+        END_IF;
+
+
+    // 40: Enable Operation
+    40:
+        STF_ControlWord := 16#000F;
+
+        IF (STF_StatusWord AND 16#006F) = 16#0027 THEN
+            // 运行模式：Profile Position
+            STF_Mode := 1;
+            Step := 50;
+        END_IF;
+
+
+    // 50: 等待运动命令
+    50:
+        // STF_ControlWord := 16#000F;
+
+        IF StartMoveEdge THEN
+
+            // 设置目标运动参数
+            STF_TargetPos := TargetPos;
+            STF_ProfileVel := ProfileVel;
+            STF_ProfileAcc := ProfileAcc;
+            STF_ProfileDec := ProfileDec;
+
+            Step := 60;
+        END_IF;
+
+
+    // 60 : 触发新的位置设定点
+    60 :
+        STF_ControlWord := 16#001F;
+        
+        T_NewSetpoint := TRUE;
+        
+        WHILE(NOT Timeout) DO
+        ;
+        END_WHILE;
+        
+        // 等待驱动器确认新设定点
+        IF (STF_StatusWord AND 16#1000) &lt;&gt; 0 THEN
+            Step := 70;
+        END_IF;
+
+
+    // 70: 撤销 New Set-point
+    70:
+        STF_ControlWord := 16#000F;
+
+        IF (STF_StatusWord AND 16#1000) = 0 THEN
+            Step := 80;
+        END_IF;
+
+
+    // 80: 等待目标位置到达
+    80:
+        // STF_ControlWord := 16#000F;
+
+        IF (STF_StatusWord AND 16#0400) &lt;&gt; 0 THEN
+            MoveDone := TRUE;
+            Step := 50;
+        END_IF;
+
+
+    // 90: 停止 / 异常
+    90:
+        STF_ControlWord := 16#0000;
+
+END_CASE;
+
+END_PROGRAM</code>
+  </STRoot>
+  <VarRoot>
+    <VAR>
+      <NULL>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>StartMove</varName>
+          <varAddressText />
+          <dataType>BOOL</dataType>
+          <initValue>FALSE</initValue>
+          <varAddress>M1000</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>ResetFault</varName>
+          <varAddressText />
+          <dataType>BOOL</dataType>
+          <initValue>FALSE</initValue>
+          <varAddress>M1001</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>TargetPos</varName>
+          <varAddressText />
+          <dataType>DINT</dataType>
+          <initValue>10000</initValue>
+          <varAddress>VD406560</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>ProfileVel</varName>
+          <varAddressText />
+          <dataType>UDINT</dataType>
+          <initValue>20000</initValue>
+          <varAddress>VD406564</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>ProfileAcc</varName>
+          <varAddressText />
+          <dataType>UDINT</dataType>
+          <initValue>50000</initValue>
+          <varAddress>VD406570</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>ProfileDec</varName>
+          <varAddressText />
+          <dataType>UDINT</dataType>
+          <initValue>50000</initValue>
+          <varAddress>VD406574</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>STF_ControlWord</varName>
+          <varAddressText />
+          <dataType>UINT</dataType>
+          <initValue />
+          <varAddress>VD406600</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>STF_Mode</varName>
+          <varAddressText />
+          <dataType>SINT</dataType>
+          <initValue />
+          <varAddress>VD406602</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>STF_TargetPos</varName>
+          <varAddressText />
+          <dataType>DINT</dataType>
+          <initValue />
+          <varAddress>VD406604</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>STF_ProfileVel</varName>
+          <varAddressText />
+          <dataType>UDINT</dataType>
+          <initValue />
+          <varAddress>VD406610</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>STF_ProfileAcc</varName>
+          <varAddressText />
+          <dataType>UDINT</dataType>
+          <initValue />
+          <varAddress>VD406614</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>STF_ProfileDec</varName>
+          <varAddressText />
+          <dataType>UDINT</dataType>
+          <initValue />
+          <varAddress>VD406620</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>STF_ErrorCode</varName>
+          <varAddressText />
+          <dataType>UINT</dataType>
+          <initValue />
+          <varAddress>VD406624</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>STF_StatusWord</varName>
+          <varAddressText />
+          <dataType>UINT</dataType>
+          <initValue />
+          <varAddress>VD406626</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>STF_ModeDisplay</varName>
+          <varAddressText />
+          <dataType>SINT</dataType>
+          <initValue />
+          <varAddress>VD406630</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>STF_ActualPos</varName>
+          <varAddressText />
+          <dataType>DINT</dataType>
+          <initValue />
+          <varAddress>VD406634</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>Step</varName>
+          <varAddressText />
+          <dataType>INT</dataType>
+          <initValue>0</initValue>
+          <varAddress>VD406640</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>Fault</varName>
+          <varAddressText />
+          <dataType>BOOL</dataType>
+          <initValue>FALSE</initValue>
+          <varAddress>M1002</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>AxisEnabled</varName>
+          <varAddressText />
+          <dataType>BOOL</dataType>
+          <initValue>FALSE</initValue>
+          <varAddress>M1003</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>MoveDone</varName>
+          <varAddressText />
+          <dataType>BOOL</dataType>
+          <initValue>FALSE</initValue>
+          <varAddress>M1004</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>StartMoveOld</varName>
+          <varAddressText />
+          <dataType>BOOL</dataType>
+          <initValue>FALSE</initValue>
+          <varAddress>M1005</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>StartMoveEdge</varName>
+          <varAddressText />
+          <dataType>BOOL</dataType>
+          <initValue>FALSE</initValue>
+          <varAddress>M1006</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>T_NewSetpoint</varName>
+          <varAddressText />
+          <dataType>BOOL</dataType>
+          <initValue>FALSE</initValue>
+          <varAddress>M1007</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>Timeout</varName>
+          <varAddressText />
+          <dataType>BOOL</dataType>
+          <initValue>FALSE</initValue>
+          <varAddress>M1010</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>pet</varName>
+          <varAddressText />
+          <dataType>UDINT</dataType>
+          <initValue>3000</initValue>
+          <varAddress>VD406644</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>et</varName>
+          <varAddressText />
+          <dataType>UDINT</dataType>
+          <initValue>0</initValue>
+          <varAddress>VD406650</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>TON1</varName>
+          <varAddressText />
+          <dataType>TON</dataType>
+          <initValue />
+          <varAddress>VD406660</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+        <VarNode>
+          <varType>VAR</varType>
+          <varLimitedFlag>NULL</varLimitedFlag>
+          <varName>MC_Power1</varName>
+          <varAddressText />
+          <dataType>MC_Power</dataType>
+          <initValue />
+          <varAddress>VD406710</varAddress>
+          <varSize />
+          <varComment />
+          <varexport>False</varexport>
+          <PR>False</PR>
+          <PM>False</PM>
+          <SR>False</SR>
+          <SM>False</SM>
+          <IR>False</IR>
+          <HR>False</HR>
+        </VarNode>
+      </NULL>
+    </VAR>
+    <VAR_INPUT />
+    <VAR_OUTPUT />
+    <VAR_IN_OUT />
+    <VAR_EXTERNAL />
+    <VAR_TEMP />
+    <VAR_CONSTANT />
+    <VAR_GLOBAL />
+    <Var_Code>PROGRAM POU1
+
+VAR
+    // ===== PLC控制命令 =====
+    StartMove : BOOL := FALSE;
+    ResetFault : BOOL := FALSE;
+    TargetPos : DINT := 10000;
+    ProfileVel : UDINT := 20000;
+    ProfileAcc : UDINT := 50000;
+    ProfileDec : UDINT := 50000;
+    // ===== PDO输出：PLC -&gt; STF =====
+    STF_ControlWord : UINT;
+    STF_Mode : SINT;
+    STF_TargetPos : DINT;
+    STF_ProfileVel : UDINT;
+    STF_ProfileAcc : UDINT;
+    STF_ProfileDec : UDINT;
+    // ===== PDO输入：STF -&gt; PLC =====
+    STF_ErrorCode : UINT;
+    STF_StatusWord : UINT;
+    STF_ModeDisplay : SINT;
+    STF_ActualPos : DINT;
+    // ===== 内部状态 =====
+    Step : INT := 0;
+    Fault : BOOL := FALSE;
+    AxisEnabled : BOOL := FALSE;
+    MoveDone : BOOL := FALSE;
+    StartMoveOld : BOOL := FALSE;
+    StartMoveEdge : BOOL := FALSE;
+    // ==== clock ====
+    T_NewSetpoint : BOOL := FALSE;
+    Timeout : BOOL := FALSE;
+    pet : UDINT := 3000;
+    et : UDINT := 0;
+    TON1 : TON;
+    MC_Power1:MC_Power;
+END_VAR
+
+VAR_INPUT
+END_VAR
+
+VAR_OUTPUT
+END_VAR
+
+VAR_CONSTANT
+END_VAR</Var_Code>
+  </VarRoot>
+</POU>

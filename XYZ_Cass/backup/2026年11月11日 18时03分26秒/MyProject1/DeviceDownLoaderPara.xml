@@ -1,0 +1,13 @@
+<DeviceDownLoaderPara>
+  <Device1>
+    <PortName>COM6</PortName>
+    <DeviceNumber>01</DeviceNumber>
+    <DownloadBaut>115200</DownloadBaut>
+    <MonitorBaut>115200</MonitorBaut>
+    <DownloadType>UDP</DownloadType>
+    <MonitorType>UDP</MonitorType>
+    <RemoteIPAddress>192.168.33.130</RemoteIPAddress>
+    <MonitorPort>2012</MonitorPort>
+    <DownloadPort>2011</DownloadPort>
+  </Device1>
+</DeviceDownLoaderPara>

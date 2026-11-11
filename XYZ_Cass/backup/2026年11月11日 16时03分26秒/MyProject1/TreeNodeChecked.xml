@@ -1,0 +1,16 @@
+<MyProject1 Checked="True">
+  <MyProject1 Checked="True">
+    <Device1 Checked="True">
+      <SharedVariables DeviceName="Device1" Checked="True" />
+      <StructDefine DeviceName="Device1" Checked="True" />
+      <FunctionBlock Checked="False" />
+      <Function Checked="False" />
+      <Task0 Checked="False">
+        <POU1 DeviceName="Device1" Task="Task0" Checked="False" />
+        <test1_FBD DeviceName="Device1" Task="Task0" Checked="False" />
+        <Test DeviceName="Device1" Task="Task0" Checked="False" />
+        <tcp_test DeviceName="Device1" Task="Task0" Checked="True" />
+      </Task0>
+    </Device1>
+  </MyProject1>
+</MyProject1>

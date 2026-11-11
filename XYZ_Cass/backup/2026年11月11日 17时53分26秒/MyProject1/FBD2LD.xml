@@ -1,0 +1,2585 @@
+<pou realPou="POU2" period="50" lanuage="LD" type="PROGRAM" name="AxisInit2">
+  <LadderDiagram>
+    <Page>
+      <Width>3696</Width>
+      <Height>31000</Height>
+      <StartBusbar>48</StartBusbar>
+      <EndBusbar>834</EndBusbar>
+      <UnitSize>48</UnitSize>
+      <ControlCount>43</ControlCount>
+      <MaxID>43</MaxID>
+    </Page>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
+      <Location>
+      </Location>
+      <Index>2,6</Index>
+      <ID>1</ID>
+      <ToolBox>Motion</ToolBox>
+      <TypeText>MC_Reset</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>MC_Reset2</VarName>
+      <Address>VD424420</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="18">IN</RefID>
+        </OUT>
+      </Connect>
+      <ControlColor>LightBlue</ControlColor>
+      <Input Count="2">
+        <InVar Name="Axis_num">
+          <VarName>1</VarName>
+          <Address>K1</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Execute">
+          <VarName>M1101</VarName>
+          <Address>M1101</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+      </Input>
+      <Output Count="4">
+        <OutVar Name="Axis_numOut">
+          <VarName>VALUED426543</VarName>
+          <Address>VALUED426543</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="Done">
+          <VarName>M1111</VarName>
+          <Address>M1111</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Error">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="ErrorID">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>UINT</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="1">
+        <middleVAR>
+          <middleVARName>execute_before</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+      </MiddleVars>
+      <Start>False</Start>
+      <End>False</End>
+      <Size>120,168</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,6</Index>
+      <ID>17</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>M1100</VarName>
+      <Address>M1100</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="1">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>4,6</Index>
+      <ID>18</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Coil</TypeText>
+      <type>ST</type>
+      <subtype>ControlLibrary.Cass.ST</subtype>
+      <VarName>M1110</VarName>
+      <StNum>M1110</StNum>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAAB8AAAA8CAYAAACelmGhAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAC5SURBVFhH7c3bDcMwDENR779IhuoK3SFFHwiK4NqWZPOPB8hHaElsZmZmZmZmlnXevoyV3XYej+f1vf+/cVh5v7x4k76TXpgI3wsPJoXuhoYKpnenA4uG94ePG3Tvdx82wx4MBbAHQwHswVAAezAUwB4MBbAHQwHswVAAezAUwB4MBbAHQwHswVCg29N92GR4f/i4wfT+dKAodDc0VBC+Gx4MSt9LL3SU75QXf1b3Pwv/X8bKrplCay9qi44TsFa7+QAAAABJRU5ErkJggg==</Image>
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
+      <Location>
+      </Location>
+      <Index>2,8</Index>
+      <ID>2</ID>
+      <ToolBox>Motion</ToolBox>
+      <TypeText>MC_Reset</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>MC_Reset3</VarName>
+      <Address>VD424440</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="20">IN</RefID>
+        </OUT>
+      </Connect>
+      <ControlColor>LightBlue</ControlColor>
+      <Input Count="2">
+        <InVar Name="Axis_num">
+          <VarName>2</VarName>
+          <Address>K2</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Execute">
+          <VarName>M1101</VarName>
+          <Address>M1101</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+      </Input>
+      <Output Count="4">
+        <OutVar Name="Axis_numOut">
+          <VarName>VALUED426544</VarName>
+          <Address>VALUED426544</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="Done">
+          <VarName>M1113</VarName>
+          <Address>M1113</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Error">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="ErrorID">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>UINT</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="1">
+        <middleVAR>
+          <middleVARName>execute_before</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+      </MiddleVars>
+      <Start>False</Start>
+      <End>False</End>
+      <Size>120,168</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,8</Index>
+      <ID>19</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>M1100</VarName>
+      <Address>M1100</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="2">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>4,8</Index>
+      <ID>20</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Coil</TypeText>
+      <type>ST</type>
+      <subtype>ControlLibrary.Cass.ST</subtype>
+      <VarName>M1112</VarName>
+      <StNum>M1112</StNum>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAAB8AAAA8CAYAAACelmGhAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAC5SURBVFhH7c3bDcMwDENR779IhuoK3SFFHwiK4NqWZPOPB8hHaElsZmZmZmZmlnXevoyV3XYej+f1vf+/cVh5v7x4k76TXpgI3wsPJoXuhoYKpnenA4uG94ePG3Tvdx82wx4MBbAHQwHswVAAezAUwB4MBbAHQwHswVAAezAUwB4MBbAHQwHswVCg29N92GR4f/i4wfT+dKAodDc0VBC+Gx4MSt9LL3SU75QXf1b3Pwv/X8bKrplCay9qi44TsFa7+QAAAABJRU5ErkJggg==</Image>
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
+      <Location>
+      </Location>
+      <Index>2,24</Index>
+      <ID>3</ID>
+      <ToolBox>CoordinatedMotion</ToolBox>
+      <TypeText>MC_AddAxisToGroup</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>AddZ</VarName>
+      <Address>VD424540</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="22">IN</RefID>
+        </OUT>
+      </Connect>
+      <ControlColor>#FF8000</ControlColor>
+      <Input Count="4">
+        <InVar Name="AxesGroup">
+          <VarName>VALUED426540</VarName>
+          <Address>VALUED426540</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Axis">
+          <VarName>0</VarName>
+          <Address>K0</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Execute">
+          <VarName>M1103</VarName>
+          <Address>M1103</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+        <InVar Name="IdentInGroup">
+          <VarName>2</VarName>
+          <Address>K2</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+      </Input>
+      <Output Count="6">
+        <OutVar Name="AxesGroupOut">
+          <VarName>VALUED426541</VarName>
+          <Address>VALUED426541</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="AxisOut">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="Done">
+          <VarName>M1120</VarName>
+          <Address>M1120</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Busy">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Error">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="ErrorID">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>UINT</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="2">
+        <middleVAR>
+          <middleVARName>execute_before</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>run_flag</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+      </MiddleVars>
+      <Start>False</Start>
+      <End>False</End>
+      <Size>120,216</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,24</Index>
+      <ID>21</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>M1102</VarName>
+      <Address>M1102</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="3">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>4,24</Index>
+      <ID>22</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Coil</TypeText>
+      <type>ST</type>
+      <subtype>ControlLibrary.Cass.ST</subtype>
+      <VarName>M1104</VarName>
+      <StNum>M1104</StNum>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAAB8AAAA8CAYAAACelmGhAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAC5SURBVFhH7c3bDcMwDENR779IhuoK3SFFHwiK4NqWZPOPB8hHaElsZmZmZmZmlnXevoyV3XYej+f1vf+/cVh5v7x4k76TXpgI3wsPJoXuhoYKpnenA4uG94ePG3Tvdx82wx4MBbAHQwHswVAAezAUwB4MBbAHQwHswVAAezAUwB4MBbAHQwHswVCg29N92GR4f/i4wfT+dKAodDc0VBC+Gx4MSt9LL3SU75QXf1b3Pwv/X8bKrplCay9qi44TsFa7+QAAAABJRU5ErkJggg==</Image>
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
+      <Location>
+      </Location>
+      <Index>2,28</Index>
+      <ID>4</ID>
+      <ToolBox>CoordinatedMotion</ToolBox>
+      <TypeText>MC_GroupEnable</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>MC_GroupEnable1</VarName>
+      <Address>VD425010</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <ControlColor>#FF8000</ControlColor>
+      <Input Count="2">
+        <InVar Name="AxesGroup">
+          <VarName>VALUED426541</VarName>
+          <Address>VALUED426541</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Execute">
+          <VarName>M1105</VarName>
+          <Address>M1105</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+      </Input>
+      <Output Count="5">
+        <OutVar Name="AxesGroupOut">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="Done">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Busy">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Error">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="ErrorID">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>UINT</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="2">
+        <middleVAR>
+          <middleVARName>run_flag</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>execute_before</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+      </MiddleVars>
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,192</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,28</Index>
+      <ID>23</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>M1104</VarName>
+      <Address>M1104</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="4">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
+      <Location>
+      </Location>
+      <Index>2,10</Index>
+      <ID>5</ID>
+      <ToolBox>Motion</ToolBox>
+      <TypeText>MC_Power</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>MC_Power1</VarName>
+      <Address>VD424460</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="25">IN</RefID>
+        </OUT>
+      </Connect>
+      <ControlColor>LightBlue</ControlColor>
+      <Input Count="3">
+        <InVar Name="Axis_num">
+          <VarName>VALUED426542</VarName>
+          <Address>VALUED426542</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Enable">
+          <VarName>M1107</VarName>
+          <Address>M1107</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+        <InVar Name="Mode">
+          <VarName>8</VarName>
+          <Address>K8</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+      </Input>
+      <Output Count="5">
+        <OutVar Name="Axis_numOut">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="Valid">
+          <VarName>M1123</VarName>
+          <Address>M1123</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Error">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="ErrorID">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>UINT</VarType>
+        </OutVar>
+        <OutVar Name="Now_mode">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="2">
+        <middleVAR>
+          <middleVARName>run_flag</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>PowerOnTimeOver</middleVARName>
+          <middleType>REAL</middleType>
+        </middleVAR>
+      </MiddleVars>
+      <Start>False</Start>
+      <End>False</End>
+      <Size>120,192</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,10</Index>
+      <ID>24</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>M1106</VarName>
+      <Address>M1106</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="5">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>4,10</Index>
+      <ID>25</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Coil</TypeText>
+      <type>ST</type>
+      <subtype>ControlLibrary.Cass.ST</subtype>
+      <VarName>M1126</VarName>
+      <StNum>M1126</StNum>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAAB8AAAA8CAYAAACelmGhAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAC5SURBVFhH7c3bDcMwDENR779IhuoK3SFFHwiK4NqWZPOPB8hHaElsZmZmZmZmlnXevoyV3XYej+f1vf+/cVh5v7x4k76TXpgI3wsPJoXuhoYKpnenA4uG94ePG3Tvdx82wx4MBbAHQwHswVAAezAUwB4MBbAHQwHswVAAezAUwB4MBbAHQwHswVCg29N92GR4f/i4wfT+dKAodDc0VBC+Gx4MSt9LL3SU75QXf1b3Pwv/X8bKrplCay9qi44TsFa7+QAAAABJRU5ErkJggg==</Image>
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
+      <Location>
+      </Location>
+      <Index>2,12</Index>
+      <ID>6</ID>
+      <ToolBox>Motion</ToolBox>
+      <TypeText>MC_Power</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>MC_Power2</VarName>
+      <Address>VD424500</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="27">IN</RefID>
+        </OUT>
+      </Connect>
+      <ControlColor>LightBlue</ControlColor>
+      <Input Count="3">
+        <InVar Name="Axis_num">
+          <VarName>VALUED426543</VarName>
+          <Address>VALUED426543</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Enable">
+          <VarName>M1111</VarName>
+          <Address>M1111</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+        <InVar Name="Mode">
+          <VarName>8</VarName>
+          <Address>K8</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+      </Input>
+      <Output Count="5">
+        <OutVar Name="Axis_numOut">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="Valid">
+          <VarName>M1124</VarName>
+          <Address>M1124</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Error">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="ErrorID">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>UINT</VarType>
+        </OutVar>
+        <OutVar Name="Now_mode">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="2">
+        <middleVAR>
+          <middleVARName>run_flag</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>PowerOnTimeOver</middleVARName>
+          <middleType>REAL</middleType>
+        </middleVAR>
+      </MiddleVars>
+      <Start>False</Start>
+      <End>False</End>
+      <Size>120,192</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,12</Index>
+      <ID>26</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>M1110</VarName>
+      <Address>M1110</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="6">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>4,12</Index>
+      <ID>27</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Coil</TypeText>
+      <type>ST</type>
+      <subtype>ControlLibrary.Cass.ST</subtype>
+      <VarName>M1127</VarName>
+      <StNum>M1127</StNum>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAAB8AAAA8CAYAAACelmGhAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAC5SURBVFhH7c3bDcMwDENR779IhuoK3SFFHwiK4NqWZPOPB8hHaElsZmZmZmZmlnXevoyV3XYej+f1vf+/cVh5v7x4k76TXpgI3wsPJoXuhoYKpnenA4uG94ePG3Tvdx82wx4MBbAHQwHswVAAezAUwB4MBbAHQwHswVAAezAUwB4MBbAHQwHswVCg29N92GR4f/i4wfT+dKAodDc0VBC+Gx4MSt9LL3SU75QXf1b3Pwv/X8bKrplCay9qi44TsFa7+QAAAABJRU5ErkJggg==</Image>
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
+      <Location>
+      </Location>
+      <Index>2,14</Index>
+      <ID>7</ID>
+      <ToolBox>Motion</ToolBox>
+      <TypeText>MC_Power</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>MC_Power3</VarName>
+      <Address>VD424520</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="29">IN</RefID>
+        </OUT>
+      </Connect>
+      <ControlColor>LightBlue</ControlColor>
+      <Input Count="3">
+        <InVar Name="Axis_num">
+          <VarName>VALUED426544</VarName>
+          <Address>VALUED426544</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Enable">
+          <VarName>M1113</VarName>
+          <Address>M1113</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+        <InVar Name="Mode">
+          <VarName>8</VarName>
+          <Address>K8</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+      </Input>
+      <Output Count="5">
+        <OutVar Name="Axis_numOut">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="Valid">
+          <VarName>M1125</VarName>
+          <Address>M1125</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Error">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="ErrorID">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>UINT</VarType>
+        </OutVar>
+        <OutVar Name="Now_mode">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="2">
+        <middleVAR>
+          <middleVARName>run_flag</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>PowerOnTimeOver</middleVARName>
+          <middleType>REAL</middleType>
+        </middleVAR>
+      </MiddleVars>
+      <Start>False</Start>
+      <End>False</End>
+      <Size>120,192</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,14</Index>
+      <ID>28</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>M1112</VarName>
+      <Address>M1112</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="7">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>4,14</Index>
+      <ID>29</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Coil</TypeText>
+      <type>ST</type>
+      <subtype>ControlLibrary.Cass.ST</subtype>
+      <VarName>M1130</VarName>
+      <StNum>M1130</StNum>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAAB8AAAA8CAYAAACelmGhAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAC5SURBVFhH7c3bDcMwDENR779IhuoK3SFFHwiK4NqWZPOPB8hHaElsZmZmZmZmlnXevoyV3XYej+f1vf+/cVh5v7x4k76TXpgI3wsPJoXuhoYKpnenA4uG94ePG3Tvdx82wx4MBbAHQwHswVAAezAUwB4MBbAHQwHswVAAezAUwB4MBbAHQwHswVCg29N92GR4f/i4wfT+dKAodDc0VBC+Gx4MSt9LL3SU75QXf1b3Pwv/X8bKrplCay9qi44TsFa7+QAAAABJRU5ErkJggg==</Image>
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
+      <Location>
+      </Location>
+      <Index>2,20</Index>
+      <ID>8</ID>
+      <ToolBox>CoordinatedMotion</ToolBox>
+      <TypeText>MC_AddAxisToGroup</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>AddX</VarName>
+      <Address>VD424560</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="31">IN</RefID>
+        </OUT>
+      </Connect>
+      <ControlColor>#FF8000</ControlColor>
+      <Input Count="4">
+        <InVar Name="AxesGroup">
+          <VarName>0</VarName>
+          <Address>K0</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Axis">
+          <VarName>2</VarName>
+          <Address>K2</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Execute">
+          <VarName>M1115</VarName>
+          <Address>M1115</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+        <InVar Name="IdentInGroup">
+          <VarName>0</VarName>
+          <Address>K0</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+      </Input>
+      <Output Count="6">
+        <OutVar Name="AxesGroupOut">
+          <VarName>VALUED426545</VarName>
+          <Address>VALUED426545</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="AxisOut">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="Done">
+          <VarName>M1117</VarName>
+          <Address>M1117</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Busy">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Error">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="ErrorID">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>UINT</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="2">
+        <middleVAR>
+          <middleVARName>execute_before</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>run_flag</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+      </MiddleVars>
+      <Start>False</Start>
+      <End>False</End>
+      <Size>120,216</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,20</Index>
+      <ID>30</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>M1114</VarName>
+      <Address>M1114</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="8">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>4,20</Index>
+      <ID>31</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Coil</TypeText>
+      <type>ST</type>
+      <subtype>ControlLibrary.Cass.ST</subtype>
+      <VarName>M1116</VarName>
+      <StNum>M1116</StNum>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAAB8AAAA8CAYAAACelmGhAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAC5SURBVFhH7c3bDcMwDENR779IhuoK3SFFHwiK4NqWZPOPB8hHaElsZmZmZmZmlnXevoyV3XYej+f1vf+/cVh5v7x4k76TXpgI3wsPJoXuhoYKpnenA4uG94ePG3Tvdx82wx4MBbAHQwHswVAAezAUwB4MBbAHQwHswVAAezAUwB4MBbAHQwHswVCg29N92GR4f/i4wfT+dKAodDc0VBC+Gx4MSt9LL3SU75QXf1b3Pwv/X8bKrplCay9qi44TsFa7+QAAAABJRU5ErkJggg==</Image>
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
+      <Location>
+      </Location>
+      <Index>2,22</Index>
+      <ID>9</ID>
+      <ToolBox>CoordinatedMotion</ToolBox>
+      <TypeText>MC_AddAxisToGroup</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>AddY</VarName>
+      <Address>VD424600</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="33">IN</RefID>
+        </OUT>
+      </Connect>
+      <ControlColor>#FF8000</ControlColor>
+      <Input Count="4">
+        <InVar Name="AxesGroup">
+          <VarName>VALUED426545</VarName>
+          <Address>VALUED426545</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Axis">
+          <VarName>1</VarName>
+          <Address>K1</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Execute">
+          <VarName>M1117</VarName>
+          <Address>M1117</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+        <InVar Name="IdentInGroup">
+          <VarName>1</VarName>
+          <Address>K1</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+      </Input>
+      <Output Count="6">
+        <OutVar Name="AxesGroupOut">
+          <VarName>VALUED426540</VarName>
+          <Address>VALUED426540</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="AxisOut">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="Done">
+          <VarName>M1103</VarName>
+          <Address>M1103</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Busy">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Error">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="ErrorID">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>UINT</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="2">
+        <middleVAR>
+          <middleVARName>execute_before</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>run_flag</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+      </MiddleVars>
+      <Start>False</Start>
+      <End>False</End>
+      <Size>120,216</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,22</Index>
+      <ID>32</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>M1116</VarName>
+      <Address>M1116</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="9">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>4,22</Index>
+      <ID>33</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Coil</TypeText>
+      <type>ST</type>
+      <subtype>ControlLibrary.Cass.ST</subtype>
+      <VarName>M1102</VarName>
+      <StNum>M1102</StNum>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAAB8AAAA8CAYAAACelmGhAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAC5SURBVFhH7c3bDcMwDENR779IhuoK3SFFHwiK4NqWZPOPB8hHaElsZmZmZmZmlnXevoyV3XYej+f1vf+/cVh5v7x4k76TXpgI3wsPJoXuhoYKpnenA4uG94ePG3Tvdx82wx4MBbAHQwHswVAAezAUwB4MBbAHQwHswVAAezAUwB4MBbAHQwHswVCg29N92GR4f/i4wfT+dKAodDc0VBC+Gx4MSt9LL3SU75QXf1b3Pwv/X8bKrplCay9qi44TsFa7+QAAAABJRU5ErkJggg==</Image>
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
+      <Location>
+      </Location>
+      <Index>2,26</Index>
+      <ID>10</ID>
+      <ToolBox>CoordinatedMotion</ToolBox>
+      <TypeText>MC_SetKinTransform</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>MC_SetKinTransform1</VarName>
+      <Address>VD424670</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <ControlColor>#FF8000</ControlColor>
+      <Input Count="11">
+        <InVar Name="AxesGroup">
+          <VarName>0</VarName>
+          <Address>K0</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Execute">
+          <VarName>M1120</VarName>
+          <Address>M1120</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+        <InVar Name="KinTransform">
+          <VarName>4</VarName>
+          <Address>K4</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="ExecutionMode">
+          <VarName>0</VarName>
+          <Address>K0</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="DenHartA">
+          <VarName>&amp;dhA[1]</VarName>
+          <Address>&amp;dhA[STARTID1ENDID-(1)]</Address>
+          <VarType>Pointer.&amp;REAL</VarType>
+        </InVar>
+        <InVar Name="DenHartD">
+          <VarName>&amp;dhD[1]</VarName>
+          <Address>&amp;dhD[STARTID1ENDID-(1)]</Address>
+          <VarType>Pointer.&amp;REAL</VarType>
+        </InVar>
+        <InVar Name="JointDirections">
+          <VarName>&amp;jdir[1]</VarName>
+          <Address>&amp;jdir[STARTID1ENDID-(1)]</Address>
+          <VarType>Pointer.&amp;SINT</VarType>
+        </InVar>
+        <InVar Name="MotorRevolution">
+          <VarName>&amp;jmotor[1]</VarName>
+          <Address>&amp;jmotor[STARTID1ENDID-(1)]</Address>
+          <VarType>Pointer.&amp;UDINT</VarType>
+        </InVar>
+        <InVar Name="ShaftRevolution">
+          <VarName>&amp;jshaft[1]</VarName>
+          <Address>&amp;jshaft[STARTID1ENDID-(1)]</Address>
+          <VarType>Pointer.&amp;UDINT</VarType>
+        </InVar>
+        <InVar Name="JointOffsets">
+          <VarName>&amp;jofs[1]</VarName>
+          <Address>&amp;jofs[STARTID1ENDID-(1)]</Address>
+          <VarType>Pointer.&amp;DINT</VarType>
+        </InVar>
+        <InVar Name="JointLimits">
+          <VarName>&amp;jlim[1]</VarName>
+          <Address>&amp;jlim[STARTID1ENDID-(1)]</Address>
+          <VarType>Pointer.&amp;LREAL</VarType>
+        </InVar>
+      </Input>
+      <Output Count="7">
+        <OutVar Name="AxesGroupOut">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="Done">
+          <VarName>M1105</VarName>
+          <Address>M1105</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Busy">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Active">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="CommandAborted">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Error">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="ErrorID">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>UINT</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="4">
+        <middleVAR>
+          <middleVARName>axesgroup_init_flag</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>execute_before</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>run_flag</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>run</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+      </MiddleVars>
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,336</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,26</Index>
+      <ID>34</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>M1114</VarName>
+      <Address>M1114</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="10">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
+      <Location>
+      </Location>
+      <Index>2,4</Index>
+      <ID>11</ID>
+      <ToolBox>Motion</ToolBox>
+      <TypeText>MC_Reset</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>MC_Reset1</VarName>
+      <Address>VD424400</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="36">IN</RefID>
+        </OUT>
+      </Connect>
+      <ControlColor>LightBlue</ControlColor>
+      <Input Count="2">
+        <InVar Name="Axis_num">
+          <VarName>0</VarName>
+          <Address>K0</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Execute">
+          <VarName>M1122</VarName>
+          <Address>M1122</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+      </Input>
+      <Output Count="4">
+        <OutVar Name="Axis_numOut">
+          <VarName>VALUED426542</VarName>
+          <Address>VALUED426542</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="Done">
+          <VarName>M1107</VarName>
+          <Address>M1107</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Error">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="ErrorID">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>UINT</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="1">
+        <middleVAR>
+          <middleVARName>execute_before</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+      </MiddleVars>
+      <Start>False</Start>
+      <End>False</End>
+      <Size>120,168</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,4</Index>
+      <ID>35</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>M1121</VarName>
+      <Address>M1121</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="11">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>4,4</Index>
+      <ID>36</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Coil</TypeText>
+      <type>ST</type>
+      <subtype>ControlLibrary.Cass.ST</subtype>
+      <VarName>M1106</VarName>
+      <StNum>M1106</StNum>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAAB8AAAA8CAYAAACelmGhAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAC5SURBVFhH7c3bDcMwDENR779IhuoK3SFFHwiK4NqWZPOPB8hHaElsZmZmZmZmlnXevoyV3XYej+f1vf+/cVh5v7x4k76TXpgI3wsPJoXuhoYKpnenA4uG94ePG3Tvdx82wx4MBbAHQwHswVAAezAUwB4MBbAHQwHswVAAezAUwB4MBbAHQwHswVCg29N92GR4f/i4wfT+dKAodDc0VBC+Gx4MSt9LL3SU75QXf1b3Pwv/X8bKrplCay9qi44TsFa7+QAAAABJRU5ErkJggg==</Image>
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
+      <Location>
+      </Location>
+      <Index>2,2</Index>
+      <ID>12</ID>
+      <ToolBox>MotionBasic</ToolBox>
+      <TypeText>MC_DriverSync</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>MC_DriverSync1</VarName>
+      <Address>VD424240</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="38">IN</RefID>
+        </OUT>
+      </Connect>
+      <ControlColor>LightBlue</ControlColor>
+      <Input Count="1">
+        <InVar Name="Enable">
+          <VarName>1</VarName>
+          <Address>K1</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+      </Input>
+      <Output Count="1">
+        <OutVar Name="Done">
+          <VarName>M1101</VarName>
+          <Address>M1101</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="30">
+        <middleVAR>
+          <middleVARName>axis_num1</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>axis_num2</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>now_position1</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>now_position2</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>aim_position1</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>aim_position2</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>couping_master1</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>couping_master2</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>cam_id1</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>cam_id2</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>startdistance1</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>startdistance2</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>syncposition1</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>syncposition2</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>masterstartposition1</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>masterstartposition2</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>slavestartposition1</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>slavestartposition2</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>ratio1</middleVARName>
+          <middleType>REAL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>ratio2</middleVARName>
+          <middleType>REAL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>acceleration1</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>acceleration2</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>deceleration1</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>deceleration2</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>jerk1</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>jerk2</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>i</middleVARName>
+          <middleType>DINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>couping_mode1</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>couping_mode2</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>EnLast</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+      </MiddleVars>
+      <Start>False</Start>
+      <End>False</End>
+      <Size>120,96</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,2</Index>
+      <ID>37</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>start1</VarName>
+      <Address>M1000</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="12">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>4,2</Index>
+      <ID>38</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Coil</TypeText>
+      <type>ST</type>
+      <subtype>ControlLibrary.Cass.ST</subtype>
+      <VarName>M1100</VarName>
+      <StNum>M1100</StNum>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAAB8AAAA8CAYAAACelmGhAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAC5SURBVFhH7c3bDcMwDENR779IhuoK3SFFHwiK4NqWZPOPB8hHaElsZmZmZmZmlnXevoyV3XYej+f1vf+/cVh5v7x4k76TXpgI3wsPJoXuhoYKpnenA4uG94ePG3Tvdx82wx4MBbAHQwHswVAAezAUwB4MBbAHQwHswVAAezAUwB4MBbAHQwHswVCg29N92GR4f/i4wfT+dKAodDc0VBC+Gx4MSt9LL3SU75QXf1b3Pwv/X8bKrplCay9qi44TsFa7+QAAAABJRU5ErkJggg==</Image>
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
+      <Location>
+      </Location>
+      <Index>2,0</Index>
+      <ID>13</ID>
+      <ToolBox>Clock</ToolBox>
+      <TypeText>TON</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>TON1</VarName>
+      <Address>VD424210</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="40">IN</RefID>
+        </OUT>
+      </Connect>
+      <ControlColor>#FF8080</ControlColor>
+      <Input Count="2">
+        <InVar Name="IN">
+          <VarName>1</VarName>
+          <Address>K1</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+        <InVar Name="PET">
+          <VarName>1000</VarName>
+          <Address>K1000</Address>
+          <VarType>UDINT</VarType>
+        </InVar>
+      </Input>
+      <Output Count="2">
+        <OutVar Name="Q">
+          <VarName>M1122</VarName>
+          <Address>M1122</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="ET">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>UDINT</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="2">
+        <middleVAR>
+          <middleVARName>INLast</middleVARName>
+          <middleType>SINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>usCnt</middleVARName>
+          <middleType>UDINT</middleType>
+        </middleVAR>
+      </MiddleVars>
+      <Start>False</Start>
+      <End>False</End>
+      <Size>120,120</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,0</Index>
+      <ID>39</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>start1</VarName>
+      <Address>M1000</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="13">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>4,0</Index>
+      <ID>40</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Coil</TypeText>
+      <type>ST</type>
+      <subtype>ControlLibrary.Cass.ST</subtype>
+      <VarName>M1121</VarName>
+      <StNum>M1121</StNum>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAAB8AAAA8CAYAAACelmGhAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAC5SURBVFhH7c3bDcMwDENR779IhuoK3SFFHwiK4NqWZPOPB8hHaElsZmZmZmZmlnXevoyV3XYej+f1vf+/cVh5v7x4k76TXpgI3wsPJoXuhoYKpnenA4uG94ePG3Tvdx82wx4MBbAHQwHswVAAezAUwB4MBbAHQwHswVAAezAUwB4MBbAHQwHswVCg29N92GR4f/i4wfT+dKAodDc0VBC+Gx4MSt9LL3SU75QXf1b3Pwv/X8bKrplCay9qi44TsFa7+QAAAABJRU5ErkJggg==</Image>
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="Func">
+      <Location>
+      </Location>
+      <Index>2,18</Index>
+      <ID>14</ID>
+      <ToolBox>FBD</ToolBox>
+      <TypeText>AND3</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>
+      </VarName>
+      <Address>???</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <ControlColor>LightBlue</ControlColor>
+      <Input Count="3">
+        <InVar Name="IN1">
+          <VarName>M1123</VarName>
+          <Address>M1123</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+        <InVar Name="IN2">
+          <VarName>M1124</VarName>
+          <Address>M1124</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+        <InVar Name="IN3">
+          <VarName>M1125</VarName>
+          <Address>M1125</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+      </Input>
+      <Output Count="1">
+        <OutVar Name="OUT1">
+          <VarName>M1115</VarName>
+          <Address>M1115</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="0" />
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,144</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,18</Index>
+      <ID>41</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>M10</VarName>
+      <Address>M10</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="14">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="Func">
+      <Location>
+      </Location>
+      <Index>2,16</Index>
+      <ID>15</ID>
+      <ToolBox>FBD</ToolBox>
+      <TypeText>AND3</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>
+      </VarName>
+      <Address>???</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <ControlColor>LightBlue</ControlColor>
+      <Input Count="3">
+        <InVar Name="IN1">
+          <VarName>M1126</VarName>
+          <Address>M1126</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+        <InVar Name="IN2">
+          <VarName>M1127</VarName>
+          <Address>M1127</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+        <InVar Name="IN3">
+          <VarName>M1130</VarName>
+          <Address>M1130</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+      </Input>
+      <Output Count="1">
+        <OutVar Name="OUT1">
+          <VarName>M1114</VarName>
+          <Address>M1114</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="0" />
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,144</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,16</Index>
+      <ID>42</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>M10</VarName>
+      <Address>M10</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="15">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
+      <Location>
+      </Location>
+      <Index>2,30</Index>
+      <ID>16</ID>
+      <ToolBox>CoordinatedMotion</ToolBox>
+      <TypeText>MC_MoveDirectAbsolute</TypeText>
+      <type>UserDefinedControlMore</type>
+      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
+      <VarName>MC_MoveDirectAbsolute1</VarName>
+      <Address>VD425210</Address>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT />
+      </Connect>
+      <ControlColor>#FF8000</ControlColor>
+      <Input Count="10">
+        <InVar Name="AxesGroup">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="Execute">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </InVar>
+        <InVar Name="Position">
+          <VarName>&amp;position1[1]</VarName>
+          <Address>&amp;position1[STARTID1ENDID-(1)]</Address>
+          <VarType>Pointer.&amp;LREAL</VarType>
+        </InVar>
+        <InVar Name="CoordSystem">
+          <VarName>2</VarName>
+          <Address>K2</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="BufferMode">
+          <VarName>1</VarName>
+          <Address>K1</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="TransitionMode">
+          <VarName>0</VarName>
+          <Address>K0</Address>
+          <VarType>USINT</VarType>
+        </InVar>
+        <InVar Name="TransitionParameter">
+          <VarName>0</VarName>
+          <Address>K0</Address>
+          <VarType>REAL</VarType>
+        </InVar>
+        <InVar Name="VelFactor">
+          <VarName>0.001</VarName>
+          <Address>K0.001</Address>
+          <VarType>REAL</VarType>
+        </InVar>
+        <InVar Name="AccFactor">
+          <VarName>0.001</VarName>
+          <Address>K0.001</Address>
+          <VarType>REAL</VarType>
+        </InVar>
+        <InVar Name="JerkFactor">
+          <VarName>0.001</VarName>
+          <Address>K0.001</Address>
+          <VarType>REAL</VarType>
+        </InVar>
+      </Input>
+      <Output Count="7">
+        <OutVar Name="AxesGroupOut">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>USINT</VarType>
+        </OutVar>
+        <OutVar Name="Done">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Busy">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Active">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="CommandAborted">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="Error">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>BOOL</VarType>
+        </OutVar>
+        <OutVar Name="ErrorID">
+          <VarName>NULL</VarName>
+          <Address>NULL</Address>
+          <VarType>UINT</VarType>
+        </OutVar>
+      </Output>
+      <MiddleVars Count="21">
+        <middleVAR>
+          <middleVARName>MidArray_Addr</middleVARName>
+          <middleType>ULINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>buffer</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>buffer_run</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>exe</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>run</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>run_flag</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>execute_before</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>run_numberF</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>axis_run_mode</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>tcp_vs</middleVARName>
+          <middleType>REAL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>s</middleVARName>
+          <middleType>LREAL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>s_x</middleVARName>
+          <middleType>LREAL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>s_y</middleVARName>
+          <middleType>LREAL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>s_z</middleVARName>
+          <middleType>LREAL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>t_now</middleVARName>
+          <middleType>REAL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>tm_mode</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>max_finish_time_id</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>max_finish_time</middleVARName>
+          <middleType>REAL</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>all_axis_done</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>move_state</middleVARName>
+          <middleType>USINT</middleType>
+        </middleVAR>
+        <middleVAR>
+          <middleVARName>TM_run_flag</middleVARName>
+          <middleType>BOOL</middleType>
+        </middleVAR>
+      </MiddleVars>
+      <Start>False</Start>
+      <End>True</End>
+      <Size>120,312</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <Object Type="LD">
+      <Location>
+      </Location>
+      <Index>0,30</Index>
+      <ID>43</ID>
+      <ToolBox>LD</ToolBox>
+      <TypeText>NO_Contact</TypeText>
+      <type>NO</type>
+      <subtype>ControlLibrary.NO</subtype>
+      <VarName>M10</VarName>
+      <Address>M10</Address>
+      <JumpText>
+      </JumpText>
+      <IPin>
+        <Position>
+        </Position>
+      </IPin>
+      <OPin>
+        <Position>
+        </Position>
+      </OPin>
+      <Connect inPinLabel="" outPinLabel="">
+        <IN />
+        <OUT>
+          <RefID ID="16">IN</RefID>
+        </OUT>
+      </Connect>
+      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
+      <Start>True</Start>
+      <End>False</End>
+      <Size>120,60</Size>
+      <SetPoint>0</SetPoint>
+      <OpenPoint>0</OpenPoint>
+    </Object>
+    <LineSegments>
+      <Line StartIndex="1,6" EndIndex="2,6" />
+      <Line StartIndex="3,6" EndIndex="4,6" />
+      <Line StartIndex="1,8" EndIndex="2,8" />
+      <Line StartIndex="3,8" EndIndex="4,8" />
+      <Line StartIndex="1,24" EndIndex="2,24" />
+      <Line StartIndex="3,24" EndIndex="4,24" />
+      <Line StartIndex="1,28" EndIndex="2,28" />
+      <Line StartIndex="3,28" EndIndex="5,28" />
+      <Line StartIndex="1,10" EndIndex="2,10" />
+      <Line StartIndex="3,10" EndIndex="4,10" />
+      <Line StartIndex="1,12" EndIndex="2,12" />
+      <Line StartIndex="3,12" EndIndex="4,12" />
+      <Line StartIndex="1,14" EndIndex="2,14" />
+      <Line StartIndex="3,14" EndIndex="4,14" />
+      <Line StartIndex="1,20" EndIndex="2,20" />
+      <Line StartIndex="3,20" EndIndex="4,20" />
+      <Line StartIndex="1,22" EndIndex="2,22" />
+      <Line StartIndex="3,22" EndIndex="4,22" />
+      <Line StartIndex="1,26" EndIndex="2,26" />
+      <Line StartIndex="3,26" EndIndex="5,26" />
+      <Line StartIndex="1,4" EndIndex="2,4" />
+      <Line StartIndex="3,4" EndIndex="4,4" />
+      <Line StartIndex="1,2" EndIndex="2,2" />
+      <Line StartIndex="3,2" EndIndex="4,2" />
+      <Line StartIndex="1,0" EndIndex="2,0" />
+      <Line StartIndex="3,0" EndIndex="4,0" />
+      <Line StartIndex="1,18" EndIndex="2,18" />
+      <Line StartIndex="3,18" EndIndex="5,18" />
+      <Line StartIndex="1,16" EndIndex="2,16" />
+      <Line StartIndex="3,16" EndIndex="5,16" />
+      <Line StartIndex="1,30" EndIndex="2,30" />
+      <Line StartIndex="3,30" EndIndex="5,30" />
+    </LineSegments>
+    <Script type="Script" />
+  </LadderDiagram>
+  <Var_Code>(*X Y Z : 底座 横梁 笔*)
+PROGRAM AxisInit
+
+VAR
+M1100 AT %M576:BOOL;
+M1101 AT %M577:BOOL;
+M1102 AT %M578:BOOL;
+VD426540 AT %VD142688:USINT;
+M1103 AT %M579:BOOL;
+M1104 AT %M580:BOOL;
+VD426541 AT %VD142689:USINT;
+M1105 AT %M581:BOOL;
+M1106 AT %M582:BOOL;
+VD426542 AT %VD142690:USINT;
+M1107 AT %M583:BOOL;
+M1110 AT %M584:BOOL;
+VD426543 AT %VD142691:USINT;
+M1111 AT %M585:BOOL;
+M1112 AT %M586:BOOL;
+VD426544 AT %VD142692:USINT;
+M1113 AT %M587:BOOL;
+M1114 AT %M588:BOOL;
+M1115 AT %M589:BOOL;
+M1116 AT %M590:BOOL;
+VD426545 AT %VD142693:USINT;
+M1117 AT %M591:BOOL;
+M1120 AT %M592:BOOL;
+M1121 AT %M593:BOOL;
+M1122 AT %M594:BOOL;
+M1123 AT %M595:BOOL;
+M1124 AT %M596:BOOL;
+M1125 AT %M597:BOOL;
+M1126 AT %M598:BOOL;
+M1127 AT %M599:BOOL;
+M1130 AT %M600:BOOL;
+M10 AT %M8 :BOOL;   
+    start1 : bool:=TRUE;
+    //addreset : bool:=FALSE;
+    //AddExe : BOOL:=FALSE;
+    //execetetemp : BOOL:=FALSE;
+    //SetkinExe : BOOL:=FALSE;
+    
+    // ===== init ====
+    TON1 : TON;
+    
+    // ===== MC_DriverSync =====    
+    MC_DriverSync1 : MC_DriverSync;
+    
+    // ===== MC_Reset =====
+    MC_Reset1 : MC_Reset;
+    MC_Reset2 : MC_Reset;
+    MC_Reset3 : MC_Reset;
+    
+    // ===== MC_Power =====
+    MC_Power1 : MC_Power;
+    MC_Power2 : MC_Power;
+    MC_Power3 : MC_Power;
+
+    // ===== MC_AddAxis =====
+    AddZ : MC_AddAxisToGroup;
+    AddX : MC_AddAxisToGroup;
+    AddY : MC_AddAxisToGroup;
+    
+    // ===== MC_AxisGroup =====
+    MC_GroupReadActualPosition1 : MC_GroupReadActualPosition;
+    MC_ReadStatus1 : MC_ReadStatus;
+    
+    MC_SetKinTransform1 : MC_SetKinTransform;
+    MC_GroupEnable1 : MC_GroupEnable;
+    MC_GroupHome1 : MC_GroupHome;    
+    MC_GroupStop1 : MC_GroupStop;
+    
+    MC_MoveDirectAbsolute1 : MC_MoveDirectAbsolute;
+    
+    MC_MoveLinearAbsolute1 : MC_MoveLinearAbsolute;
+    MC_MoveCircularAbsolute1 : MC_MoveCircularAbsolute;
+    
+    position_now : ARRAY[1..3] OF LREAL :=[-1,-1,-1];
+    position_zero : ARRAY[1..3] OF LREAL :=[0,0,0];
+    position1 : ARRAY[1..3] OF LREAL :=[80,40,-115];
+    position2 : ARRAY[1..3] OF LREAL :=[80,40,-41.7];
+    position3 : ARRAY[1..3] OF LREAL :=[80,0,-41.7];
+    position : ARRAY[1..3] OF LREAL :=[40,40,-41.7];
+    
+     (* 数组全部 1 起始，直接带初值 *)
+    dhA : ARRAY[1..4] OF REAL  := [0,0,0,0];      (* XYZ 全 0，开 4 个 *)
+    dhD : ARRAY[1..4] OF REAL  := [0,0,0,0];
+    jdir : ARRAY[1..3] OF SINT  := [1,1,1];        (* 方向 *)
+    jmotor : ARRAY[1..3] OF UDINT := [2500,2500,2500];        (* 齿轮比分母 *)
+    jshaft : ARRAY[1..3] OF UDINT := [1,1,7];        (* 分子，不能为 0 *)
+    jofs : ARRAY[1..3] OF DINT  := [0,0,0];        (* 原点偏移，脉冲 *)
+    jlim : ARRAY[1..6] OF LREAL := [-400000,400000, 0,700000, -200,0];
+    
+    
+END_VAR
+
+VAR_INPUT
+
+END_VAR
+
+VAR_OUTPUT
+
+END_VAR
+
+VAR_CONSTANT
+
+END_VAR</Var_Code>
+</pou>
