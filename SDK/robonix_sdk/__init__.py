@@ -16,13 +16,9 @@
 from .protocol import (
     CMD_ACK,
     CMD_CLOSE,
-    CMD_ENABLE,
-    CMD_GET_POSITION,
     CMD_HOME,
     CMD_MOVE_LINEAR,
     CMD_PING,
-    CMD_READ_STATUS,
-    CMD_RESET,
     CMD_SET_PARAM,
     CMD_STOP,
     STATUS_BUSY,
@@ -38,6 +34,15 @@ from .protocol import (
 from .client import DEFAULT_PORT, ProtocolError, RobonixClient
 from .image import binarize, load_binary, load_gray, otsu_threshold
 from .trajectory import PlotConfig, outline_waypoints, raster_waypoints, to_waypoints
+from .text import (
+    Cursor,
+    TextConfig,
+    TextOverflowError,
+    TextWriter,
+    default_cursor,
+    layout_text,
+    text_to_waypoints,
+)
 
 __all__ = [
     "RobonixClient",
@@ -47,6 +52,13 @@ __all__ = [
     "to_waypoints",
     "raster_waypoints",
     "outline_waypoints",
+    "TextConfig",
+    "TextWriter",
+    "Cursor",
+    "TextOverflowError",
+    "default_cursor",
+    "layout_text",
+    "text_to_waypoints",
     "load_gray",
     "load_binary",
     "binarize",
@@ -60,11 +72,7 @@ __all__ = [
     "CMD_MOVE_LINEAR",
     "CMD_HOME",
     "CMD_SET_PARAM",
-    "CMD_ENABLE",
-    "CMD_RESET",
     "CMD_STOP",
-    "CMD_READ_STATUS",
-    "CMD_GET_POSITION",
     "CMD_CLOSE",
     "CMD_ACK",
     "STATUS_OK",

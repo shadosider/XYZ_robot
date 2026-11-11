@@ -46,7 +46,15 @@ class RobonixClient:
         return self
 
     def __exit__(self, *exc) -> None:
-        self.close()
+        # 先发 CMD_CLOSE 让 PLC 走状态 90 关闭流程，避免旧 socket
+        # 留在 PLC 里导致下一次连接无法被 Accept。
+        if self._sock is not None:
+            try:
+                self.close_session()
+            except Exception:
+                pass
+            finally:
+                self.close()
 
     @property
     def connected(self) -> bool:
@@ -134,12 +142,6 @@ class RobonixClient:
     def home(self) -> None:
         self._expect_ack_ok(proto.CMD_HOME, what="HOME")
 
-    def enable(self, flag: bool = True) -> None:
-        self._expect_ack_ok(proto.CMD_ENABLE, bytes([1 if flag else 0]), what="ENABLE")
-
-    def reset(self) -> None:
-        self._expect_ack_ok(proto.CMD_RESET, what="RESET")
-
     def stop(self) -> None:
         self._expect_ack_ok(proto.CMD_STOP, what="STOP")
 
@@ -153,14 +155,6 @@ class RobonixClient:
             self._expect_ack_ok(proto.CMD_CLOSE, what="CLOSE")
         finally:
             self.close()
-
-    def read_status(self) -> tuple[int, int, int]:
-        ack = self._request(proto.CMD_READ_STATUS)
-        return proto.unpack_ack(ack.payload)
-
-    def get_position(self) -> tuple[float, float, float, int]:
-        ack = self._request(proto.CMD_GET_POSITION)
-        return proto.unpack_position(ack.payload)
 
     # ------------------------------------------------------------------
     # 绘图

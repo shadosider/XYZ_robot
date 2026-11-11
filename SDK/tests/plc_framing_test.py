@@ -11,6 +11,9 @@
     # 不进入菜单，直接顺序跑全部测试
     python plc_framing_test.py --host 192.168.33.130 --port 2000 --run-all
 
+    # 顺序测试时也执行 HOME（真实回零，谨慎）
+    python plc_framing_test.py --host 192.168.33.130 --port 2000 --run-all --include-home
+
 菜单测试项：
   1. 正常 PING
   2. 半包 PING（3 字节 + 5 字节）
@@ -18,8 +21,8 @@
   4. 坏 CRC 后重同步
   5. MOVE_LINEAR 32B
   6. SET_PARAM 48B
-  7. GET_POSITION 25B
-  8. 全部顺序测试
+  7. HOME（真实回零，谨慎）
+  8. 全部顺序测试（默认不含 HOME）
   9. 重新连接（先发 CMD_CLOSE 关闭会话）
   0. 退出（先关闭会话）
 """
@@ -95,10 +98,10 @@ class RawClient:
             if timeout is not None:
                 self.sock.settimeout(old)
 
-    def request(self, cmd: int, payload: bytes = b"") -> tuple[int, proto.Frame]:
+    def request(self, cmd: int, payload: bytes = b"", timeout: float | None = None) -> tuple[int, proto.Frame]:
         seq = self.next_seq()
         self.send_raw(proto.build_frame(cmd, seq, payload))
-        frame = self.recv_frame()
+        frame = self.recv_frame(timeout)
         return seq, frame
 
     def close_session(self, quiet: bool = False) -> None:
@@ -175,7 +178,7 @@ def test_bad_crc(c: RawClient, args: argparse.Namespace) -> None:
 def test_move_linear(c: RawClient, args: argparse.Namespace) -> None:
     seq, frame = c.request(
         proto.CMD_MOVE_LINEAR,
-        proto.pack_move_linear(20.0, 20.0, 10.0, 20.0),
+        proto.pack_move_linear(50.0, 40.0, -25, 20.0),
     )
     check_ack("5. MOVE_LINEAR 32B", seq, frame)
 
@@ -188,17 +191,15 @@ def test_set_param(c: RawClient, args: argparse.Namespace) -> None:
     check_ack("6. SET_PARAM 48B", seq, frame)
 
 
-def test_get_position(c: RawClient, args: argparse.Namespace) -> None:
-    seq = c.next_seq()
-    c.send_raw(proto.build_frame(proto.CMD_GET_POSITION, seq))
-    frame = c.recv_frame()
-    if frame.cmd != proto.CMD_ACK or frame.seq != seq:
-        raise AssertionError("7. GET_POSITION: 应答 CMD/SEQ 不匹配")
-    x, y, z, busy = proto.unpack_position(frame.payload)
-    print(
-        "  PASS 7. GET_POSITION                   pos=(%.3f, %.3f, %.3f) busy=%d"
-        % (x, y, z, busy)
-    )
+def test_home(c: RawClient, args: argparse.Namespace) -> None:
+    """HOME：执行轴组回零。
+
+    注意：HOME 会让轴组回到 Home 数组指定的位置，属于真实运动。
+    这里单独使用更长的超时（--home-timeout），因为回零可能比较慢。
+    """
+    print("  [WARN] HOME 将执行轴组回零，请确认机械行程/原点安全！")
+    seq, frame = c.request(proto.CMD_HOME, timeout=args.home_timeout)
+    check_ack("7. HOME", seq, frame)
 
 
 # ---------------------------------------------------------------------------
@@ -211,12 +212,17 @@ ORDERED_TESTS = [
     ("4. 坏 CRC 后重同步", test_bad_crc),
     ("5. MOVE_LINEAR", test_move_linear),
     ("6. SET_PARAM", test_set_param),
-    ("7. GET_POSITION", test_get_position),
 ]
 
 
 def run_all(c: RawClient, args: argparse.Namespace) -> None:
-    for name, fn in ORDERED_TESTS:
+    tests = list(ORDERED_TESTS)
+
+    # HOME 是真实运动，默认不放进 run-all；需要显式加 --include-home
+    if getattr(args, "include_home", False):
+        tests.insert(4, ("7. HOME", test_home))
+
+    for name, fn in tests:
         print("\n--- %s ---" % name)
         fn(c, args)
     print("\n全部通过")
@@ -232,7 +238,7 @@ MENU_ITEMS = {
     "4": test_bad_crc,
     "5": test_move_linear,
     "6": test_set_param,
-    "7": test_get_position,
+    "7": test_home,
     "8": run_all,
 }
 
@@ -244,8 +250,8 @@ MENU_TEXT = """
   4. 坏 CRC 后重同步
   5. MOVE_LINEAR 32B
   6. SET_PARAM 48B
-  7. GET_POSITION 25B
-  8. 全部顺序测试
+  7. HOME（真实回零，谨慎）
+  8. 全部顺序测试（默认不含 HOME）
   9. 重新连接（先发 CMD_CLOSE 关闭会话）
   0. 退出（先关闭会话）
 ==========================================
@@ -268,7 +274,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--port", type=int, default=2000)
     ap.add_argument("--timeout", type=float, default=2.0)
     ap.add_argument("--split-delay", type=float, default=0.1, help="半包测试两段之间的间隔（秒）")
+    ap.add_argument("--home-timeout", type=float, default=60.0, help="HOME 测试等待 ACK 的超时（秒）")
     ap.add_argument("--run-all", action="store_true", help="不进入菜单，直接顺序跑全部测试")
+    ap.add_argument("--include-home", action="store_true", help="run-all 时也执行 HOME（会移动轴组，谨慎）")
     args = ap.parse_args(argv)
 
     c = make_client(args)

@@ -62,21 +62,9 @@ class MockPLC:
         elif frame.cmd == proto.CMD_HOME:
             print("HOME", flush=True)
             self._ack(conn, seq, proto.STATUS_OK)
-        elif frame.cmd == proto.CMD_ENABLE:
-            print("ENABLE %s" % ("on" if frame.payload[0] else "off"), flush=True)
-            self._ack(conn, seq, proto.STATUS_OK)
-        elif frame.cmd == proto.CMD_RESET:
-            print("RESET", flush=True)
-            self._ack(conn, seq, proto.STATUS_OK)
         elif frame.cmd == proto.CMD_STOP:
             print("STOP", flush=True)
             self._ack(conn, seq, proto.STATUS_OK)
-        elif frame.cmd == proto.CMD_READ_STATUS:
-            self._ack(conn, seq, proto.STATUS_OK)
-        elif frame.cmd == proto.CMD_GET_POSITION:
-            # 返回假位置（最后一个点附近）
-            payload = struct.pack("<3dB", 0.0, 0.0, 0.0, 0)
-            conn.sendall(proto.build_frame(proto.CMD_ACK, seq, payload))
         elif frame.cmd == proto.CMD_CLOSE:
             print("CLOSE", flush=True)
             self._ack(conn, seq, proto.STATUS_OK)

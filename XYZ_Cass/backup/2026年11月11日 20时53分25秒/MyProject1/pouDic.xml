@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<SerializableDictionaryOfStringInt32>
+  <SerializableDictionary>
+    <key>
+      <string>POU1</string>
+    </key>
+    <value>
+      <int>0</int>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>test1_FBD</string>
+    </key>
+    <value>
+      <int>2</int>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>AxisInit</string>
+    </key>
+    <value>
+      <int>4</int>
+    </value>
+  </SerializableDictionary>
+  <SerializableDictionary>
+    <key>
+      <string>tcp_test</string>
+    </key>
+    <value>
+      <int>5</int>
+    </value>
+  </SerializableDictionary>
+</SerializableDictionaryOfStringInt32>

@@ -12,13 +12,17 @@ SDK/
 │   ├── protocol.py           # 二进制帧编解码 + CRC16
 │   ├── client.py             # RobonixClient（TCP 客户端）
 │   ├── image.py              # PNG 读取 + Otsu 二值化
-│   └── trajectory.py         # 二值图 -> 路径点（raster / outline）
+│   ├── trajectory.py         # 二值图 -> 路径点（raster / outline）
+│   ├── text.py               # 单线文字排版（Hershey）
+│   └── hershey_simplex.py    # Hershey Simplex 字形数据
 ├── examples/
 │   ├── draw_png.py           # 简单测试脚本
+│   ├── write_text.py         # 文字书写脚本
 │   └── mock_plc.py           # 无硬件联调的假 PLC
 └── docs/
     ├── protocol.md           # 通信协议（核心文档）
-    └── plc_wiring.md         # PLC 侧参考接线
+    ├── plc_wiring.md         # PLC 侧参考接线
+    └── text.md               # 文字书写说明
 ```
 
 依赖：`numpy` + `Pillow`（标准库 `socket` / `struct`）。
@@ -49,13 +53,32 @@ python examples/draw_png.py --input drawing.png --host 127.0.0.1 --port 2000
 python examples/draw_png.py --input drawing.png --host <PLC_IP> --port 2000
 ```
 
+## 文字书写
+
+```bash
+# 预览
+python examples/write_text.py "Hello 123" --dry-run
+
+# 写到 PLC（写完自动回零）
+python examples/write_text.py "Hello 123" --host 192.168.33.130 --port 2000
+
+# 调整字号、重置到左上角
+python examples/write_text.py "ABC" --font-size-mm 15 --reset
+```
+
+- 纸张：`X 0~280 mm`，`Y 0~160 mm`，原点左下角；
+- `z_up=0` 抬笔，`z_down=-25` 落笔；
+- 默认从左上角开始，自动换行，游标跨次保存；
+- 支持大小写英文、数字、空格和换行；
+- 详细说明见 `docs/text.md`。
+
 ## 常用参数
 
 | 参数 | 默认 | 说明 |
 |------|------|------|
 | `--strategy` | `raster` | `raster` 色块填充 / `outline` 线稿轮廓 |
 | `--scale` | `0.1` | 像素→毫米比例 |
-| `--z-up` / `--z-down` | `5.0` / `0.0` | 抬笔 / 落笔高度 (mm) |
+| `--z-up` / `--z-down` | `0.0` / `-30.0` | 抬笔 / 落笔高度 (mm) |
 | `--vel` | `20.0` | 落笔速度 |
 | `--threshold` | Otsu | 手动二值化阈值（0~255） |
 | `--invert` | 关 | 亮像素视为墨迹 |
@@ -67,12 +90,11 @@ python examples/draw_png.py --input drawing.png --host <PLC_IP> --port 2000
 from robonix_sdk import RobonixClient, PlotConfig, load_binary, to_waypoints
 
 binary = load_binary("drawing.png")
-cfg = PlotConfig(pixel_to_mm=0.1, z_up=5.0, z_down=0.0, strategy="raster")
+cfg = PlotConfig(pixel_to_mm=0.1, z_up=0.0, z_down=-30.0, strategy="raster")
 points = to_waypoints(binary, cfg)
 
 with RobonixClient("192.168.1.10") as plc:
     plc.set_param(cfg.vel, cfg.acc, cfg.dec, cfg.jerk, cfg.z_up, cfg.z_down)
-    plc.enable(True)
     plc.home()
     plc.draw_waypoints(points, vel=cfg.vel)
 ```

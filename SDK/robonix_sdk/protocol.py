@@ -31,11 +31,7 @@ CMD_PING = 0x00
 CMD_MOVE_LINEAR = 0x01
 CMD_HOME = 0x03
 CMD_SET_PARAM = 0x04
-CMD_ENABLE = 0x05
-CMD_RESET = 0x06
 CMD_STOP = 0x07
-CMD_READ_STATUS = 0x08
-CMD_GET_POSITION = 0x09
 CMD_CLOSE = 0x0A
 CMD_ACK = 0x80
 
@@ -50,11 +46,7 @@ _CMD_NAMES = {
     CMD_MOVE_LINEAR: "MOVE_LINEAR",
     CMD_HOME: "HOME",
     CMD_SET_PARAM: "SET_PARAM",
-    CMD_ENABLE: "ENABLE",
-    CMD_RESET: "RESET",
     CMD_STOP: "STOP",
-    CMD_READ_STATUS: "READ_STATUS",
-    CMD_GET_POSITION: "GET_POSITION",
     CMD_CLOSE: "CLOSE",
     CMD_ACK: "ACK",
 }
@@ -181,12 +173,3 @@ def unpack_ack(payload: bytes) -> tuple[int, int, int]:
         raise ValueError("ACK 载荷过短: %d" % len(payload))
     status, err, busy = struct.unpack_from("<BHB", payload, 0)
     return status, err, busy
-
-
-def unpack_position(payload: bytes) -> tuple[float, float, float, int]:
-    """GET_POSITION 应答载荷：x, y, z (3×f64) + busy(U8)。"""
-    if len(payload) < 3 * 8 + 1:
-        raise ValueError("GET_POSITION 载荷过短: %d" % len(payload))
-    x, y, z = struct.unpack_from("<3d", payload, 0)
-    busy = payload[24]
-    return x, y, z, busy

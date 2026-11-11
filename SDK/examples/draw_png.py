@@ -69,8 +69,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--scale", type=float, default=0.1, help="像素->毫米 比例")
     p.add_argument("--offset-x", type=float, default=0.0)
     p.add_argument("--offset-y", type=float, default=0.0)
-    p.add_argument("--z-up", type=float, default=5.0)
-    p.add_argument("--z-down", type=float, default=0.0)
+    p.add_argument("--z-up", type=float, default=0.0)
+    p.add_argument("--z-down", type=float, default=-30.0)
     p.add_argument("--vel", type=float, default=20.0)
     p.add_argument("--travel-vel", type=float, default=40.0)
     p.add_argument("--acc", type=float, default=300.0)
@@ -83,7 +83,6 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--down-step", type=int, default=1, help="落笔抽稀步长")
     p.add_argument("--dry-run", action="store_true", help="只生成轨迹，不连接 PLC")
     p.add_argument("--no-home", action="store_true", help="下发前不执行回零")
-    p.add_argument("--no-enable", action="store_true", help="下发前不执行使能")
     args = p.parse_args(argv)
 
     cfg = make_config(args)
@@ -116,13 +115,9 @@ def main(argv: list[str] | None = None) -> int:
     with RobonixClient(args.host, args.port) as plc:
         print("已连接 %s:%d" % (args.host, args.port))
         plc.set_param(cfg.vel, cfg.acc, cfg.dec, cfg.jerk, cfg.z_up, cfg.z_down)
-        if not args.no_enable:
-            plc.enable(True)
         if not args.no_home:
             plc.home()
         plc.draw_waypoints(points, vel=cfg.vel, on_progress=print_progress)
-        x, y, z, busy = plc.get_position()
-        print("结束位置: x=%.3f y=%.3f z=%.3f busy=%d" % (x, y, z, busy))
 
     print("完成")
     return 0

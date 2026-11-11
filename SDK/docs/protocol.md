@@ -48,24 +48,20 @@ romote ip : 192.168.33.130
 | CMD  | 名称           | 方向 | 载荷（字节）                                   | 说明 |
 |------|----------------|------|------------------------------------------------|------|
 | 0x00 | PING           | C→S  | 空                                             | 连通性测试 |
-| 0x01 | MOVE_LINEAR    | C→S  | x, y, z, vel = 4×f64 (**32B**)                 | 世界坐标直线插补，`vel=0` 用 PLC 默认速度 |
+| 0x01 | MOVE_LINEAR    | C→S  | x, y, z, vel = 4×f64 (**32B**)                 | 绝对直线插补（x/y/z 为相对距离），`vel=0` 用 PLC 默认速度 |
 | 0x03 | HOME           | C→S  | 空                                             | 轴组回零（`MC_GroupHome`） |
 | 0x04 | SET_PARAM      | C→S  | vel, acc, dec, jerk, z_up, z_down = 6×f64 (**48B**) | 设定全局运动参数与笔高度 |
-| 0x05 | ENABLE         | C→S  | flag = U8 (**1B**，1 使能 / 0 去使能)          | `MC_Power` / `MC_GroupEnable` |
-| 0x06 | RESET          | C→S  | 空                                             | 轴复位（`MC_Reset`） |
 | 0x07 | STOP           | C→S  | 空                                             | 终止当前运动 |
-| 0x08 | READ_STATUS    | C→S  | 空                                             | 查询状态 |
-| 0x09 | GET_POSITION   | C→S  | 空                                             | 查询当前位置 |
 | 0x0A | CLOSE          | C→S  | 空                                             | 请求关闭会话；PLC 回 ACK 后关闭 socket 并回到 Accept |
 | 0x80 | ACK            | S→C  | status U8 + err U16 + busy U8 (**4B**)          | 命令应答，SEQ 回带 |
 
-> 0x02 保留（预留圆弧/点到点），0x0B~0x7F 保留。
+> 0x02、0x05、0x06、0x08、0x09 保留/已移除，0x0B~0x7F 保留。
 
 ---
 
 ## 4. ACK 应答
 
-每个 C→S 命令（除 GET_POSITION 外）PLC 处理完成后回一帧 `ACK`，
+每个 C→S 命令 PLC 处理完成后回一帧 `ACK`，
 `SEQ` 与请求一致，用于逐帧握手与流控。
 
 ```
@@ -75,14 +71,22 @@ ACK 载荷 (4B):
   busy    U8   0=空闲, 1=轴组忙
 ```
 
-- `GET_POSITION` 的 ACK 载荷为 **25B**：`x, y, z = 3×f64` + `busy U8`。
+- `busy` 表示轴组当前是否忙（1=忙，0=空闲），用于 ACK 附带信息。
+
+> **MotionSim 调试模式**：ACK 载荷 = 4B `status/err/busy` + 原始请求帧
+> （含 SOF/CMD/LEN/SEQ/PAYLOAD/CRC）。客户端只读取前 4B，不影响握手；
+> 抓包时可以看到 PLC 实际收到的完整输入帧。
 
 ---
 
 ## 5. 交互模型（v1 同步握手）
 
 SDK 每发一条 `MOVE_LINEAR`，等待 PLC 返回对应 `SEQ` 的 `ACK(status=0)`
-后再发下一条；PLC 在 `MC_MoveLinearAbsolute.Done`（或 `Error`）后回 ACK。
+后再发下一条；PLC 在 `MC_MoveLinearRelative.Done`（或 `Error`）后回 ACK。
+
+> 当前 PLC 侧 `MOVE_LINEAR` 使用 `MC_MoveLinearRelative`，x/y/z 是**相对距离**。
+> 绝对绘图需要改用 `MC_MoveLinearAbsolute`，并确保轴组已回零/有有效参考位置。
+
 抬笔移动与落笔移动都是同一条 `MOVE_LINEAR`，区别仅在 `z` 值：
 
 - `z = z_down`：落笔（绘制段）
@@ -102,8 +106,8 @@ payload = struct.pack('<4d', 10.0, 20.0, 0.0, 0.0)
 
 ### SET_PARAM（48B 载荷）
 ```
-vel=20.0, acc=300.0, dec=300.0, jerk=3000.0, z_up=5.0, z_down=0.0
-payload = struct.pack('<6d', 20.0, 300.0, 300.0, 3000.0, 5.0, 0.0)
+vel=20.0, acc=300.0, dec=300.0, jerk=3000.0, z_up=0.0, z_down=-30.0
+payload = struct.pack('<6d', 20.0, 300.0, 300.0, 3000.0, 0.0, -30.0)
 ```
 
 ### 完整帧示例（MOVE_LINEAR, SEQ=0, 无载荷简化示意）

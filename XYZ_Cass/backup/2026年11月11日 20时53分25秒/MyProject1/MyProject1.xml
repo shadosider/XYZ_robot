@@ -1,0 +1,12 @@
+<Project projectName="MyProject1" currentCPUName="MatrixBox_MX4001" isShareMemory="True" Version="3.19.4.261016">
+  <Device1 ID="1" Name="Device1">
+    <Task0 ID="0" Name="Task0">
+      <POU language="ST" pageType="COMMON">POU1</POU>
+      <POU language="FBD" pageType="COMMON">test1_FBD</POU>
+      <POU language="FBD" pageType="COMMON">AxisInit</POU>
+      <POU language="ST" pageType="COMMON">tcp_test</POU>
+    </Task0>
+    <Function>
+    </Function>
+  </Device1>
+</Project>

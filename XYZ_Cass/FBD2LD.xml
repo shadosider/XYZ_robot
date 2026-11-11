@@ -6,8 +6,8 @@
       <StartBusbar>48</StartBusbar>
       <EndBusbar>834</EndBusbar>
       <UnitSize>48</UnitSize>
-      <ControlCount>43</ControlCount>
-      <MaxID>43</MaxID>
+      <ControlCount>41</ControlCount>
+      <MaxID>41</MaxID>
     </Page>
     <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
       <Location>
@@ -19,7 +19,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Reset2</VarName>
-      <Address>VD424430</Address>
+      <Address>VD424400</Address>
       <IPin>
         <Position>
         </Position>
@@ -31,7 +31,7 @@
       <Connect inPinLabel="" outPinLabel="">
         <IN />
         <OUT>
-          <RefID ID="18">IN</RefID>
+          <RefID ID="17">IN</RefID>
         </OUT>
       </Connect>
       <ControlColor>LightBlue</ControlColor>
@@ -49,8 +49,8 @@
       </Input>
       <Output Count="4">
         <OutVar Name="Axis_numOut">
-          <VarName>VALUED426553</VarName>
-          <Address>VALUED426553</Address>
+          <VarName>VALUED426103</VarName>
+          <Address>VALUED426103</Address>
           <VarType>USINT</VarType>
         </OutVar>
         <OutVar Name="Done">
@@ -85,7 +85,7 @@
       <Location>
       </Location>
       <Index>0,6</Index>
-      <ID>17</ID>
+      <ID>16</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -119,7 +119,7 @@
       <Location>
       </Location>
       <Index>4,6</Index>
-      <ID>18</ID>
+      <ID>17</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Coil</TypeText>
       <type>ST</type>
@@ -157,7 +157,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Reset3</VarName>
-      <Address>VD424450</Address>
+      <Address>VD424420</Address>
       <IPin>
         <Position>
         </Position>
@@ -169,7 +169,7 @@
       <Connect inPinLabel="" outPinLabel="">
         <IN />
         <OUT>
-          <RefID ID="20">IN</RefID>
+          <RefID ID="19">IN</RefID>
         </OUT>
       </Connect>
       <ControlColor>LightBlue</ControlColor>
@@ -187,8 +187,8 @@
       </Input>
       <Output Count="4">
         <OutVar Name="Axis_numOut">
-          <VarName>VALUED426554</VarName>
-          <Address>VALUED426554</Address>
+          <VarName>VALUED426104</VarName>
+          <Address>VALUED426104</Address>
           <VarType>USINT</VarType>
         </OutVar>
         <OutVar Name="Done">
@@ -223,7 +223,7 @@
       <Location>
       </Location>
       <Index>0,8</Index>
-      <ID>19</ID>
+      <ID>18</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -257,7 +257,7 @@
       <Location>
       </Location>
       <Index>4,8</Index>
-      <ID>20</ID>
+      <ID>19</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Coil</TypeText>
       <type>ST</type>
@@ -295,7 +295,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>AddZ</VarName>
-      <Address>VD424550</Address>
+      <Address>VD424520</Address>
       <IPin>
         <Position>
         </Position>
@@ -307,14 +307,14 @@
       <Connect inPinLabel="" outPinLabel="">
         <IN />
         <OUT>
-          <RefID ID="22">IN</RefID>
+          <RefID ID="21">IN</RefID>
         </OUT>
       </Connect>
       <ControlColor>#FF8000</ControlColor>
       <Input Count="4">
         <InVar Name="AxesGroup">
-          <VarName>VALUED426550</VarName>
-          <Address>VALUED426550</Address>
+          <VarName>VALUED426100</VarName>
+          <Address>VALUED426100</Address>
           <VarType>USINT</VarType>
         </InVar>
         <InVar Name="Axis">
@@ -335,8 +335,8 @@
       </Input>
       <Output Count="6">
         <OutVar Name="AxesGroupOut">
-          <VarName>VALUED426551</VarName>
-          <Address>VALUED426551</Address>
+          <VarName>VALUED426101</VarName>
+          <Address>VALUED426101</Address>
           <VarType>USINT</VarType>
         </OutVar>
         <OutVar Name="AxisOut">
@@ -385,7 +385,7 @@
       <Location>
       </Location>
       <Index>0,24</Index>
-      <ID>21</ID>
+      <ID>20</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -419,7 +419,7 @@
       <Location>
       </Location>
       <Index>4,24</Index>
-      <ID>22</ID>
+      <ID>21</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Coil</TypeText>
       <type>ST</type>
@@ -457,7 +457,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_GroupEnable1</VarName>
-      <Address>VD425020</Address>
+      <Address>VD424770</Address>
       <IPin>
         <Position>
         </Position>
@@ -473,8 +473,8 @@
       <ControlColor>#FF8000</ControlColor>
       <Input Count="2">
         <InVar Name="AxesGroup">
-          <VarName>VALUED426551</VarName>
-          <Address>VALUED426551</Address>
+          <VarName>VALUED426101</VarName>
+          <Address>VALUED426101</Address>
           <VarType>USINT</VarType>
         </InVar>
         <InVar Name="Execute">
@@ -530,7 +530,7 @@
       <Location>
       </Location>
       <Index>0,28</Index>
-      <ID>23</ID>
+      <ID>22</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -570,7 +570,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Power1</VarName>
-      <Address>VD424470</Address>
+      <Address>VD424440</Address>
       <IPin>
         <Position>
         </Position>
@@ -582,14 +582,14 @@
       <Connect inPinLabel="" outPinLabel="">
         <IN />
         <OUT>
-          <RefID ID="25">IN</RefID>
+          <RefID ID="24">IN</RefID>
         </OUT>
       </Connect>
       <ControlColor>LightBlue</ControlColor>
       <Input Count="3">
         <InVar Name="Axis_num">
-          <VarName>VALUED426552</VarName>
-          <Address>VALUED426552</Address>
+          <VarName>VALUED426102</VarName>
+          <Address>VALUED426102</Address>
           <VarType>USINT</VarType>
         </InVar>
         <InVar Name="Enable">
@@ -650,7 +650,7 @@
       <Location>
       </Location>
       <Index>0,10</Index>
-      <ID>24</ID>
+      <ID>23</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -684,7 +684,7 @@
       <Location>
       </Location>
       <Index>4,10</Index>
-      <ID>25</ID>
+      <ID>24</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Coil</TypeText>
       <type>ST</type>
@@ -722,7 +722,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Power2</VarName>
-      <Address>VD424510</Address>
+      <Address>VD424460</Address>
       <IPin>
         <Position>
         </Position>
@@ -734,14 +734,14 @@
       <Connect inPinLabel="" outPinLabel="">
         <IN />
         <OUT>
-          <RefID ID="27">IN</RefID>
+          <RefID ID="26">IN</RefID>
         </OUT>
       </Connect>
       <ControlColor>LightBlue</ControlColor>
       <Input Count="3">
         <InVar Name="Axis_num">
-          <VarName>VALUED426553</VarName>
-          <Address>VALUED426553</Address>
+          <VarName>VALUED426103</VarName>
+          <Address>VALUED426103</Address>
           <VarType>USINT</VarType>
         </InVar>
         <InVar Name="Enable">
@@ -802,7 +802,7 @@
       <Location>
       </Location>
       <Index>0,12</Index>
-      <ID>26</ID>
+      <ID>25</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -836,7 +836,7 @@
       <Location>
       </Location>
       <Index>4,12</Index>
-      <ID>27</ID>
+      <ID>26</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Coil</TypeText>
       <type>ST</type>
@@ -874,7 +874,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Power3</VarName>
-      <Address>VD424530</Address>
+      <Address>VD424500</Address>
       <IPin>
         <Position>
         </Position>
@@ -886,14 +886,14 @@
       <Connect inPinLabel="" outPinLabel="">
         <IN />
         <OUT>
-          <RefID ID="29">IN</RefID>
+          <RefID ID="28">IN</RefID>
         </OUT>
       </Connect>
       <ControlColor>LightBlue</ControlColor>
       <Input Count="3">
         <InVar Name="Axis_num">
-          <VarName>VALUED426554</VarName>
-          <Address>VALUED426554</Address>
+          <VarName>VALUED426104</VarName>
+          <Address>VALUED426104</Address>
           <VarType>USINT</VarType>
         </InVar>
         <InVar Name="Enable">
@@ -954,7 +954,7 @@
       <Location>
       </Location>
       <Index>0,14</Index>
-      <ID>28</ID>
+      <ID>27</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -988,7 +988,7 @@
       <Location>
       </Location>
       <Index>4,14</Index>
-      <ID>29</ID>
+      <ID>28</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Coil</TypeText>
       <type>ST</type>
@@ -1026,7 +1026,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>AddX</VarName>
-      <Address>VD424570</Address>
+      <Address>VD424540</Address>
       <IPin>
         <Position>
         </Position>
@@ -1038,7 +1038,7 @@
       <Connect inPinLabel="" outPinLabel="">
         <IN />
         <OUT>
-          <RefID ID="31">IN</RefID>
+          <RefID ID="30">IN</RefID>
         </OUT>
       </Connect>
       <ControlColor>#FF8000</ControlColor>
@@ -1066,8 +1066,8 @@
       </Input>
       <Output Count="6">
         <OutVar Name="AxesGroupOut">
-          <VarName>VALUED426555</VarName>
-          <Address>VALUED426555</Address>
+          <VarName>VALUED426105</VarName>
+          <Address>VALUED426105</Address>
           <VarType>USINT</VarType>
         </OutVar>
         <OutVar Name="AxisOut">
@@ -1116,7 +1116,7 @@
       <Location>
       </Location>
       <Index>0,20</Index>
-      <ID>30</ID>
+      <ID>29</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -1150,7 +1150,7 @@
       <Location>
       </Location>
       <Index>4,20</Index>
-      <ID>31</ID>
+      <ID>30</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Coil</TypeText>
       <type>ST</type>
@@ -1188,7 +1188,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>AddY</VarName>
-      <Address>VD424610</Address>
+      <Address>VD424560</Address>
       <IPin>
         <Position>
         </Position>
@@ -1200,14 +1200,14 @@
       <Connect inPinLabel="" outPinLabel="">
         <IN />
         <OUT>
-          <RefID ID="33">IN</RefID>
+          <RefID ID="32">IN</RefID>
         </OUT>
       </Connect>
       <ControlColor>#FF8000</ControlColor>
       <Input Count="4">
         <InVar Name="AxesGroup">
-          <VarName>VALUED426555</VarName>
-          <Address>VALUED426555</Address>
+          <VarName>VALUED426105</VarName>
+          <Address>VALUED426105</Address>
           <VarType>USINT</VarType>
         </InVar>
         <InVar Name="Axis">
@@ -1228,8 +1228,8 @@
       </Input>
       <Output Count="6">
         <OutVar Name="AxesGroupOut">
-          <VarName>VALUED426550</VarName>
-          <Address>VALUED426550</Address>
+          <VarName>VALUED426100</VarName>
+          <Address>VALUED426100</Address>
           <VarType>USINT</VarType>
         </OutVar>
         <OutVar Name="AxisOut">
@@ -1278,7 +1278,7 @@
       <Location>
       </Location>
       <Index>0,22</Index>
-      <ID>32</ID>
+      <ID>31</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -1312,7 +1312,7 @@
       <Location>
       </Location>
       <Index>4,22</Index>
-      <ID>33</ID>
+      <ID>32</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Coil</TypeText>
       <type>ST</type>
@@ -1350,7 +1350,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_SetKinTransform1</VarName>
-      <Address>VD424700</Address>
+      <Address>VD424650</Address>
       <IPin>
         <Position>
         </Position>
@@ -1486,7 +1486,7 @@
       <Location>
       </Location>
       <Index>0,26</Index>
-      <ID>34</ID>
+      <ID>33</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -1526,7 +1526,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Reset1</VarName>
-      <Address>VD424410</Address>
+      <Address>VD424360</Address>
       <IPin>
         <Position>
         </Position>
@@ -1538,7 +1538,7 @@
       <Connect inPinLabel="" outPinLabel="">
         <IN />
         <OUT>
-          <RefID ID="36">IN</RefID>
+          <RefID ID="35">IN</RefID>
         </OUT>
       </Connect>
       <ControlColor>LightBlue</ControlColor>
@@ -1556,8 +1556,8 @@
       </Input>
       <Output Count="4">
         <OutVar Name="Axis_numOut">
-          <VarName>VALUED426552</VarName>
-          <Address>VALUED426552</Address>
+          <VarName>VALUED426102</VarName>
+          <Address>VALUED426102</Address>
           <VarType>USINT</VarType>
         </OutVar>
         <OutVar Name="Done">
@@ -1592,7 +1592,7 @@
       <Location>
       </Location>
       <Index>0,4</Index>
-      <ID>35</ID>
+      <ID>34</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -1626,7 +1626,7 @@
       <Location>
       </Location>
       <Index>4,4</Index>
-      <ID>36</ID>
+      <ID>35</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Coil</TypeText>
       <type>ST</type>
@@ -1664,7 +1664,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_DriverSync1</VarName>
-      <Address>VD424250</Address>
+      <Address>VD424220</Address>
       <IPin>
         <Position>
         </Position>
@@ -1676,7 +1676,7 @@
       <Connect inPinLabel="" outPinLabel="">
         <IN />
         <OUT>
-          <RefID ID="38">IN</RefID>
+          <RefID ID="37">IN</RefID>
         </OUT>
       </Connect>
       <ControlColor>LightBlue</ControlColor>
@@ -1826,7 +1826,7 @@
       <Location>
       </Location>
       <Index>0,2</Index>
-      <ID>37</ID>
+      <ID>36</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -1860,7 +1860,7 @@
       <Location>
       </Location>
       <Index>4,2</Index>
-      <ID>38</ID>
+      <ID>37</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Coil</TypeText>
       <type>ST</type>
@@ -1898,7 +1898,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>TON1</VarName>
-      <Address>VD424220</Address>
+      <Address>VD424170</Address>
       <IPin>
         <Position>
         </Position>
@@ -1910,7 +1910,7 @@
       <Connect inPinLabel="" outPinLabel="">
         <IN />
         <OUT>
-          <RefID ID="40">IN</RefID>
+          <RefID ID="39">IN</RefID>
         </OUT>
       </Connect>
       <ControlColor>#FF8080</ControlColor>
@@ -1958,7 +1958,7 @@
       <Location>
       </Location>
       <Index>0,0</Index>
-      <ID>39</ID>
+      <ID>38</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -1992,7 +1992,7 @@
       <Location>
       </Location>
       <Index>4,0</Index>
-      <ID>40</ID>
+      <ID>39</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Coil</TypeText>
       <type>ST</type>
@@ -2080,7 +2080,7 @@
       <Location>
       </Location>
       <Index>0,18</Index>
-      <ID>41</ID>
+      <ID>40</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -2170,7 +2170,7 @@
       <Location>
       </Location>
       <Index>0,16</Index>
-      <ID>42</ID>
+      <ID>41</ID>
       <ToolBox>LD</ToolBox>
       <TypeText>NO_Contact</TypeText>
       <type>NO</type>
@@ -2191,245 +2191,6 @@
         <IN />
         <OUT>
           <RefID ID="15">IN</RefID>
-        </OUT>
-      </Connect>
-      <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
-      <Start>True</Start>
-      <End>False</End>
-      <Size>120,60</Size>
-      <SetPoint>0</SetPoint>
-      <OpenPoint>0</OpenPoint>
-    </Object>
-    <Object Type="FBD" codeType="C" FuncOrFuncBlock="FuncBlock">
-      <Location>
-      </Location>
-      <Index>2,30</Index>
-      <ID>16</ID>
-      <ToolBox>CoordinatedMotion</ToolBox>
-      <TypeText>MC_MoveDirectAbsolute</TypeText>
-      <type>UserDefinedControlMore</type>
-      <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
-      <VarName>MC_MoveDirectAbsolute1</VarName>
-      <Address>VD425220</Address>
-      <IPin>
-        <Position>
-        </Position>
-      </IPin>
-      <OPin>
-        <Position>
-        </Position>
-      </OPin>
-      <Connect inPinLabel="" outPinLabel="">
-        <IN />
-        <OUT />
-      </Connect>
-      <ControlColor>#FF8000</ControlColor>
-      <Input Count="10">
-        <InVar Name="AxesGroup">
-          <VarName>NULL</VarName>
-          <Address>NULL</Address>
-          <VarType>USINT</VarType>
-        </InVar>
-        <InVar Name="Execute">
-          <VarName>NULL</VarName>
-          <Address>NULL</Address>
-          <VarType>BOOL</VarType>
-        </InVar>
-        <InVar Name="Position">
-          <VarName>&amp;position1[1]</VarName>
-          <Address>&amp;position1[STARTID1ENDID-(1)]</Address>
-          <VarType>Pointer.&amp;LREAL</VarType>
-        </InVar>
-        <InVar Name="CoordSystem">
-          <VarName>2</VarName>
-          <Address>K2</Address>
-          <VarType>USINT</VarType>
-        </InVar>
-        <InVar Name="BufferMode">
-          <VarName>1</VarName>
-          <Address>K1</Address>
-          <VarType>USINT</VarType>
-        </InVar>
-        <InVar Name="TransitionMode">
-          <VarName>0</VarName>
-          <Address>K0</Address>
-          <VarType>USINT</VarType>
-        </InVar>
-        <InVar Name="TransitionParameter">
-          <VarName>0</VarName>
-          <Address>K0</Address>
-          <VarType>REAL</VarType>
-        </InVar>
-        <InVar Name="VelFactor">
-          <VarName>0.001</VarName>
-          <Address>K0.001</Address>
-          <VarType>REAL</VarType>
-        </InVar>
-        <InVar Name="AccFactor">
-          <VarName>0.001</VarName>
-          <Address>K0.001</Address>
-          <VarType>REAL</VarType>
-        </InVar>
-        <InVar Name="JerkFactor">
-          <VarName>0.001</VarName>
-          <Address>K0.001</Address>
-          <VarType>REAL</VarType>
-        </InVar>
-      </Input>
-      <Output Count="7">
-        <OutVar Name="AxesGroupOut">
-          <VarName>NULL</VarName>
-          <Address>NULL</Address>
-          <VarType>USINT</VarType>
-        </OutVar>
-        <OutVar Name="Done">
-          <VarName>NULL</VarName>
-          <Address>NULL</Address>
-          <VarType>BOOL</VarType>
-        </OutVar>
-        <OutVar Name="Busy">
-          <VarName>NULL</VarName>
-          <Address>NULL</Address>
-          <VarType>BOOL</VarType>
-        </OutVar>
-        <OutVar Name="Active">
-          <VarName>NULL</VarName>
-          <Address>NULL</Address>
-          <VarType>BOOL</VarType>
-        </OutVar>
-        <OutVar Name="CommandAborted">
-          <VarName>NULL</VarName>
-          <Address>NULL</Address>
-          <VarType>BOOL</VarType>
-        </OutVar>
-        <OutVar Name="Error">
-          <VarName>NULL</VarName>
-          <Address>NULL</Address>
-          <VarType>BOOL</VarType>
-        </OutVar>
-        <OutVar Name="ErrorID">
-          <VarName>NULL</VarName>
-          <Address>NULL</Address>
-          <VarType>UINT</VarType>
-        </OutVar>
-      </Output>
-      <MiddleVars Count="21">
-        <middleVAR>
-          <middleVARName>MidArray_Addr</middleVARName>
-          <middleType>ULINT</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>buffer</middleVARName>
-          <middleType>BOOL</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>buffer_run</middleVARName>
-          <middleType>BOOL</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>exe</middleVARName>
-          <middleType>BOOL</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>run</middleVARName>
-          <middleType>BOOL</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>run_flag</middleVARName>
-          <middleType>BOOL</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>execute_before</middleVARName>
-          <middleType>BOOL</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>run_numberF</middleVARName>
-          <middleType>USINT</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>axis_run_mode</middleVARName>
-          <middleType>BOOL</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>tcp_vs</middleVARName>
-          <middleType>REAL</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>s</middleVARName>
-          <middleType>LREAL</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>s_x</middleVARName>
-          <middleType>LREAL</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>s_y</middleVARName>
-          <middleType>LREAL</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>s_z</middleVARName>
-          <middleType>LREAL</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>t_now</middleVARName>
-          <middleType>REAL</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>tm_mode</middleVARName>
-          <middleType>USINT</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>max_finish_time_id</middleVARName>
-          <middleType>USINT</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>max_finish_time</middleVARName>
-          <middleType>REAL</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>all_axis_done</middleVARName>
-          <middleType>USINT</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>move_state</middleVARName>
-          <middleType>USINT</middleType>
-        </middleVAR>
-        <middleVAR>
-          <middleVARName>TM_run_flag</middleVARName>
-          <middleType>BOOL</middleType>
-        </middleVAR>
-      </MiddleVars>
-      <Start>False</Start>
-      <End>True</End>
-      <Size>120,312</Size>
-      <SetPoint>0</SetPoint>
-      <OpenPoint>0</OpenPoint>
-    </Object>
-    <Object Type="LD">
-      <Location>
-      </Location>
-      <Index>0,30</Index>
-      <ID>43</ID>
-      <ToolBox>LD</ToolBox>
-      <TypeText>NO_Contact</TypeText>
-      <type>NO</type>
-      <subtype>ControlLibrary.NO</subtype>
-      <VarName>M10</VarName>
-      <Address>M10</Address>
-      <JumpText>
-      </JumpText>
-      <IPin>
-        <Position>
-        </Position>
-      </IPin>
-      <OPin>
-        <Position>
-        </Position>
-      </OPin>
-      <Connect inPinLabel="" outPinLabel="">
-        <IN />
-        <OUT>
-          <RefID ID="16">IN</RefID>
         </OUT>
       </Connect>
       <Image>iVBORw0KGgoAAAANSUhEUgAAABUAAAA8CAYAAACJtPFoAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACBSURBVFhH7cuxCcMAEARB9d+Ii3IL7kGOJBwMhkXpDTw8B3vMzMzMzCMnrmB/vt6f+64xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYM8xYH89v1c87Wf+O44vPWtIcbDAJikAAAAASUVORK5CYII=</Image>
@@ -2470,8 +2231,6 @@
       <Line StartIndex="3,18" EndIndex="5,18" />
       <Line StartIndex="1,16" EndIndex="2,16" />
       <Line StartIndex="3,16" EndIndex="5,16" />
-      <Line StartIndex="1,30" EndIndex="2,30" />
-      <Line StartIndex="3,30" EndIndex="5,30" />
     </LineSegments>
     <Script type="Script" />
   </LadderDiagram>
@@ -2482,24 +2241,24 @@ VAR
 M1100 AT %M576:BOOL;
 M1101 AT %M577:BOOL;
 M1102 AT %M578:BOOL;
-VD426550 AT %VD142696:USINT;
+VD426100 AT %VD142400:USINT;
 M1103 AT %M579:BOOL;
 M1104 AT %M580:BOOL;
-VD426551 AT %VD142697:USINT;
+VD426101 AT %VD142401:USINT;
 M1105 AT %M581:BOOL;
 M1106 AT %M582:BOOL;
-VD426552 AT %VD142698:USINT;
+VD426102 AT %VD142402:USINT;
 M1107 AT %M583:BOOL;
 M1110 AT %M584:BOOL;
-VD426553 AT %VD142699:USINT;
+VD426103 AT %VD142403:USINT;
 M1111 AT %M585:BOOL;
 M1112 AT %M586:BOOL;
-VD426554 AT %VD142700:USINT;
+VD426104 AT %VD142404:USINT;
 M1113 AT %M587:BOOL;
 M1114 AT %M588:BOOL;
 M1115 AT %M589:BOOL;
 M1116 AT %M590:BOOL;
-VD426555 AT %VD142701:USINT;
+VD426105 AT %VD142405:USINT;
 M1117 AT %M591:BOOL;
 M1120 AT %M592:BOOL;
 M1121 AT %M593:BOOL;
@@ -2544,13 +2303,6 @@ M10 AT %M8 :BOOL;
     
     MC_SetKinTransform1 : MC_SetKinTransform;
     MC_GroupEnable1 : MC_GroupEnable;
-    MC_GroupHome1 : MC_GroupHome;    
-    MC_GroupStop1 : MC_GroupStop;
-    
-    MC_MoveDirectAbsolute1 : MC_MoveDirectAbsolute;
-    
-    MC_MoveLinearAbsolute1 : MC_MoveLinearAbsolute;
-    MC_MoveCircularAbsolute1 : MC_MoveCircularAbsolute;
     
     position_now : ARRAY[1..3] OF LREAL :=[-1,-1,-1];
     position_zero : ARRAY[1..3] OF LREAL :=[0,0,0];
