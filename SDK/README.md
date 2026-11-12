@@ -49,17 +49,40 @@ python examples/draw_png.py --input drawing.png --host 127.0.0.1 --port 2000
 python examples/draw_png.py --input drawing.png --host <PLC_IP> --port 2000
 ```
 
+<<<<<<< Updated upstream
+=======
+## 文字书写
+
+```bash
+# 预览
+python examples/write_text.py "Hello 123" --dry-run
+
+# 写到 PLC（写完自动回零）
+python examples/write_text.py "Hello 123" --host 192.168.33.130 --port 2000
+
+# 调整字号、重置到左上角
+python examples/write_text.py "ABC" --font-size-mm 15 --reset
+```
+
+- 书写区：`X 0~250 mm`（25 cm）、`Y 0~150 mm`（15 cm），原点左下角，超出直接报错；
+- `z_up=0` 抬笔，`z_down=-30` 落笔（需按实机实测）；
+- 默认从左上角开始，自动换行，游标跨次保存；
+- 支持大小写英文、数字、空格和换行；
+- 详细说明见 `docs/text.md`。
+
+>>>>>>> Stashed changes
 ## 常用参数
 
 | 参数 | 默认 | 说明 |
 |------|------|------|
-| `--strategy` | `raster` | `raster` 色块填充 / `outline` 线稿轮廓 |
+| `--strategy` | `raster` | `raster` 色块填充（每段墨迹只发首尾两点）/ `outline` 线稿轮廓 |
 | `--scale` | `0.1` | 像素→毫米比例 |
 | `--z-up` / `--z-down` | `5.0` / `0.0` | 抬笔 / 落笔高度 (mm) |
 | `--vel` | `20.0` | 落笔速度 |
 | `--threshold` | Otsu | 手动二值化阈值（0~255） |
 | `--invert` | 关 | 亮像素视为墨迹 |
 | `--flip-x` / `--flip-y` | 关 | 坐标轴翻转 |
+| `--simplify-px` | `0.5` | 轮廓抽稀容差（像素），0 = 不抽稀 |
 
 ## 编程接口
 

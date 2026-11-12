@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import math
 import socket
 import time
 from collections.abc import Callable, Iterable
@@ -55,6 +56,11 @@ class RobonixClient:
     # ------------------------------------------------------------------
     # 底层收发
     # ------------------------------------------------------------------
+    def _set_timeout(self, seconds: float) -> None:
+        """临时改 socket 接收超时（长行程运动需要更久）。"""
+        if self._sock is not None:
+            self._sock.settimeout(max(0.5, float(seconds)))
+
     def _next_seq(self) -> int:
         seq = self._seq
         self._seq = (self._seq + 1) & 0xFF
@@ -79,7 +85,11 @@ class RobonixClient:
             try:
                 chunk = self._sock.recv(4096)
             except socket.timeout:
-                raise TimeoutError("等待 PLC 应答超时")
+                raise TimeoutError(
+                    "等待 PLC 应答超时（当前 socket 超时 %.1fs）。"
+                    "MOVE_LINEAR 是同步语义，PLC 要等这段运动走完才回 ACK；"
+                    "行程长或速度慢时请调大 timeout。" % (self._sock.gettimeout() or 0)
+                )
             if not chunk:
                 raise ConnectionError("连接被对端关闭")
             self._buf += chunk
@@ -182,7 +192,17 @@ class RobonixClient:
         """
         pts = list(points)
         total = len(pts)
+        prev: tuple[float, float, float] | None = None
         for i, (x, y, z) in enumerate(pts):
+            # MOVE_LINEAR 是同步语义：PLC 等这段运动真正走完才回 ACK。
+            # 所以超时按「本段距离 / 速度」估算，而不是用固定的 5 秒。
+            if prev is None:
+                self._set_timeout(max(self.timeout, 30.0))
+            else:
+                dist = math.dist(prev, (x, y, z))
+                speed = vel if vel and vel > 0 else 5.0
+                self._set_timeout(min(300.0, 2.0 + dist / speed))
             self.move_linear(x, y, z, vel)
+            prev = (x, y, z)
             if on_progress is not None:
                 on_progress(i + 1, total, (x, y, z))

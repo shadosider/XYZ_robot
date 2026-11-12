@@ -418,7 +418,7 @@ CASE TCP_State OF
                         CommandDone := TRUE;
                     END_IF;
 
-                // SET_PARAM: vel, acc, dec, jerk, z_up, z_down = 6 x LREAL
+                // SET_PARAM : vel, acc, dec, jerk, z_up, z_down = 6 x LREAL
                 0x04 :
                     IF PayloadLenI &gt;= 48 THEN
                         FOR v := 1 TO 6 DO
