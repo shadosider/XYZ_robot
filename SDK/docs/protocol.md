@@ -16,7 +16,7 @@ romote ip : 192.168.33.130
 | 角色 | **PLC = Server**（`StkTCPAccept` 监听），**SDK = Client** 主动连接 |
 | 默认端口 | **2000** |
 | 字节序 | **小端**（little-endian，与 Intel 平台 PLC 一致） |
-| 浮点 | IEEE 754 **float32**，对应 PLC 的 `REAL`（PLC 侧 `Target`/`Params` 等参数均为 `REAL`） |
+| 浮点 | 位置/坐标（`MOVE_LINEAR` 的 x/y/z）为 IEEE 754 **float64**，对应 PLC `LREAL`；速度/加速度等（`SET_PARAM` 的 6 个参数）为 **float32**，对应 PLC `REAL` |
 
 推荐 PLC 侧 `StkTCPRcv.TimeOut` 设为 `10`（10 ms 级，视具体单位调整），
 `StkTCPAccept.TimeOut` 设为 0 表示无限等待连接。
@@ -48,7 +48,7 @@ romote ip : 192.168.33.130
 | CMD  | 名称           | 方向 | 载荷（字节）                                   | 说明 |
 |------|----------------|------|------------------------------------------------|------|
 | 0x00 | PING           | C→S  | 空                                             | 连通性测试 |
-| 0x01 | MOVE_LINEAR    | C→S  | x, y, z, vel = 4×f32 (**16B**)                 | 绝对直线插补（x/y/z 为相对距离），`vel=0` 用 PLC 默认速度 |
+| 0x01 | MOVE_LINEAR    | C→S  | x, y, z = 3×f64 (**24B**)                       | 绝对直线插补（x/y/z 为 MCS 绝对坐标），速度由 SET_PARAM 的 `vel` 决定 |
 | 0x03 | HOME           | C→S  | 空                                             | 轴组回零（`MC_GroupHome`） |
 | 0x04 | SET_PARAM      | C→S  | vel, acc, dec, jerk, z_up, z_down = 6×f32 (**24B**) | 设定全局运动参数与笔高度 |
 | 0x0A | CLOSE          | C→S  | 空                                             | 请求关闭会话；PLC 回 ACK 后关闭 socket 并回到 Accept |
@@ -80,10 +80,10 @@ ACK 载荷 (4B):
 ## 5. 交互模型（v1 同步握手）
 
 SDK 每发一条 `MOVE_LINEAR`，等待 PLC 返回对应 `SEQ` 的 `ACK(status=0)`
-后再发下一条；PLC 在 `MC_MoveLinearRelative.Done`（或 `Error`）后回 ACK。
+后再发下一条；PLC 在 `MC_MoveLinearAbsolute.Done`（或 `Error`）后回 ACK。
 
-> 当前 PLC 侧 `MOVE_LINEAR` 使用 `MC_MoveLinearRelative`，x/y/z 是**相对距离**。
-> 绝对绘图需要改用 `MC_MoveLinearAbsolute`，并确保轴组已回零/有有效参考位置。
+> PLC 侧 `MOVE_LINEAR` 使用 `MC_MoveLinearAbsolute`，x/y/z 是 **MCS 绝对坐标**，
+> 需确保轴组已回零/有有效参考位置。
 
 抬笔移动与落笔移动都是同一条 `MOVE_LINEAR`，区别仅在 `z` 值：
 
@@ -92,14 +92,17 @@ SDK 每发一条 `MOVE_LINEAR`，等待 PLC 返回对应 `SEQ` 的 `ACK(status=0
 
 `z_up` / `z_down` 由 SDK 直接编入坐标，PLC 无需区分提笔/落笔。
 
+运动速度不在 `MOVE_LINEAR` 中传递，由之前的 `SET_PARAM(vel, ...)` 设定；
+未收到 `SET_PARAM` 时 PLC 使用自身默认速度（`vel := 15`）。
+
 ---
 
 ## 6. 载荷编解码示例
 
-### MOVE_LINEAR（16B 载荷）
+### MOVE_LINEAR（24B 载荷）
 ```
-x=10.0, y=20.0, z=0.0, vel=0.0
-payload = struct.pack('<4f', 10.0, 20.0, 0.0, 0.0)
+x=10.0, y=20.0, z=0.0
+payload = struct.pack('<3d', 10.0, 20.0, 0.0)
 ```
 
 ### SET_PARAM（24B 载荷）
@@ -127,8 +130,8 @@ CRC 对 [00 00 00 01] 计算，得 0xC0C1
 1. `StkTCPAccept(Execute:=TRUE, SrcTcpPort:=2000, TimeOut:=0)` 得到 Socket。
 2. `StkTCPRcv` 收字节流到缓冲数组，按 `SOF(2) + 头(4) + LEN + CRC(2)` 切帧；
    用**同一套 CRC16-Modbus** 校验（多项式 0x8005，反射，初值 0xFFFF）。
-3. 校验通过后按 CMD 分发；`MOVE_LINEAR` 把 3×f32 写入
-   `Target[1..3]`（`ARRAY[1..3] OF REAL`，小端布局与 PLC `REAL` 一致），
+3. 校验通过后按 CMD 分发；`MOVE_LINEAR` 把 3×f64 写入
+   `Target[1..3]`（`ARRAY[1..3] OF LREAL`，小端布局与 PLC `LREAL` 一致），
    拉高 `Execute` 触发 `MC_MoveLinearAbsolute`。
 4. `Done`/`Error` 后 `StkTCPSend` 回 ACK（含 `SEQ`）。
 

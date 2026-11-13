@@ -27,19 +27,19 @@ cursor = (margin, baseline_y)
 
 ```bash
 # 预览轨迹，不连接 PLC
-python examples/write_text.py "Hello 123" --dry-run
+python tests/draw.py text "Hello 123" --dry-run
 
 # 写到 PLC（写完自动 HOME）
-python examples/write_text.py "Hello 123" --host 192.168.33.130 --port 2000
+python tests/draw.py text "Hello 123" --host 192.168.33.130 --port 2000
 
 # 调整字号
-python examples/write_text.py "ABC" --font-size-mm 15
+python tests/draw.py text "ABC" --font-size-mm 15
 
 # 重置到左上角
-python examples/write_text.py "ABC" --reset
+python tests/draw.py text "ABC" --reset
 
 # 指定状态文件
-python examples/write_text.py "ABC" --state ./writer_state.json
+python tests/draw.py text "ABC" --state ./writer_state.json
 ```
 
 ## 3. 参数
@@ -76,7 +76,7 @@ python examples/write_text.py "ABC" --state ./writer_state.json
 - 正式书写必须保证 PLC 侧 `MotionSim = FALSE`，否则只会回 ACK、不会真正运动；
 - 写完最后一个笔画后会先抬笔，再执行 `HOME`；
 - 建议每次开始书写前轴组已回零，保证绝对坐标有效；
-- 单点 `MOVE_LINEAR` 帧长 40 B，远小于 PLC 解析上限 512 B；
+- 单点 `MOVE_LINEAR` 帧长 32 B（24 B 载荷 + 8 B 帧头/CRC），远小于 PLC 解析上限 512 B；
 - 文字按点逐条下发，受限于逐点 ACK，较长文本需要一定时间；
 - SDK 客户端退出时会先发 `CMD_CLOSE`，避免 PLC 停留在旧 socket。
 

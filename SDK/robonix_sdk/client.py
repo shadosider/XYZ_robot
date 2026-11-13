@@ -122,11 +122,11 @@ class RobonixClient:
         except (ProtocolError, TimeoutError, ConnectionError):
             return False
 
-    def move_linear(self, x: float, y: float, z: float, vel: float = 0.0) -> None:
-        """世界坐标直线插补。vel=0 表示使用 PLC 端默认速度。"""
+    def move_linear(self, x: float, y: float, z: float) -> None:
+        """世界坐标直线插补。速度由 SET_PARAM 的 vel 决定。"""
         self._expect_ack_ok(
             proto.CMD_MOVE_LINEAR,
-            proto.pack_move_linear(x, y, z, vel),
+            proto.pack_move_linear(x, y, z),
             what="MOVE_LINEAR",
         )
 
@@ -159,10 +159,9 @@ class RobonixClient:
     def draw_waypoints(
         self,
         points: Iterable[tuple[float, float, float]],
-        vel: float = 0.0,
         on_progress: Callable[[int, int, tuple[float, float, float]], None] | None = None,
     ) -> None:
-        """逐点下发 MOVE_LINEAR（逐点握手）。
+        """逐点下发 MOVE_LINEAR（逐点握手）。速度由 SET_PARAM 设定。
 
         参数
         ----
@@ -174,6 +173,6 @@ class RobonixClient:
         pts = list(points)
         total = len(pts)
         for i, (x, y, z) in enumerate(pts):
-            self.move_linear(x, y, z, vel)
+            self.move_linear(x, y, z)
             if on_progress is not None:
                 on_progress(i + 1, total, (x, y, z))

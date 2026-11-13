@@ -119,10 +119,10 @@ def test_state_roundtrip():
 
 
 def test_frame_size():
-    payload = proto.pack_move_linear(1.0, 2.0, -30.0, 20.0)
+    payload = proto.pack_move_linear(1.0, 2.0, -30.0)
     frame = proto.build_frame(proto.CMD_MOVE_LINEAR, 0, payload)
-    assert len(payload) == 16
-    assert len(frame) == 24
+    assert len(payload) == 24
+    assert len(frame) == 32
     assert len(frame) <= 512
 
 
@@ -134,9 +134,9 @@ class FakeClient:
     def set_param(self, *args):
         self.calls.append(("set_param",) + args)
 
-    def draw_waypoints(self, points, vel=0.0, on_progress=None):
+    def draw_waypoints(self, points, on_progress=None):
         self.points = list(points)
-        self.calls.append(("draw_waypoints", len(self.points), vel))
+        self.calls.append(("draw_waypoints", len(self.points)))
 
     def home(self):
         self.calls.append(("home",))

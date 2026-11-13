@@ -341,7 +341,7 @@ class TextWriter:
             self.cfg.z_down,
         )
         if points:
-            client.draw_waypoints(points, vel=self.cfg.vel)
+            client.draw_waypoints(points)
 
         # 文本已经写完，先保存游标；即使后面的 HOME 失败，续写位置仍然正确
         self.cursor = new_cursor

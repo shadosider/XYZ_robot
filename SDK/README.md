@@ -7,7 +7,6 @@ MX4001），由 PLC 轴组功能块驱动三轴机器人绘图。
 
 ```
 SDK/
-├── toolbox.txt               # PLC 功能块说明书（保留）
 ├── robonix_sdk/              # SDK 包
 │   ├── protocol.py           # 二进制帧编解码 + CRC16
 │   ├── client.py             # RobonixClient（TCP 客户端）
@@ -15,10 +14,11 @@ SDK/
 │   ├── trajectory.py         # 二值图 -> 路径点（raster / outline）
 │   ├── text.py               # 单线文字排版（Hershey）
 │   └── hershey_simplex.py    # Hershey Simplex 字形数据
-├── examples/
-│   ├── draw_png.py           # 简单测试脚本
-│   ├── write_text.py         # 文字书写脚本
-│   └── mock_plc.py           # 无硬件联调的假 PLC
+├── tests/                    # 测试与示例脚本
+│   ├── draw.py               # 绘图测试脚本（png / text 子命令）
+│   ├── mock_plc.py           # 无硬件联调的假 PLC
+│   ├── plc_framing_test.py   # PLC 分帧 / 协议测试
+│   └── test_text.py          # 文字模块单元测试
 └── docs/
     ├── protocol.md           # 通信协议（核心文档）
     ├── plc_wiring.md         # PLC 侧参考接线
@@ -32,7 +32,7 @@ SDK/
 ### 1. 离线预览（无硬件）
 
 ```bash
-python examples/draw_png.py --input drawing.png --dry-run
+python tests/draw.py png --input drawing.png --dry-run
 ```
 
 生成轨迹并打印帧结构，不连接 PLC。
@@ -41,29 +41,39 @@ python examples/draw_png.py --input drawing.png --dry-run
 
 ```bash
 # 终端 A：假 PLC
-python examples/mock_plc.py --port 2000
+python tests/mock_plc.py --port 2000
 
 # 终端 B：下发轨迹
-python examples/draw_png.py --input drawing.png --host 127.0.0.1 --port 2000
+python tests/draw.py png --input drawing.png --host 127.0.0.1 --port 2000
 ```
 
 ### 3. 连接真实 PLC
 
 ```bash
-python examples/draw_png.py --input drawing.png --host <PLC_IP> --port 2000
+python tests/draw.py png --input drawing.png --host <PLC_IP> --port 2000
+```
+
+## 测试
+
+```bash
+# 单元测试（无需 PLC）
+python -m pytest tests/test_text.py -q
+
+# 协议分帧/粘包测试（先启动 mock_plc 或连接真实 PLC）
+python tests/plc_framing_test.py --host 127.0.0.1 --port 2000 --run-all
 ```
 
 ## 文字书写
 
 ```bash
 # 预览
-python examples/write_text.py "Hello 123" --dry-run
+python tests/draw.py text "Hello 123" --dry-run
 
 # 写到 PLC（写完自动回零）
-python examples/write_text.py "Hello 123" --host 192.168.33.130 --port 2000
+python tests/draw.py text "Hello 123" --host 192.168.33.130 --port 2000
 
 # 调整字号、重置到左上角
-python examples/write_text.py "ABC" --font-size-mm 15 --reset
+python tests/draw.py text "ABC" --font-size-mm 15 --reset
 ```
 
 - 纸张：`X 0~280 mm`，`Y 0~160 mm`，原点左下角；
@@ -96,7 +106,7 @@ points = to_waypoints(binary, cfg)
 with RobonixClient("192.168.1.10") as plc:
     plc.set_param(cfg.vel, cfg.acc, cfg.dec, cfg.jerk, cfg.z_up, cfg.z_down)
     plc.home()
-    plc.draw_waypoints(points, vel=cfg.vel)
+    plc.draw_waypoints(points)
 ```
 
 更多协议细节见 `docs/protocol.md`，PLC 侧接线见 `docs/plc_wiring.md`。

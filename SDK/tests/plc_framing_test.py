@@ -6,21 +6,21 @@
 用法::
 
     # 先让 PLC 运行 tcp_test，监听 2000
-    python plc_framing_test.py --host 192.168.33.130 --port 2000
+    python tests/plc_framing_test.py --host 192.168.33.130 --port 2000
 
     # 不进入菜单，直接顺序跑全部测试
-    python plc_framing_test.py --host 192.168.33.130 --port 2000 --run-all
+    python tests/plc_framing_test.py --host 192.168.33.130 --port 2000 --run-all
 
     # 顺序测试时也执行 HOME（真实回零，谨慎）
-    python plc_framing_test.py --host 192.168.33.130 --port 2000 --run-all --include-home
+    python tests/plc_framing_test.py --host 192.168.33.130 --port 2000 --run-all --include-home
 
 菜单测试项：
   1. 正常 PING
   2. 半包 PING（3 字节 + 5 字节）
   3. 粘包 PING（两帧一次发）
   4. 坏 CRC 后重同步
-  5. MOVE_LINEAR 16B
-  6. SET_PARAM 24B
+  5. MOVE_LINEAR 24B (3×f64)
+  6. SET_PARAM 24B (6×f32)
   7. HOME（真实回零，谨慎）
   8. 全部顺序测试（默认不含 HOME）
   9. 重新连接（先发 CMD_CLOSE 关闭会话）
@@ -178,9 +178,9 @@ def test_bad_crc(c: RawClient, args: argparse.Namespace) -> None:
 def test_move_linear(c: RawClient, args: argparse.Namespace) -> None:
     seq, frame = c.request(
         proto.CMD_MOVE_LINEAR,
-        proto.pack_move_linear(50.0, 40.0, -25, 20.0),
+        proto.pack_move_linear(40.0, 60.0, -28),
     )
-    check_ack("5. MOVE_LINEAR 16B", seq, frame)
+    check_ack("5. MOVE_LINEAR 24B (3×f64)", seq, frame)
 
 
 def test_set_param(c: RawClient, args: argparse.Namespace) -> None:
@@ -188,7 +188,7 @@ def test_set_param(c: RawClient, args: argparse.Namespace) -> None:
         proto.CMD_SET_PARAM,
         proto.pack_set_param(20.0, 300.0, 300.0, 3000.0, 5.0, 0.0),
     )
-    check_ack("6. SET_PARAM 24B", seq, frame)
+    check_ack("6. SET_PARAM 24B (6×f32)", seq, frame)
 
 
 def test_home(c: RawClient, args: argparse.Namespace) -> None:
@@ -248,8 +248,8 @@ MENU_TEXT = """
   2. 半包 PING（3 字节 + 5 字节）
   3. 粘包 PING（两帧一次发）
   4. 坏 CRC 后重同步
-  5. MOVE_LINEAR 16B
-  6. SET_PARAM 24B
+  5. MOVE_LINEAR 24B (3×f64)
+  6. SET_PARAM 24B (6×f32)
   7. HOME（真实回零，谨慎）
   8. 全部顺序测试（默认不含 HOME）
   9. 重新连接（先发 CMD_CLOSE 关闭会话）

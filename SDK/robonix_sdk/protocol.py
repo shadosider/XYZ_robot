@@ -153,9 +153,19 @@ def unpack_f32(data: bytes, count: int) -> tuple[float, ...]:
     return struct.unpack("<%df" % count, data[: 4 * count])
 
 
-def pack_move_linear(x: float, y: float, z: float, vel: float) -> bytes:
-    """MOVE_LINEAR 载荷：x, y, z, vel（4 × f32，对应 PLC 的 REAL）。"""
-    return pack_f32(x, y, z, vel)
+def pack_f64(*values: float) -> bytes:
+    """将浮点数打包为 64 位双精度浮点数（Little Endian）。"""
+    return struct.pack("<%dd" % len(values), *values)
+
+
+def unpack_f64(data: bytes, count: int) -> tuple[float, ...]:
+    """将字节解包为 64 位双精度浮点数。"""
+    return struct.unpack("<%dd" % count, data[: 8 * count])
+
+
+def pack_move_linear(x: float, y: float, z: float) -> bytes:
+    """MOVE_LINEAR 载荷：x, y, z（3 × f64，对应 PLC 的 LREAL）。"""
+    return pack_f64(x, y, z)
 
 
 def pack_set_param(
