@@ -9,7 +9,7 @@
         <POU1 DeviceName="Device1" Task="Task0" Checked="False" />
         <test1_FBD DeviceName="Device1" Task="Task0" Checked="False" />
         <AxisInit DeviceName="Device1" Task="Task0" Checked="True" />
-        <tcp_test DeviceName="Device1" Task="Task0" Checked="True" />
+        <tcp_test DeviceName="Device1" Task="Task0" Checked="False" />
       </Task0>
     </Device1>
   </MyProject1>

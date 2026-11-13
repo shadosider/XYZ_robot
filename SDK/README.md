@@ -1,7 +1,10 @@
 # Robonix XYZ 绘图 SDK
 
-把 PNG 图片二值化、转成 XYZ 三轴绘图轨迹，通过 TCP 下发到 PLC（MatrixBox
+把 PNG 图片二值化、把文字排成单线笔画轨迹，通过 TCP 下发到 PLC（MatrixBox
 MX4001），由 PLC 轴组功能块驱动三轴机器人绘图。
+
+文字支持西文（Hershey）和汉字（笔画中线，内置 3755 常用字），两者都是**单线**，
+可混排、共用基线。
 
 ## 目录
 
@@ -12,7 +15,10 @@ SDK/
 │   ├── protocol.py           # 二进制帧编解码 + CRC16
 │   ├── client.py             # RobonixClient（TCP 客户端）
 │   ├── image.py              # PNG 读取 + Otsu 二值化
-│   └── trajectory.py         # 二值图 -> 路径点（raster / outline）
+│   ├── trajectory.py         # 二值图 -> 路径点（raster / outline）
+│   ├── text.py               # 单线文字排版（西文 + 汉字混排）
+│   ├── hershey_simplex.py    # Hershey Simplex 字形数据（西文）
+│   └── hanzi_data.py         # 汉字笔画中线数据（3755 字）
 ├── examples/
 │   ├── draw_png.py           # 简单测试脚本
 │   └── mock_plc.py           # 无硬件联调的假 PLC
@@ -62,10 +68,11 @@ python examples/write_text.py "Hello 123" --host 192.168.33.130 --port 2000
 python examples/write_text.py "ABC" --font-size-mm 15 --reset
 ```
 
-- 书写区：`X 0~250 mm`（25 cm）、`Y 0~150 mm`（15 cm），原点左下角，超出直接报错；
-- `z_up=0` 抬笔，`z_down=-30` 落笔（需按实机实测）；
+- 纸张：`X 0~220 mm`，`Y 0~150 mm`，原点左下角；
+- 机器零点 `(0,0,0)` = 写字区左下角**上方 50 mm**；纸面 `z=-50`，抬笔 `z=-48`（离纸 2 mm），落笔 `z=-50`；
+- 写完自动 HOME 回 `(0,0,0)`；
 - 默认从左上角开始，自动换行，游标跨次保存；
-- 支持大小写英文、数字、空格和换行；
+- 支持大小写英文、数字、空格、换行和 3755 个常用汉字（单线，非轮廓），可混排；
 - 详细说明见 `docs/text.md`。
 
 ## 常用参数

@@ -4632,7 +4632,7 @@ END_VAR</Var_Code>
 //   MotionCmd = 2 : HOME
 //   MotionCmd = 5 : STOP
 //   MotionSim = TRUE  : 只测 TCP，运动命令直接 ACK；
-//   MotionSim = FALSE : 执行真实运动，Done/Error 后 ACK。
+//   MotionSim = FALSE : 执行真实运动，Done / Error 后 ACK。
 // ============================================================
 
 // ============================================================
@@ -5051,7 +5051,7 @@ CASE TCP_State OF
                 0x00 :
                     CommandDone := TRUE;
 
-                // MOVE_LINEAR : x, y, z, vel = 4 x LREAL
+                // MOVE_LINEAR : x, y, z, vel = 4 x REAL
                 0x01 :
                     IF PayloadLenI &gt;= 32 THEN
                         // 调用自定义函数 CopyBytes(dst, src, len)：把 8 字节原始数据

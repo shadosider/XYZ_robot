@@ -4,11 +4,18 @@
     - 纸张左下角为 (0, 0)
     - +X 向右，+Y 向上
     - 默认从左上角开始写
-    - z_up 抬笔（默认 0），z_down 落笔（默认 -33）
+    - 机器零点 (0,0,0) = 写字区左下角上方 50 mm（笔尖初始位）
+    - 纸面 z = -50，落笔 z_down = -50，抬笔 z_up = -48（离纸 2 mm）
+    - 写完回 HOME，即回到 (0,0,0) 待机位
 
-字形数据来自 Hershey Simplex（futural），详见 ``hershey_simplex.py``。
-Hershey 没有的字符（汉字等）由 ``fontglyph.py`` 用系统 TrueType 字体
-渲染成轮廓折线——画出来是空心字。
+字形来源（两套，都是单线，共用同一条基线）：
+
+    - 西文 / 数字：Hershey Simplex（futural），见 hershey_simplex.py；
+    - 汉字：笔画中线（medians），见 hanzi_data.py。
+
+汉字一笔一条折线，笔画之间抬笔跳转，所以画出来是单线字，不是空心轮廓。
+汉字墨迹高度 = 字号，字格宽约 1.17 倍字号，字距固定为 CJK_TRACKING_MM。
+
 """
 
 from __future__ import annotations
@@ -19,6 +26,7 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
+from . import hanzi_data
 from . import hershey_simplex as font
 
 # ---------------------------------------------------------------------------
@@ -30,74 +38,47 @@ DEFAULT_STATE_PATH = Path.home() / ".robonix" / "writer_state.json"
 # 排版留出的顶部余量用这个常量兜住。
 TOP_SAFETY_UNITS = 1.0
 
-# ---------------------------------------------------------------------------
-# 汉字字体（惰性加载，纯 ASCII 时不会碰 PIL）
-# ---------------------------------------------------------------------------
-_FONT_PATH: str | None = None
-_FONT_PROVIDER = None
-
-
-def set_font(path: str | None) -> None:
-    """切换汉字用的 TrueType 字体；None 表示自动寻找系统中文字体。"""
-    global _FONT_PATH, _FONT_PROVIDER
-    if path == _FONT_PATH and _FONT_PROVIDER is not None:
-        return
-    _FONT_PATH = path
-    _FONT_PROVIDER = None
-
-
-def _font_provider():
-    global _FONT_PROVIDER
-    if _FONT_PROVIDER is None:
-        from .fontglyph import get_provider
-
-        _FONT_PROVIDER = get_provider(_FONT_PATH)
-    return _FONT_PROVIDER
-
-
-def current_font_name() -> str:
-    """当前汉字字体文件名，用于打印/调试。"""
-    try:
-        return _font_provider().name
-    except Exception:
-        return "（未加载）"
-
-
 @dataclass
 class TextConfig:
-    font_size_mm: float = 10.0       # 大写字母高度（cap height）
+    font_size_mm: float = 15.0       # 大写字母高度（cap height）；汉字墨迹高同此值
     line_spacing: float = 1.5        # 行高 = font_size_mm * line_spacing
     letter_spacing_mm: float = 0.5   # 字间距
     space_advance_mm: float | None = None  # 空格宽度；None = 0.6 * font_size
-    work_width_mm: float = 200.0    # 书写区宽度，上限 200 mm（20 cm，实测行程）
-    work_height_mm: float = 160.0   # 书写区高度，上限 160 mm（16 cm，实测行程）
-    reset_y_mm: float | None = 150.0  # reset 时文字块顶边的绝对 Y（None = 用 work_height - margin）
-    margin_mm: float = 5.0        # 四周边距，避免文字压到行程极限
-    z_up: float = 0.0
-    z_down: float = -35.5
+    work_width_mm: float = 220.0     # 机器 X 行程 220 mm
+    work_height_mm: float = 150.0    # 机器 Y 行程 150 mm
+    margin_mm: float = 0.0
+    reset_y_mm: float | None = None  # reset 后文字块顶边的绝对 Y；None = 纸高 - margin
+    z_up: float = -48.0            # 抬笔：纸面(-50) 上方 2 mm
+    z_down: float = -50.0          # 落笔：压在纸上
     vel: float = 20.0
     acc: float = 300.0
     dec: float = 300.0
     jerk: float = 3000.0
-    font_path: str | None = None   # 汉字用的 TTF/TTC；None = 自动找系统中文字体
 
     def validate(self) -> None:
-        set_font(self.font_path)
-        if self.font_size_mm <= 0:
-            raise ValueError("font_size_mm 必须大于 0")
         if self.work_width_mm <= 0 or self.work_height_mm <= 0:
             raise ValueError("工作范围必须大于 0")
-        # 机器行程硬上限（实测）：从左下角起 X +20 cm / Y +16 cm
-        if self.work_width_mm > 200.0 + 1e-9 or self.work_height_mm > 160.0 + 1e-9:
+        # 机器行程硬上限：X 22 cm / Y 15 cm，落笔点不允许出去
+        if self.work_width_mm > 220.0 + 1e-9 or self.work_height_mm > 150.0 + 1e-9:
             raise ValueError(
-                "工作范围超出机器行程：X 最长 200 mm（20 cm）、Y 最长 160 mm（16 cm）"
-                "，当前 %.0f x %.0f mm" % (self.work_width_mm, self.work_height_mm)
+                "工作范围超出机器行程：X 最长 220 mm、Y 最长 150 mm，当前 %.0f x %.0f mm"
+                % (self.work_width_mm, self.work_height_mm)
             )
-        if self.font_size_mm >= self.work_height_mm:
+        if self.font_size_mm < 2.0:
+            raise ValueError(
+                "字号 %.2f mm 太小：低于 2 mm 时笔画间隙小于笔宽，画不清"
+                % self.font_size_mm
+            )
+        upper = self.work_height_mm - 2.0
+        if self.font_size_mm > upper:
             raise TextOverflowError(
-                "font_size_mm=%.1f 放不进 %.1f mm 高的书写区"
-                % (self.font_size_mm, self.work_height_mm)
+                "字号 %.2f mm 放不进纸高：上限 %.2f mm（纸高 %.1f mm - 2 mm）"
+                % (self.font_size_mm, upper, self.work_height_mm)
             )
+        if self.line_spacing <= 0:
+            raise ValueError("line_spacing 必须大于 0")
+        if self.margin_mm < 0:
+            raise ValueError("margin_mm 不能为负")
         if self.reset_y_mm is not None and not (
             0.0 < self.reset_y_mm <= self.work_height_mm + 1e-9
         ):
@@ -105,10 +86,6 @@ class TextConfig:
                 "reset_y_mm 必须在 (0, %.1f] 之间，当前 %s"
                 % (self.work_height_mm, self.reset_y_mm)
             )
-        if self.line_spacing <= 0:
-            raise ValueError("line_spacing 必须大于 0")
-        if self.margin_mm < 0:
-            raise ValueError("margin_mm 不能为负")
 
     @property
     def scale(self) -> float:
@@ -169,11 +146,7 @@ def glyph_strokes(ch: str) -> list[list[tuple[float, float]]]:
     if ch in _STROKE_CACHE:
         return _STROKE_CACHE[ch]
     if ch not in font.GLYPHS:
-        strokes = _font_provider().strokes(ch)
-        if not strokes:
-            raise ValueError("不支持的字符: %r" % ch)
-        _STROKE_CACHE[ch] = strokes
-        return strokes
+        raise ValueError("不支持的字符: %r（西文仅 Hershey 字表，汉字见 hanzi_data）" % ch)
 
     path = font.GLYPHS[ch][0]
     strokes: list[list[tuple[float, float]]] = []
@@ -186,15 +159,68 @@ def glyph_strokes(ch: str) -> list[list[tuple[float, float]]]:
     return strokes
 
 
+# 汉字：字距固定 1.5 mm（加在步进上，末字后也多走这一小段）
+CJK_TRACKING_MM = 1.5
+
+# 源数据字格边长（见 hanzi_data.py 头注释）
+CJK_EM_UNITS = 1024.0
+
+_CJK_STROKE_CACHE: dict[str, list[list[tuple[float, float]]]] = {}
+
+
+def is_cjk(ch: str) -> bool:
+    """是否在收录的汉字字库里。"""
+    return ch in hanzi_data.GLYPHS
+
+
+def _cjk_scale_units() -> float:
+    """源单位 -> Hershey 单位（等比）。
+
+    让全字库最高的一笔正好落在 Hershey 的 cap 顶（y = 1），
+    即汉字墨迹高度 = 字号，与西文大写字母等高。
+    """
+    return font.CAP_HEIGHT_UNITS / hanzi_data.Y_MAX
+
+
+def _cjk_strokes(ch: str) -> list[list[tuple[float, float]]]:
+    """汉字笔画（Hershey 单位：y 向下、基线 22），一条折线一笔。"""
+    if ch not in _CJK_STROKE_CACHE:
+        k = _cjk_scale_units()
+        strokes = []
+        for part in hanzi_data.GLYPHS[ch].split("M")[1:]:
+            nums = [float(v) for v in re.findall(r"-?\d+\.?\d*", part)]
+            pts = list(zip(nums[0::2], nums[1::2]))
+            if len(pts) >= 2:
+                strokes.append(
+                    [(gx * k, font.BASELINE_Y_UNITS - gy * k) for gx, gy in pts]
+                )
+        _CJK_STROKE_CACHE[ch] = strokes
+    return _CJK_STROKE_CACHE[ch]
+
+
+def _strokes(ch: str) -> list[list[tuple[float, float]]]:
+    """字形折线（Hershey 单位）。西文用 Hershey，汉字用笔画中线。"""
+    if ch in hanzi_data.GLYPHS:
+        return _cjk_strokes(ch)
+    return glyph_strokes(ch)
+
+
+def cjk_width_mm(cfg: TextConfig) -> float:
+    """汉字字格宽 (mm) = 1024 源单位折算，约 1.2 倍字号。"""
+    return CJK_EM_UNITS * _cjk_scale_units() * cfg.scale
+
+
 def glyph_advance_units(ch: str) -> float:
     if ch in font.GLYPHS:
         return font.GLYPHS[ch][1] * font.ADVANCE_SCALE
-    return _font_provider().advance(ch)
+    raise ValueError("不支持的字符: %r" % ch)
 
 
 def glyph_advance_mm(ch: str, cfg: TextConfig) -> float:
     if ch == " ":
         return cfg.space_advance
+    if ch in hanzi_data.GLYPHS:
+        return cjk_width_mm(cfg) + CJK_TRACKING_MM
     return glyph_advance_units(ch) * cfg.scale + cfg.letter_spacing_mm
 
 
@@ -235,7 +261,7 @@ def _emit_glyph(
     points: list[tuple[float, float, float]],
 ) -> None:
     scale = cfg.scale
-    for stroke in glyph_strokes(ch):
+    for stroke in _strokes(ch):
         world = [
             (x0 + gx * scale, baseline + (font.BASELINE_Y_UNITS - gy) * scale)
             for gx, gy in stroke
@@ -245,6 +271,31 @@ def _emit_glyph(
         for x, y in world[1:]:
             points.append((x, y, cfg.z_down))
         points.append((world[-1][0], world[-1][1], cfg.z_up))
+
+
+def _iter_tokens(line: str):
+    """把一行切成 token：("space" | "cjk" | "word", 文本)。
+
+    汉字逐字成 token（任意字间都能断行），西文按空格成词（整词不拆）。
+    """
+    i, n = 0, len(line)
+    while i < n:
+        ch = line[i]
+        if ch == " ":
+            j = i
+            while j < n and line[j] == " ":
+                j += 1
+            yield "space", line[i:j]
+            i = j
+        elif ch in hanzi_data.GLYPHS:
+            yield "cjk", ch
+            i += 1
+        else:
+            j = i
+            while j < n and line[j] != " " and line[j] not in hanzi_data.GLYPHS:
+                j += 1
+            yield "word", line[i:j]
+            i = j
 
 
 def layout_text(
@@ -262,15 +313,13 @@ def layout_text(
 
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     for ch in text:
-        if ch in "\n " or ch in font.GLYPHS:
+        if ch in "\n ":
             continue
-        try:
-            if not _font_provider().can_render(ch):
-                raise ValueError("字体里没有这个字形")
-            if not glyph_strokes(ch):
-                raise ValueError("字形为空")
-        except Exception as exc:
-            raise ValueError("不支持的字符: %r（%s）" % (ch, exc)) from exc
+        if ch in font.GLYPHS or ch in hanzi_data.GLYPHS:
+            continue
+        raise ValueError(
+            "不支持的字: %r（汉字仅限字库内的 %d 字）" % (ch, len(hanzi_data.GLYPHS))
+        )
 
     scale = cfg.scale
     min_x = cfg.margin_mm
@@ -299,13 +348,27 @@ def layout_text(
 
     lines = text.split("\n")
     for line_idx, line in enumerate(lines):
-        for token in re.findall(r" +|[^ ]+", line):
-            if token.isspace():
+        for kind, token in _iter_tokens(line):
+            if kind == "space":
                 adv = cfg.space_advance * len(token)
                 if x + adv > max_x + 1e-9 and x > 0:
                     wrap()
                 else:
                     x += adv
+                continue
+
+            # 汉字：逐字断行，放不下就换行（不需要空格）
+            if kind == "cjk":
+                adv = glyph_advance_mm(token, cfg)
+                if x + adv > max_x + 1e-9 and x > 0:
+                    wrap()
+                if x + adv > max_x + 1e-9:
+                    raise TextOverflowError(
+                        "汉字 %r 在字号 %.2f mm 下放不进一行（最大宽度 %.2f mm）"
+                        % (token, cfg.font_size_mm, max_x)
+                    )
+                _emit_glyph(token, x, baseline, cfg, points)
+                x += adv
                 continue
 
             # 先判断整个单词是否放得下；放不下就在单词前换行
