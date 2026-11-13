@@ -19,7 +19,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Reset2</VarName>
-      <Address>VD424400</Address>
+      <Address>VD424330</Address>
       <IPin>
         <Position>
         </Position>
@@ -49,8 +49,8 @@
       </Input>
       <Output Count="4">
         <OutVar Name="Axis_numOut">
-          <VarName>VALUED426103</VarName>
-          <Address>VALUED426103</Address>
+          <VarName>VALUED425753</VarName>
+          <Address>VALUED425753</Address>
           <VarType>USINT</VarType>
         </OutVar>
         <OutVar Name="Done">
@@ -157,7 +157,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Reset3</VarName>
-      <Address>VD424420</Address>
+      <Address>VD424350</Address>
       <IPin>
         <Position>
         </Position>
@@ -187,8 +187,8 @@
       </Input>
       <Output Count="4">
         <OutVar Name="Axis_numOut">
-          <VarName>VALUED426104</VarName>
-          <Address>VALUED426104</Address>
+          <VarName>VALUED425754</VarName>
+          <Address>VALUED425754</Address>
           <VarType>USINT</VarType>
         </OutVar>
         <OutVar Name="Done">
@@ -295,7 +295,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>AddZ</VarName>
-      <Address>VD424520</Address>
+      <Address>VD424450</Address>
       <IPin>
         <Position>
         </Position>
@@ -313,8 +313,8 @@
       <ControlColor>#FF8000</ControlColor>
       <Input Count="4">
         <InVar Name="AxesGroup">
-          <VarName>VALUED426100</VarName>
-          <Address>VALUED426100</Address>
+          <VarName>VALUED425750</VarName>
+          <Address>VALUED425750</Address>
           <VarType>USINT</VarType>
         </InVar>
         <InVar Name="Axis">
@@ -335,8 +335,8 @@
       </Input>
       <Output Count="6">
         <OutVar Name="AxesGroupOut">
-          <VarName>VALUED426101</VarName>
-          <Address>VALUED426101</Address>
+          <VarName>VALUED425751</VarName>
+          <Address>VALUED425751</Address>
           <VarType>USINT</VarType>
         </OutVar>
         <OutVar Name="AxisOut">
@@ -457,7 +457,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_GroupEnable1</VarName>
-      <Address>VD424770</Address>
+      <Address>VD424720</Address>
       <IPin>
         <Position>
         </Position>
@@ -473,8 +473,8 @@
       <ControlColor>#FF8000</ControlColor>
       <Input Count="2">
         <InVar Name="AxesGroup">
-          <VarName>VALUED426101</VarName>
-          <Address>VALUED426101</Address>
+          <VarName>VALUED425751</VarName>
+          <Address>VALUED425751</Address>
           <VarType>USINT</VarType>
         </InVar>
         <InVar Name="Execute">
@@ -570,7 +570,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Power1</VarName>
-      <Address>VD424440</Address>
+      <Address>VD424370</Address>
       <IPin>
         <Position>
         </Position>
@@ -588,8 +588,8 @@
       <ControlColor>LightBlue</ControlColor>
       <Input Count="3">
         <InVar Name="Axis_num">
-          <VarName>VALUED426102</VarName>
-          <Address>VALUED426102</Address>
+          <VarName>VALUED425752</VarName>
+          <Address>VALUED425752</Address>
           <VarType>USINT</VarType>
         </InVar>
         <InVar Name="Enable">
@@ -722,7 +722,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Power2</VarName>
-      <Address>VD424460</Address>
+      <Address>VD424410</Address>
       <IPin>
         <Position>
         </Position>
@@ -740,8 +740,8 @@
       <ControlColor>LightBlue</ControlColor>
       <Input Count="3">
         <InVar Name="Axis_num">
-          <VarName>VALUED426103</VarName>
-          <Address>VALUED426103</Address>
+          <VarName>VALUED425753</VarName>
+          <Address>VALUED425753</Address>
           <VarType>USINT</VarType>
         </InVar>
         <InVar Name="Enable">
@@ -874,7 +874,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Power3</VarName>
-      <Address>VD424500</Address>
+      <Address>VD424430</Address>
       <IPin>
         <Position>
         </Position>
@@ -892,8 +892,8 @@
       <ControlColor>LightBlue</ControlColor>
       <Input Count="3">
         <InVar Name="Axis_num">
-          <VarName>VALUED426104</VarName>
-          <Address>VALUED426104</Address>
+          <VarName>VALUED425754</VarName>
+          <Address>VALUED425754</Address>
           <VarType>USINT</VarType>
         </InVar>
         <InVar Name="Enable">
@@ -1026,7 +1026,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>AddX</VarName>
-      <Address>VD424540</Address>
+      <Address>VD424470</Address>
       <IPin>
         <Position>
         </Position>
@@ -1066,8 +1066,8 @@
       </Input>
       <Output Count="6">
         <OutVar Name="AxesGroupOut">
-          <VarName>VALUED426105</VarName>
-          <Address>VALUED426105</Address>
+          <VarName>VALUED425755</VarName>
+          <Address>VALUED425755</Address>
           <VarType>USINT</VarType>
         </OutVar>
         <OutVar Name="AxisOut">
@@ -1188,7 +1188,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>AddY</VarName>
-      <Address>VD424560</Address>
+      <Address>VD424510</Address>
       <IPin>
         <Position>
         </Position>
@@ -1206,8 +1206,8 @@
       <ControlColor>#FF8000</ControlColor>
       <Input Count="4">
         <InVar Name="AxesGroup">
-          <VarName>VALUED426105</VarName>
-          <Address>VALUED426105</Address>
+          <VarName>VALUED425755</VarName>
+          <Address>VALUED425755</Address>
           <VarType>USINT</VarType>
         </InVar>
         <InVar Name="Axis">
@@ -1228,8 +1228,8 @@
       </Input>
       <Output Count="6">
         <OutVar Name="AxesGroupOut">
-          <VarName>VALUED426100</VarName>
-          <Address>VALUED426100</Address>
+          <VarName>VALUED425750</VarName>
+          <Address>VALUED425750</Address>
           <VarType>USINT</VarType>
         </OutVar>
         <OutVar Name="AxisOut">
@@ -1350,7 +1350,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_SetKinTransform1</VarName>
-      <Address>VD424650</Address>
+      <Address>VD424600</Address>
       <IPin>
         <Position>
         </Position>
@@ -1526,7 +1526,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Reset1</VarName>
-      <Address>VD424360</Address>
+      <Address>VD424310</Address>
       <IPin>
         <Position>
         </Position>
@@ -1556,8 +1556,8 @@
       </Input>
       <Output Count="4">
         <OutVar Name="Axis_numOut">
-          <VarName>VALUED426102</VarName>
-          <Address>VALUED426102</Address>
+          <VarName>VALUED425752</VarName>
+          <Address>VALUED425752</Address>
           <VarType>USINT</VarType>
         </OutVar>
         <OutVar Name="Done">
@@ -1664,7 +1664,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_DriverSync1</VarName>
-      <Address>VD424220</Address>
+      <Address>VD424150</Address>
       <IPin>
         <Position>
         </Position>
@@ -1898,7 +1898,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>TON1</VarName>
-      <Address>VD424170</Address>
+      <Address>VD424120</Address>
       <IPin>
         <Position>
         </Position>
@@ -2241,24 +2241,24 @@ VAR
 M1100 AT %M576:BOOL;
 M1101 AT %M577:BOOL;
 M1102 AT %M578:BOOL;
-VD426100 AT %VD142400:USINT;
+VD425750 AT %VD142312:USINT;
 M1103 AT %M579:BOOL;
 M1104 AT %M580:BOOL;
-VD426101 AT %VD142401:USINT;
+VD425751 AT %VD142313:USINT;
 M1105 AT %M581:BOOL;
 M1106 AT %M582:BOOL;
-VD426102 AT %VD142402:USINT;
+VD425752 AT %VD142314:USINT;
 M1107 AT %M583:BOOL;
 M1110 AT %M584:BOOL;
-VD426103 AT %VD142403:USINT;
+VD425753 AT %VD142315:USINT;
 M1111 AT %M585:BOOL;
 M1112 AT %M586:BOOL;
-VD426104 AT %VD142404:USINT;
+VD425754 AT %VD142316:USINT;
 M1113 AT %M587:BOOL;
 M1114 AT %M588:BOOL;
 M1115 AT %M589:BOOL;
 M1116 AT %M590:BOOL;
-VD426105 AT %VD142405:USINT;
+VD425755 AT %VD142317:USINT;
 M1117 AT %M591:BOOL;
 M1120 AT %M592:BOOL;
 M1121 AT %M593:BOOL;

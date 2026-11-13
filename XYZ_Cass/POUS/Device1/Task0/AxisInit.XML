@@ -40,7 +40,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Reset2</VarName>
-      <Address>VD424400</Address>
+      <Address>VD424330</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -226,7 +226,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Reset3</VarName>
-      <Address>VD424420</Address>
+      <Address>VD424350</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -412,7 +412,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>AddZ</VarName>
-      <Address>VD424520</Address>
+      <Address>VD424450</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -640,7 +640,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_GroupEnable1</VarName>
-      <Address>VD424770</Address>
+      <Address>VD424720</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -826,7 +826,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Power1</VarName>
-      <Address>VD424440</Address>
+      <Address>VD424370</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -1082,7 +1082,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;//轴号不发生改变
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Power2</VarName>
-      <Address>VD424460</Address>
+      <Address>VD424410</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -1338,7 +1338,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;//轴号不发生改变
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Power3</VarName>
-      <Address>VD424500</Address>
+      <Address>VD424430</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -1594,7 +1594,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;//轴号不发生改变
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>AddX</VarName>
-      <Address>VD424540</Address>
+      <Address>VD424470</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -1822,7 +1822,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;//轴号不发生改变
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>AddY</VarName>
-      <Address>VD424560</Address>
+      <Address>VD424510</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -2050,7 +2050,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;//轴号不发生改变
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_SetKinTransform1</VarName>
-      <Address>VD424650</Address>
+      <Address>VD424600</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -2511,7 +2511,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;//轴号不发生改变
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Reset1</VarName>
-      <Address>VD424360</Address>
+      <Address>VD424310</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -2697,7 +2697,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_DriverSync1</VarName>
-      <Address>VD424220</Address>
+      <Address>VD424150</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -3630,7 +3630,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>TON1</VarName>
-      <Address>VD424170</Address>
+      <Address>VD424120</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -3893,7 +3893,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>TON</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424170</varAddress>
+          <varAddress>VD424120</varAddress>
           <varSize />
           <varComment>
           </varComment>
@@ -3917,7 +3917,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>MC_DriverSync</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424220</varAddress>
+          <varAddress>VD424150</varAddress>
           <varSize />
           <varComment>
           </varComment>
@@ -3941,7 +3941,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>MC_Reset</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424360</varAddress>
+          <varAddress>VD424310</varAddress>
           <varSize />
           <varComment>
           </varComment>
@@ -3965,7 +3965,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>MC_Reset</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424400</varAddress>
+          <varAddress>VD424330</varAddress>
           <varSize />
           <varComment>
           </varComment>
@@ -3989,7 +3989,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>MC_Reset</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424420</varAddress>
+          <varAddress>VD424350</varAddress>
           <varSize />
           <varComment>
           </varComment>
@@ -4013,7 +4013,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>MC_Power</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424440</varAddress>
+          <varAddress>VD424370</varAddress>
           <varSize />
           <varComment>
           </varComment>
@@ -4037,7 +4037,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>MC_Power</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424460</varAddress>
+          <varAddress>VD424410</varAddress>
           <varSize />
           <varComment>
           </varComment>
@@ -4061,7 +4061,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>MC_Power</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424500</varAddress>
+          <varAddress>VD424430</varAddress>
           <varSize />
           <varComment>
           </varComment>
@@ -4085,7 +4085,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>MC_AddAxisToGroup</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424520</varAddress>
+          <varAddress>VD424450</varAddress>
           <varSize />
           <varComment>
           </varComment>
@@ -4109,7 +4109,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>MC_AddAxisToGroup</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424540</varAddress>
+          <varAddress>VD424470</varAddress>
           <varSize />
           <varComment>
           </varComment>
@@ -4133,7 +4133,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>MC_AddAxisToGroup</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424560</varAddress>
+          <varAddress>VD424510</varAddress>
           <varSize />
           <varComment>
           </varComment>
@@ -4157,7 +4157,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>MC_GroupReadActualPosition</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424600</varAddress>
+          <varAddress>VD424530</varAddress>
           <varSize />
           <varComment>
           </varComment>
@@ -4181,7 +4181,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>MC_ReadStatus</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424630</varAddress>
+          <varAddress>VD424560</varAddress>
           <varSize />
           <varComment>
           </varComment>
@@ -4205,7 +4205,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>MC_SetKinTransform</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424650</varAddress>
+          <varAddress>VD424600</varAddress>
           <varSize />
           <varComment>
           </varComment>
@@ -4229,7 +4229,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
           <dataType>MC_GroupEnable</dataType>
           <initValue>
           </initValue>
-          <varAddress>VD424770</varAddress>
+          <varAddress>VD424720</varAddress>
           <varSize />
           <varComment>
           </varComment>

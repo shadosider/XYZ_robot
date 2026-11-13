@@ -987,7 +987,7 @@
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Reset2</VarName>
-      <Address>VD424430</Address>
+      <Address>VD424400</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -1173,7 +1173,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Reset3</VarName>
-      <Address>VD424450</Address>
+      <Address>VD424420</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -1359,7 +1359,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Power2</VarName>
-      <Address>VD424510</Address>
+      <Address>VD424460</Address>
       <IPin />
       <OPin />
       <Connect>
@@ -1615,7 +1615,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;//轴号不发生改变
       <type>UserDefinedControlMore</type>
       <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
       <VarName>MC_Power3</VarName>
-      <Address>VD424530</Address>
+      <Address>VD424500</Address>
       <IPin />
       <OPin />
       <Connect>
