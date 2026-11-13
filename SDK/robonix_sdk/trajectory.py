@@ -23,13 +23,8 @@ class PlotConfig:
     pixel_to_mm: float = 0.1          # 1 像素对应的世界坐标距离 (mm)
     offset_x: float = 0.0             # 世界坐标原点偏移 (mm)
     offset_y: float = 0.0
-<<<<<<< Updated upstream
-    z_up: float = 5.0                 # 抬笔高度 (mm)
-    z_down: float = 0.0               # 落笔高度 (mm)
-=======
     z_up: float = -20.0               # 抬笔高度 (mm)
     z_down: float = -35.5             # 落笔高度 (mm)
->>>>>>> Stashed changes
     vel: float = 20.0                 # 落笔运动速度
     travel_vel: float = 40.0          # 抬笔移动速度
     acc: float = 300.0

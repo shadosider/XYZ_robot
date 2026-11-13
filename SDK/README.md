@@ -49,8 +49,6 @@ python examples/draw_png.py --input drawing.png --host 127.0.0.1 --port 2000
 python examples/draw_png.py --input drawing.png --host <PLC_IP> --port 2000
 ```
 
-<<<<<<< Updated upstream
-=======
 ## 文字书写
 
 ```bash
@@ -70,7 +68,6 @@ python examples/write_text.py "ABC" --font-size-mm 15 --reset
 - 支持大小写英文、数字、空格和换行；
 - 详细说明见 `docs/text.md`。
 
->>>>>>> Stashed changes
 ## 常用参数
 
 | 参数 | 默认 | 说明 |

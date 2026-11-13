@@ -185,15 +185,6 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--host", default="192.168.1.135", help="PLC 地址")
     p.add_argument("--port", type=int, default=2000, help="PLC 端口")
     p.add_argument("--strategy", choices=["raster", "outline"], default="raster")
-<<<<<<< Updated upstream
-    p.add_argument("--scale", type=float, default=0.1, help="像素->毫米 比例")
-    p.add_argument("--offset-x", type=float, default=0.0)
-    p.add_argument("--offset-y", type=float, default=0.0)
-    p.add_argument("--z-up", type=float, default=5.0)
-    p.add_argument("--z-down", type=float, default=0.0)
-    p.add_argument("--vel", type=float, default=20.0)
-    p.add_argument("--travel-vel", type=float, default=40.0)
-=======
 
     # ---- 纸张与尺寸 ----
     p.add_argument("--paper-width", type=float, default=200.0, help="纸张宽 (mm)")
@@ -207,7 +198,6 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--z-up", type=float, default=-20.0)
     p.add_argument("--z-down", type=float, default=-35.5)
     p.add_argument("--vel", type=float, default=30.0)
->>>>>>> Stashed changes
     p.add_argument("--acc", type=float, default=300.0)
     p.add_argument("--dec", type=float, default=300.0)
     p.add_argument("--jerk", type=float, default=3000.0)
