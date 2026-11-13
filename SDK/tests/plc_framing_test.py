@@ -19,8 +19,8 @@
   2. 半包 PING（3 字节 + 5 字节）
   3. 粘包 PING（两帧一次发）
   4. 坏 CRC 后重同步
-  5. MOVE_LINEAR 32B
-  6. SET_PARAM 48B
+  5. MOVE_LINEAR 16B
+  6. SET_PARAM 24B
   7. HOME（真实回零，谨慎）
   8. 全部顺序测试（默认不含 HOME）
   9. 重新连接（先发 CMD_CLOSE 关闭会话）
@@ -180,7 +180,7 @@ def test_move_linear(c: RawClient, args: argparse.Namespace) -> None:
         proto.CMD_MOVE_LINEAR,
         proto.pack_move_linear(50.0, 40.0, -25, 20.0),
     )
-    check_ack("5. MOVE_LINEAR 32B", seq, frame)
+    check_ack("5. MOVE_LINEAR 16B", seq, frame)
 
 
 def test_set_param(c: RawClient, args: argparse.Namespace) -> None:
@@ -188,7 +188,7 @@ def test_set_param(c: RawClient, args: argparse.Namespace) -> None:
         proto.CMD_SET_PARAM,
         proto.pack_set_param(20.0, 300.0, 300.0, 3000.0, 5.0, 0.0),
     )
-    check_ack("6. SET_PARAM 48B", seq, frame)
+    check_ack("6. SET_PARAM 24B", seq, frame)
 
 
 def test_home(c: RawClient, args: argparse.Namespace) -> None:
@@ -248,8 +248,8 @@ MENU_TEXT = """
   2. 半包 PING（3 字节 + 5 字节）
   3. 粘包 PING（两帧一次发）
   4. 坏 CRC 后重同步
-  5. MOVE_LINEAR 32B
-  6. SET_PARAM 48B
+  5. MOVE_LINEAR 16B
+  6. SET_PARAM 24B
   7. HOME（真实回零，谨慎）
   8. 全部顺序测试（默认不含 HOME）
   9. 重新连接（先发 CMD_CLOSE 关闭会话）

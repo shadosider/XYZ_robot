@@ -43,7 +43,7 @@ class MockPLC:
         if frame.cmd == proto.CMD_PING:
             self._ack(conn, seq, proto.STATUS_OK)
         elif frame.cmd == proto.CMD_MOVE_LINEAR:
-            x, y, z, vel = proto.unpack_f64(frame.payload, 4)
+            x, y, z, vel = proto.unpack_f32(frame.payload, 4)
             self.count += 1
             self.x_range = [min(self.x_range[0], x), max(self.x_range[1], x)]
             self.y_range = [min(self.y_range[0], y), max(self.y_range[1], y)]
@@ -52,7 +52,7 @@ class MockPLC:
             if self.count % 200 == 0:
                 print("  已收到 %d 个点" % self.count, flush=True)
         elif frame.cmd == proto.CMD_SET_PARAM:
-            vel, acc, dec, jerk, z_up, z_down = proto.unpack_f64(frame.payload, 6)
+            vel, acc, dec, jerk, z_up, z_down = proto.unpack_f32(frame.payload, 6)
             print(
                 "SET_PARAM vel=%.3f acc=%.3f dec=%.3f jerk=%.3f z_up=%.3f z_down=%.3f"
                 % (vel, acc, dec, jerk, z_up, z_down),
@@ -61,9 +61,6 @@ class MockPLC:
             self._ack(conn, seq, proto.STATUS_OK)
         elif frame.cmd == proto.CMD_HOME:
             print("HOME", flush=True)
-            self._ack(conn, seq, proto.STATUS_OK)
-        elif frame.cmd == proto.CMD_STOP:
-            print("STOP", flush=True)
             self._ack(conn, seq, proto.STATUS_OK)
         elif frame.cmd == proto.CMD_CLOSE:
             print("CLOSE", flush=True)

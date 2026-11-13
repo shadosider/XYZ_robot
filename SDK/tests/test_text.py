@@ -121,8 +121,8 @@ def test_state_roundtrip():
 def test_frame_size():
     payload = proto.pack_move_linear(1.0, 2.0, -30.0, 20.0)
     frame = proto.build_frame(proto.CMD_MOVE_LINEAR, 0, payload)
-    assert len(payload) == 32
-    assert len(frame) == 40
+    assert len(payload) == 16
+    assert len(frame) == 24
     assert len(frame) <= 512
 
 

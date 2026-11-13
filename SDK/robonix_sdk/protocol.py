@@ -31,7 +31,6 @@ CMD_PING = 0x00
 CMD_MOVE_LINEAR = 0x01
 CMD_HOME = 0x03
 CMD_SET_PARAM = 0x04
-CMD_STOP = 0x07
 CMD_CLOSE = 0x0A
 CMD_ACK = 0x80
 
@@ -46,7 +45,6 @@ _CMD_NAMES = {
     CMD_MOVE_LINEAR: "MOVE_LINEAR",
     CMD_HOME: "HOME",
     CMD_SET_PARAM: "SET_PARAM",
-    CMD_STOP: "STOP",
     CMD_CLOSE: "CLOSE",
     CMD_ACK: "ACK",
 }
@@ -147,24 +145,24 @@ def parse_frame(buf: bytes) -> tuple[Frame | None, int]:
 # ---------------------------------------------------------------------------
 # 载荷打包 / 解包
 # ---------------------------------------------------------------------------
-def pack_f64(*values: float) -> bytes:
-    return struct.pack("<%dd" % len(values), *values)
+def pack_f32(*values: float) -> bytes:
+    return struct.pack("<%df" % len(values), *values)
 
 
-def unpack_f64(data: bytes, count: int) -> tuple[float, ...]:
-    return struct.unpack("<%dd" % count, data[: 8 * count])
+def unpack_f32(data: bytes, count: int) -> tuple[float, ...]:
+    return struct.unpack("<%df" % count, data[: 4 * count])
 
 
 def pack_move_linear(x: float, y: float, z: float, vel: float) -> bytes:
-    """MOVE_LINEAR 载荷：x, y, z, vel（4 × f64）。"""
-    return pack_f64(x, y, z, vel)
+    """MOVE_LINEAR 载荷：x, y, z, vel（4 × f32，对应 PLC 的 REAL）。"""
+    return pack_f32(x, y, z, vel)
 
 
 def pack_set_param(
     vel: float, acc: float, dec: float, jerk: float, z_up: float, z_down: float
 ) -> bytes:
-    """SET_PARAM 载荷：vel, acc, dec, jerk, z_up, z_down（6 × f64）。"""
-    return pack_f64(vel, acc, dec, jerk, z_up, z_down)
+    """SET_PARAM 载荷：vel, acc, dec, jerk, z_up, z_down（6 × f32，对应 PLC 的 REAL）。"""
+    return pack_f32(vel, acc, dec, jerk, z_up, z_down)
 
 
 def unpack_ack(payload: bytes) -> tuple[int, int, int]:

@@ -105,7 +105,7 @@ def main(argv: list[str] | None = None) -> int:
     # 打印首帧结构便于核对协议
     if points:
         x0, y0, z0 = points[0]
-        frame = build_frame(0x01, 0, struct.pack("<4d", x0, y0, z0, cfg.vel))
+        frame = build_frame(0x01, 0, struct.pack("<4f", x0, y0, z0, cfg.vel))
         print("示例 MOVE_LINEAR 帧(%dB): %s" % (len(frame), frame.hex()))
 
     if args.dry_run:

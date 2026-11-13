@@ -5065,7 +5065,7 @@ CASE TCP_State OF
 
                 // SET_PARAM : vel, acc, dec, jerk, z_up, z_down = 6 x REAL
                 0x04 :
-                    IF PayloadLenI &gt;= 48 THEN
+                    IF PayloadLenI &gt;= 24 THEN
                         FOR v := 1 TO 6 DO
                             Dummy := CopyBytes(ADR(Params[v]), ADR(RxAccum[PayloadStart + (v - 1) * 4]), 4);
                         END_FOR;

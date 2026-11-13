@@ -142,9 +142,6 @@ class RobonixClient:
     def home(self) -> None:
         self._expect_ack_ok(proto.CMD_HOME, what="HOME")
 
-    def stop(self) -> None:
-        self._expect_ack_ok(proto.CMD_STOP, what="STOP")
-
     def close_session(self) -> None:
         """请求 PLC 关闭当前会话：发送 CLOSE，等待 ACK 后关闭本地连接。
 

@@ -61,8 +61,8 @@ SktTCPSend(Execute:=SendReq, Socket0:=sock0, SendData:=txBuf[0], Size:=txSize,
 - 收帧后按 `protocol.md` 第 2 节切帧：SOF=0xAA55 → 头(CMD/LEN/SEQ) → PAYLOAD → CRC。
 - **CRC16-Modbus**：多项式 0x8005、反射、初值 0xFFFF，对 CMD..PAYLOAD 计算
   （与 SDK `robonix_sdk.protocol.crc16_modbus` 一致）。
-- 收到 `MOVE_LINEAR`：把载荷前 24 字节按小端 f64 解析为 `x/y/z`，写入
-  `position[1..3]`，拉高 `MC_MoveLinearAbsolute.Execute`。
+- 收到 `MOVE_LINEAR`：把载荷前 12 字节按小端 f32 解析为 `x/y/z`，写入
+  `Target[1..3]`（`ARRAY[1..3] OF REAL`），拉高 `MC_MoveLinearAbsolute.Execute`。
 
 ---
 
@@ -91,9 +91,8 @@ SktTCPSend(Execute:=SendReq, Socket0:=sock0, SendData:=txBuf[0], Size:=txSize,
 6. MC_GroupEnable           → 轴组使能
 7. SktTCPAccept             → 监听 2000，等待 SDK 连接
 8. 收到 SET_PARAM           → 更新 vel/acc/dec/jerk/z_up/z_down
-9. 收到 MOVE_LINEAR 循环    → 写 position → Execute 触发 → Done 后回 ACK
+9. 收到 MOVE_LINEAR 循环    → 写 Target → Execute 触发 → Done 后回 ACK
 10. 收到 HOME               → MC_GroupHome
-11. 收到 STOP               → 终止运动 / 撤使能
 ```
 
 ---
