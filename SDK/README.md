@@ -35,7 +35,9 @@ SDK/
 python tests/draw.py png --input drawing.png --dry-run
 ```
 
-生成轨迹并打印帧结构，不连接 PLC。
+生成轨迹并打印帧结构，不连接 PLC。PNG 模式还会打印轨迹实际范围，并与工作区
+（默认 `280×160 mm`，可用 `--work-width/--work-height/--margin` 调整）比较：
+dry-run 越界只告警，实际下发会拒绝发送。
 
 ### 2. 端到端（先起假 PLC，再连）
 
@@ -47,6 +49,8 @@ python tests/mock_plc.py --port 2000
 python tests/draw.py png --input drawing.png --host 127.0.0.1 --port 2000
 ```
 
+绘制结束后会自动执行 `GroupHome`；不需要时加 `--no-home`（会同时跳过绘制前/后的回零）。
+
 ### 3. 连接真实 PLC
 
 ```bash
@@ -56,9 +60,6 @@ python tests/draw.py png --input drawing.png --host <PLC_IP> --port 2000
 ## 测试
 
 ```bash
-# 单元测试（无需 PLC）
-python -m pytest tests/test_text.py -q
-
 # 协议分帧/粘包测试（先启动 mock_plc 或连接真实 PLC）
 python tests/plc_framing_test.py --host 127.0.0.1 --port 2000 --run-all
 ```
@@ -77,7 +78,7 @@ python tests/draw.py text "ABC" --font-size-mm 15 --reset
 ```
 
 - 纸张：`X 0~280 mm`，`Y 0~160 mm`，原点左下角；
-- `z_up=0` 抬笔，`z_down=-25` 落笔；
+- `z_up=-40` 抬笔，`z_down=-50` 落笔；
 - 默认从左上角开始，自动换行，游标跨次保存；
 - 支持大小写英文、数字、空格和换行；
 - 详细说明见 `docs/text.md`。
@@ -88,7 +89,15 @@ python tests/draw.py text "ABC" --font-size-mm 15 --reset
 |------|------|------|
 | `--strategy` | `raster` | `raster` 色块填充 / `outline` 线稿轮廓 |
 | `--scale` | `0.1` | 像素→毫米比例 |
-| `--z-up` / `--z-down` | `0.0` / `-30.0` | 抬笔 / 落笔高度 (mm) |
+| `--offset-x` / `--offset-y` | `0.0` | 图像左上角的世界坐标偏移 (mm) |
+| `--work-width` / `--work-height` | `280` / `160` | 工作区范围 (mm)，PNG 下发前检查 |
+| `--margin` | `0` | 工作区四周留白 (mm) |
+| `--debug-binary [PATH]` | 关 | 保存二值化图片（省略 PATH 时输出 `<input>_binary.png`） |
+| `--simplify-mm` | `0.05` | 轨迹 RDP 简化容差 (mm)，`0` 关闭；大幅减少点数 |
+
+> 点数过多时：优先调大 `--simplify-mm`（如 `0.1~0.5`，单位 mm）；复杂图片也可先降低
+> 图片分辨率，并同步放大 `--scale`，保持实际绘制尺寸不变。
+| `--z-up` / `--z-down` | `-40` / `-50` | 抬笔 / 落笔高度 (mm) |
 | `--vel` | `20.0` | 落笔速度 |
 | `--threshold` | Otsu | 手动二值化阈值（0~255） |
 | `--invert` | 关 | 亮像素视为墨迹 |
@@ -100,7 +109,7 @@ python tests/draw.py text "ABC" --font-size-mm 15 --reset
 from robonix_sdk import RobonixClient, PlotConfig, load_binary, to_waypoints
 
 binary = load_binary("drawing.png")
-cfg = PlotConfig(pixel_to_mm=0.1, z_up=0.0, z_down=-30.0, strategy="raster")
+cfg = PlotConfig(pixel_to_mm=0.1, z_up=-40.0, z_down=-50.0, strategy="raster")
 points = to_waypoints(binary, cfg)
 
 with RobonixClient("192.168.1.10") as plc:

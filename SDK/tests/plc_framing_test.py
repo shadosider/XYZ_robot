@@ -39,6 +39,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from robonix_sdk import protocol as proto
 
+# 本文件是连接真实/模拟 PLC 的手工测试脚本，不是 pytest 用例
+__test__ = False
+
 
 # ---------------------------------------------------------------------------
 # 原始 TCP 客户端（保留拆包/粘包能力）
@@ -178,7 +181,7 @@ def test_bad_crc(c: RawClient, args: argparse.Namespace) -> None:
 def test_move_linear(c: RawClient, args: argparse.Namespace) -> None:
     seq, frame = c.request(
         proto.CMD_MOVE_LINEAR,
-        proto.pack_move_linear(40.0, 60.0, -28),
+        proto.pack_move_linear(50.0, 70.0, -50),
     )
     check_ack("5. MOVE_LINEAR 24B (3×f64)", seq, frame)
 

@@ -9,8 +9,8 @@ SDK 提供 `robonix_sdk.text`，把英文/数字排版成绝对坐标轨迹，�
 | 工作范围 | X `0 ~ 280 mm`，Y `0 ~ 160 mm` |
 | 原点 | 纸张左下角 |
 | 方向 | +X 向右，+Y 向上 |
-| 抬笔 | `z_up = 0` |
-| 落笔 | `z_down = -25`（压在纸上） |
+| 抬笔 | `z_up = -40` |
+| 落笔 | `z_down = -50`（压在纸上） |
 | 默认起点 | 纸的左上角 |
 | 默认字号 | 10 mm（大写字母高度） |
 
@@ -54,7 +54,7 @@ python tests/draw.py text "ABC" --state ./writer_state.json
 | `--work-width` | 280 | 纸张宽度（mm） |
 | `--work-height` | 160 | 纸张高度（mm） |
 | `--margin` | 0 | 四周留白（mm） |
-| `--z-up` / `--z-down` | 0 / -25 | 抬笔/落笔 Z |
+| `--z-up` / `--z-down` | -40 / -50 | 抬笔/落笔 Z |
 | `--vel` | 20 | 书写速度（mm/s） |
 | `--acc` / `--dec` / `--jerk` | 300 / 300 / 3000 | 运动参数 |
 | `--state` | `~/.robonix/writer_state.json` | 游标状态文件 |
@@ -96,7 +96,7 @@ python tests/draw.py text "ABC" --state ./writer_state.json
 from robonix_sdk import RobonixClient
 from robonix_sdk.text import TextConfig, TextWriter
 
-cfg = TextConfig(font_size_mm=10.0, z_up=0.0, z_down=-30.0)
+cfg = TextConfig(font_size_mm=10.0, z_up=-40.0, z_down=-50.0)
 writer = TextWriter(cfg)          # 自动读取上次游标
 
 with RobonixClient("192.168.33.130") as plc:

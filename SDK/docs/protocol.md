@@ -107,8 +107,8 @@ payload = struct.pack('<3d', 10.0, 20.0, 0.0)
 
 ### SET_PARAM（24B 载荷）
 ```
-vel=20.0, acc=300.0, dec=300.0, jerk=3000.0, z_up=0.0, z_down=-30.0
-payload = struct.pack('<6f', 20.0, 300.0, 300.0, 3000.0, 0.0, -30.0)
+vel=20.0, acc=300.0, dec=300.0, jerk=3000.0, z_up=-40.0, z_down=-50.0
+payload = struct.pack('<6f', 20.0, 300.0, 300.0, 3000.0, -40.0, -50.0)
 ```
 
 ### 完整帧示例（MOVE_LINEAR, SEQ=0, 无载荷简化示意）

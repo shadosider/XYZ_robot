@@ -23,8 +23,8 @@ class PlotConfig:
     pixel_to_mm: float = 0.1          # 1 像素对应的世界坐标距离 (mm)
     offset_x: float = 0.0             # 世界坐标原点偏移 (mm)
     offset_y: float = 0.0
-    z_up: float = 0.0                 # 抬笔高度 (mm)
-    z_down: float = -30.0             # 落笔高度 (mm)
+    z_up: float = -40.0               # 抬笔高度 (mm)
+    z_down: float = -50.0             # 落笔高度 (mm)
     vel: float = 20.0                 # 落笔运动速度
     travel_vel: float = 40.0          # 抬笔移动速度
     acc: float = 300.0
@@ -37,6 +37,8 @@ class PlotConfig:
     down_step: int = 1
     # 抬笔跳转的抽稀步长（>1 可减少空跑点，但会降低行程顺滑度）
     up_step: int = 1
+    # RDP 轨迹简化容差 (mm)；0 = 关闭。共线点会被合并，端点保留。
+    simplify_mm: float = 0.05
 
 
 def _pixel_to_world(col: float, row: float, cfg: PlotConfig) -> tuple[float, float]:
@@ -234,6 +236,83 @@ def _dist2(a: tuple[float, float], b: tuple[float, float]) -> float:
 
 
 # ---------------------------------------------------------------------------
+# 轨迹简化（RDP）
+# ---------------------------------------------------------------------------
+def _rdp_keep(points: list[tuple[float, float, float]], tol_mm: float) -> list[bool]:
+    """Ramer-Douglas-Peucker，返回每个点是否保留。只比较 XY，z 由调用方分段。"""
+    n = len(points)
+    keep = [False] * n
+    if n == 0:
+        return keep
+    keep[0] = keep[-1] = True
+    if n <= 2:
+        return keep
+
+    tol2 = tol_mm * tol_mm
+    stack = [(0, n - 1)]
+    while stack:
+        a, b = stack.pop()
+        if b <= a + 1:
+            continue
+
+        ax, ay, _ = points[a]
+        bx, by, _ = points[b]
+        dx = bx - ax
+        dy = by - ay
+        seg2 = dx * dx + dy * dy
+
+        max_d2 = -1.0
+        idx = -1
+        for i in range(a + 1, b):
+            px, py, _ = points[i]
+            if seg2 == 0.0:
+                d2 = (px - ax) ** 2 + (py - ay) ** 2
+            else:
+                # 点到直线 a-b 的垂直距离
+                t = ((px - ax) * dx + (py - ay) * dy) / seg2
+                qx = ax + t * dx
+                qy = ay + t * dy
+                d2 = (px - qx) ** 2 + (py - qy) ** 2
+            if d2 > max_d2:
+                max_d2 = d2
+                idx = i
+
+        if idx >= 0 and max_d2 > tol2:
+            keep[idx] = True
+            stack.append((a, idx))
+            stack.append((idx, b))
+    return keep
+
+
+def simplify_waypoints(
+    points: list[tuple[float, float, float]], tol_mm: float
+) -> list[tuple[float, float, float]]:
+    """按 z 分段后用 RDP 简化，保留抬/落笔切换点和端点。
+
+    ``tol_mm <= 0`` 时原样返回。简化后轨迹与原始轨迹的最大偏差不超过
+    ``tol_mm``（XY 平面），显著减少 MOVE_LINEAR 点数。
+    """
+    if tol_mm <= 0.0 or len(points) < 3:
+        return points
+
+    out: list[tuple[float, float, float]] = []
+    i = 0
+    n = len(points)
+    while i < n:
+        j = i + 1
+        while j < n and points[j][2] == points[i][2]:
+            j += 1
+        run = points[i:j]
+        if len(run) > 2:
+            keep = _rdp_keep(run, tol_mm)
+            out.extend(p for p, k in zip(run, keep) if k)
+        else:
+            out.extend(run)
+        i = j
+    return out
+
+
+# ---------------------------------------------------------------------------
 # 入口
 # ---------------------------------------------------------------------------
 def to_waypoints(
@@ -241,5 +320,7 @@ def to_waypoints(
 ) -> list[tuple[float, float, float]]:
     cfg = cfg or PlotConfig()
     if cfg.strategy == "outline":
-        return outline_waypoints(binary, cfg)
-    return raster_waypoints(binary, cfg)
+        points = outline_waypoints(binary, cfg)
+    else:
+        points = raster_waypoints(binary, cfg)
+    return simplify_waypoints(points, cfg.simplify_mm)

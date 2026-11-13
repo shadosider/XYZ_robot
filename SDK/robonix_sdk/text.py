@@ -4,7 +4,7 @@
     - 纸张左下角为 (0, 0)
     - +X 向右，+Y 向上
     - 默认从左上角开始写
-    - z_up 抬笔（默认 0），z_down 落笔（默认 -30）
+    - z_up 抬笔（默认 -40），z_down 落笔（默认 -50）
 
 字形数据来自 Hershey Simplex（futural），详见 ``hershey_simplex.py``。
 """
@@ -34,8 +34,8 @@ class TextConfig:
     work_width_mm: float = 280.0
     work_height_mm: float = 160.0
     margin_mm: float = 0.0
-    z_up: float = 0.0
-    z_down: float = -30.0
+    z_up: float = -40.0
+    z_down: float = -50.0
     vel: float = 20.0
     acc: float = 300.0
     dec: float = 300.0

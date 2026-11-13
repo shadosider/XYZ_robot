@@ -70,3 +70,8 @@ def binarize(
 def load_binary(path: str, threshold: float | None = None, invert: bool = False) -> np.ndarray:
     """读入 PNG 并二值化，返回 bool 数组。"""
     return binarize(load_gray(path), threshold=threshold, invert=invert)
+
+
+def save_binary(binary: np.ndarray, path: str) -> None:
+    """把二值图保存为 PNG，便于调试（墨迹=黑 0，背景=白 255）。"""
+    Image.fromarray(np.where(binary, 0, 255).astype(np.uint8)).save(path)

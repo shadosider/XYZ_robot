@@ -5,7 +5,7 @@
     from robonix_sdk import RobonixClient, PlotConfig, load_binary, to_waypoints
 
     binary = load_binary("drawing.png")
-    cfg = PlotConfig(pixel_to_mm=0.1, z_up=5.0, z_down=0.0, strategy="raster")
+    cfg = PlotConfig(pixel_to_mm=0.1, z_up=-40.0, z_down=-50.0, strategy="raster")
     points = to_waypoints(binary, cfg)
 
     with RobonixClient("192.168.1.10") as plc:
@@ -31,8 +31,14 @@ from .protocol import (
     parse_frame,
 )
 from .client import DEFAULT_PORT, ProtocolError, RobonixClient
-from .image import binarize, load_binary, load_gray, otsu_threshold
-from .trajectory import PlotConfig, outline_waypoints, raster_waypoints, to_waypoints
+from .image import binarize, load_binary, load_gray, otsu_threshold, save_binary
+from .trajectory import (
+    PlotConfig,
+    outline_waypoints,
+    raster_waypoints,
+    simplify_waypoints,
+    to_waypoints,
+)
 from .text import (
     Cursor,
     TextConfig,
@@ -51,6 +57,7 @@ __all__ = [
     "to_waypoints",
     "raster_waypoints",
     "outline_waypoints",
+    "simplify_waypoints",
     "TextConfig",
     "TextWriter",
     "Cursor",
@@ -62,6 +69,7 @@ __all__ = [
     "load_binary",
     "binarize",
     "otsu_threshold",
+    "save_binary",
     "Frame",
     "build_frame",
     "parse_frame",
