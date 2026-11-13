@@ -41,7 +41,7 @@
         <type>UserDefinedControlMore</type>
         <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
         <VarName>MC_Reset2</VarName>
-        <Address>VD424400</Address>
+        <Address>VD424330</Address>
         <IPin />
         <OPin />
         <Connect>
@@ -227,7 +227,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
         <type>UserDefinedControlMore</type>
         <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
         <VarName>MC_Reset3</VarName>
-        <Address>VD424420</Address>
+        <Address>VD424350</Address>
         <IPin />
         <OPin />
         <Connect>
@@ -413,7 +413,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
         <type>UserDefinedControlMore</type>
         <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
         <VarName>AddZ</VarName>
-        <Address>VD424520</Address>
+        <Address>VD424450</Address>
         <IPin />
         <OPin />
         <Connect>
@@ -641,7 +641,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
         <type>UserDefinedControlMore</type>
         <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
         <VarName>MC_GroupEnable1</VarName>
-        <Address>VD424770</Address>
+        <Address>VD424720</Address>
         <IPin />
         <OPin />
         <Connect>
@@ -827,7 +827,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
         <type>UserDefinedControlMore</type>
         <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
         <VarName>MC_Power1</VarName>
-        <Address>VD424440</Address>
+        <Address>VD424370</Address>
         <IPin />
         <OPin />
         <Connect>
@@ -1083,7 +1083,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;//轴号不发生改变
         <type>UserDefinedControlMore</type>
         <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
         <VarName>MC_Power2</VarName>
-        <Address>VD424460</Address>
+        <Address>VD424410</Address>
         <IPin />
         <OPin />
         <Connect>
@@ -1339,7 +1339,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;//轴号不发生改变
         <type>UserDefinedControlMore</type>
         <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
         <VarName>MC_Power3</VarName>
-        <Address>VD424500</Address>
+        <Address>VD424430</Address>
         <IPin />
         <OPin />
         <Connect>
@@ -1595,7 +1595,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;//轴号不发生改变
         <type>UserDefinedControlMore</type>
         <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
         <VarName>AddX</VarName>
-        <Address>VD424540</Address>
+        <Address>VD424470</Address>
         <IPin />
         <OPin />
         <Connect>
@@ -1823,7 +1823,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;//轴号不发生改变
         <type>UserDefinedControlMore</type>
         <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
         <VarName>AddY</VarName>
-        <Address>VD424560</Address>
+        <Address>VD424510</Address>
         <IPin />
         <OPin />
         <Connect>
@@ -2051,7 +2051,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;//轴号不发生改变
         <type>UserDefinedControlMore</type>
         <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
         <VarName>MC_SetKinTransform1</VarName>
-        <Address>VD424650</Address>
+        <Address>VD424600</Address>
         <IPin />
         <OPin />
         <Connect>
@@ -2512,7 +2512,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;//轴号不发生改变
         <type>UserDefinedControlMore</type>
         <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
         <VarName>MC_Reset1</VarName>
-        <Address>VD424360</Address>
+        <Address>VD424310</Address>
         <IPin />
         <OPin />
         <Connect>
@@ -2698,7 +2698,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
         <type>UserDefinedControlMore</type>
         <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
         <VarName>MC_DriverSync1</VarName>
-        <Address>VD424220</Address>
+        <Address>VD424150</Address>
         <IPin />
         <OPin />
         <Connect>
@@ -3631,7 +3631,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
         <type>UserDefinedControlMore</type>
         <subtype>ControlLibrary.Cass.UserDefinedControl</subtype>
         <VarName>TON1</VarName>
-        <Address>VD424170</Address>
+        <Address>VD424120</Address>
         <IPin />
         <OPin />
         <Connect>
@@ -3894,7 +3894,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>TON</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424170</varAddress>
+            <varAddress>VD424120</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -3918,7 +3918,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>MC_DriverSync</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424220</varAddress>
+            <varAddress>VD424150</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -3942,7 +3942,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>MC_Reset</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424360</varAddress>
+            <varAddress>VD424310</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -3966,7 +3966,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>MC_Reset</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424400</varAddress>
+            <varAddress>VD424330</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -3990,7 +3990,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>MC_Reset</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424420</varAddress>
+            <varAddress>VD424350</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -4014,7 +4014,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>MC_Power</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424440</varAddress>
+            <varAddress>VD424370</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -4038,7 +4038,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>MC_Power</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424460</varAddress>
+            <varAddress>VD424410</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -4062,7 +4062,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>MC_Power</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424500</varAddress>
+            <varAddress>VD424430</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -4086,7 +4086,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>MC_AddAxisToGroup</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424520</varAddress>
+            <varAddress>VD424450</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -4110,7 +4110,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>MC_AddAxisToGroup</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424540</varAddress>
+            <varAddress>VD424470</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -4134,7 +4134,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>MC_AddAxisToGroup</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424560</varAddress>
+            <varAddress>VD424510</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -4158,7 +4158,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>MC_GroupReadActualPosition</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424600</varAddress>
+            <varAddress>VD424530</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -4182,7 +4182,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>MC_ReadStatus</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424630</varAddress>
+            <varAddress>VD424560</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -4206,7 +4206,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>MC_SetKinTransform</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424650</varAddress>
+            <varAddress>VD424600</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -4230,7 +4230,7 @@ FB-&gt;Axis_numOut = FB-&gt;Axis_num;
             <dataType>MC_GroupEnable</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424770</varAddress>
+            <varAddress>VD424720</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -4621,8 +4621,8 @@ END_VAR</Var_Code>
 // tcp_test —— Robonix TCP Server (v0.2)
 //
 // 职责：TCP 连接、收包、切帧、CRC 校验、应答；
-//       同时直接调用 MC_MoveLinearRelative / MC_GroupHome /
-//       MC_GroupStop 执行运动。
+//       同时直接调用 MC_MoveLinearRelative / MC_GroupHome 
+//       执行运动。
 //
 // 协议帧：AA 55 | CMD(1) | LEN(2,LE) | SEQ(1) | PAYLOAD | CRC16(2,LE)
 // CRC 覆盖 CMD..PAYLOAD（不含 SOF 和 CRC 自身）。
@@ -4630,9 +4630,8 @@ END_VAR</Var_Code>
 // 运动接口：
 //   MotionCmd = 1 : MOVE_LINEAR（相对直线运动）
 //   MotionCmd = 2 : HOME
-//   MotionCmd = 5 : STOP
 //   MotionSim = TRUE  : 只测 TCP，运动命令直接 ACK；
-//   MotionSim = FALSE : 执行真实运动，Done / Error 后 ACK。
+//   MotionSim = FALSE : 执行真实运动，Done/Error 后 ACK。
 // ============================================================
 
 // ============================================================
@@ -4703,11 +4702,9 @@ fbStatus(
 IF MotionSim THEN
     MoveExec := FALSE;
     HomeExec := FALSE;
-    StopExec := FALSE;
 ELSE
     MoveExec := MotionExecute AND (MotionCmd = 1);
     HomeExec := MotionExecute AND (MotionCmd = 2);
-    StopExec := MotionExecute AND (MotionCmd = 5);
 END_IF;
 
 // MOVE_LINEAR：绝对直线运动
@@ -4717,10 +4714,10 @@ MC_MoveLinearAbsolute1(
     AxesGroup := 0,
     Execute := MoveExec,
     Position := ADR(Target[1]),
-    Velocity := TargetVel,
-    Acceleration := 300,
-    Deceleration := 300,
-    Jerk := 3000,
+    Velocity := vel,
+    Acceleration := acc,
+    Deceleration := dec,
+    Jerk := jerk,
     CoordSystem := 2,
     BufferMode := 1,
     TransitionMode := 0,
@@ -4746,22 +4743,9 @@ MC_GroupHome1(
     ErrorID =&gt; HomeErrorID
 );
 
-// STOP：只有 MotionCmd = 5 时才触发
-MC_GroupStop1(
-    AxesGroup := 0,
-    Execute := StopExec,
-    Deceleration := 300,
-    Jerk := 3000,
-    BufferMode := 0,
-    Done =&gt; StopDone,
-//    Busy =&gt; BusyFlag,
-    Active =&gt; StopActive,
-    Error =&gt; StopError,
-    ErrorID =&gt; StopErrorID
-);
 
 // 轴组忙状态：供 ACK 的 busy 字节使用
-IF MoveActive OR HomeActive OR StopActive THEN
+IF MoveActive OR HomeActive THEN
     BusyFlag := 1;
 ELSE
     BusyFlag := 0;
@@ -4807,7 +4791,6 @@ CASE TCP_State OF
 
         MoveExec := FALSE;
         HomeExec := FALSE;
-        StopExec := FALSE;
         MoveDone := FALSE;
         MoveActive := FALSE;
         MoveError := FALSE;
@@ -4816,10 +4799,7 @@ CASE TCP_State OF
         HomeActive := FALSE;
         HomeError := FALSE;
         HomeErrorID := 0;
-        StopDone := FALSE;
-        StopActive := FALSE;
-        StopError := FALSE;
-        StopErrorID := 0;
+
 
         AckStatus := 0;
         AckError := 0;
@@ -5051,24 +5031,21 @@ CASE TCP_State OF
                 0x00 :
                     CommandDone := TRUE;
 
-                // MOVE_LINEAR : x, y, z, vel = 4 x REAL
+                // MOVE_LINEAR : x, y, z, vel = 4 x LREAL
                 0x01 :
-                    IF PayloadLenI &gt;= 32 THEN
-                        // 调用自定义函数 CopyBytes(dst, src, len)：把 8 字节原始数据
-                        // 从接收缓冲搬到 LREAL，或从 LREAL 搬到发送缓冲。
+                    IF PayloadLenI &gt;= 16 THEN
+                        // 调用自定义函数 CopyBytes(dst, src, len)：把 4 字节原始数据
                         // CopyBytes 在 CASS 的“子函数”窗口中定义，见工程说明。
                         FOR v := 1 TO 4 DO
-                            Dummy := CopyBytes(dst := ADR(Params[v]), src := ADR(RxAccum[PayloadStart + (v - 1) * 8]), len := 8);
+                            Dummy := CopyBytes(dst := ADR(Params[v]), src := ADR(RxAccum[PayloadStart + (v - 1) * 4]), len := 4);
                         END_FOR;
                         TargetX := Params[1];
                         TargetY := Params[2];
                         TargetZ := Params[3];
 
-                        // vel 在协议里是 f64 (LREAL)，运动 FB 的 Velocity 是 REAL
-                        TargetVel := LREAL_TO_REAL(Params[4]);
-                        IF TargetVel &lt;= 0.0 THEN
-                            TargetVel := 5.0;   // vel = 0 时使用安全默认速度
-                        END_IF;
+                        // IF TargetVel &lt;= 0.0 THEN
+                            // TargetVel := 5.0;   // vel = 0 时使用安全默认速度
+                        // END_IF;
 
                         // 当前使用 MC_MoveLinearRelative：
                         // x/y/z 作为“相对距离”传入，不是绝对坐标。
@@ -5086,16 +5063,18 @@ CASE TCP_State OF
                 0x03 :
                     MotionCmd := 2;   // 选择 HOME 运动
 
-                // SET_PARAM : vel, acc, dec, jerk, z_up, z_down = 6 x LREAL
+                // SET_PARAM : vel, acc, dec, jerk, z_up, z_down = 6 x REAL
                 0x04 :
-                    IF PayloadLenI &gt;= 48 THEN
+                    IF PayloadLenI &gt;= 24 THEN
                         FOR v := 1 TO 6 DO
-                            Dummy := CopyBytes(ADR(Params[v]), ADR(RxAccum[PayloadStart + (v - 1) * 8]), 8);
+                            Dummy := CopyBytes(ADR(Params[v]), ADR(RxAccum[PayloadStart + (v - 1) * 4]), 4);
                         END_FOR;
-                        
-                        
-                        
-                        
+                        vel := Params[1];
+                        acc := Params[2];
+                        dec := Params[3];
+                        jerk := Params[4];
+                        z_up := Params[5];
+                        z_down := Params[6];
                     ELSE
                         AckStatus := 2;
                         AckError := 1;
@@ -5160,19 +5139,7 @@ CASE TCP_State OF
                         ELSIF MotionSeenBusy AND HomeDone THEN
                             CommandDone := TRUE;
                         END_IF;
-
-                    5:
-                        // STOP
-                        IF StopError THEN
-                            CommandError := TRUE;
-                            AckStatus := 2;
-                            AckError := StopErrorID;
-                        ELSIF StopActive OR (NOT StopDone) THEN
-                            MotionSeenBusy := TRUE;
-                        ELSIF MotionSeenBusy AND StopDone THEN
-                            CommandDone := TRUE;
-                        END_IF;
-
+                 
                     ELSE
                         // MotionCmd = 0：没有实际运动，直接完成
                         CommandDone := TRUE;
@@ -5396,7 +5363,7 @@ END_PROGRAM</code>
             <dataType>SktTCPAccept</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD425010</varAddress>
+            <varAddress>VD424740</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -5417,7 +5384,7 @@ END_PROGRAM</code>
             <dataType>SktTCPRcv</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD425050</varAddress>
+            <varAddress>VD425000</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -5438,7 +5405,7 @@ END_PROGRAM</code>
             <dataType>SktTCPSend</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD425130</varAddress>
+            <varAddress>VD425060</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -5459,7 +5426,7 @@ END_PROGRAM</code>
             <dataType>SktTCPClose</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD425200</varAddress>
+            <varAddress>VD425130</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -5480,7 +5447,7 @@ END_PROGRAM</code>
             <dataType>SktGetTCPStatus</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD425230</varAddress>
+            <varAddress>VD425160</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -6844,7 +6811,7 @@ END_PROGRAM</code>
             <dataType>MC_MoveLinearRelative</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD425260</varAddress>
+            <varAddress>VD425210</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -6865,7 +6832,7 @@ END_PROGRAM</code>
             <dataType>MC_MoveLinearAbsolute</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD425500</varAddress>
+            <varAddress>VD425430</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -6886,28 +6853,7 @@ END_PROGRAM</code>
             <dataType>MC_GroupHome</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD425720</varAddress>
-            <varSize />
-            <varComment>
-            </varComment>
-            <varexport>False</varexport>
-            <PR>False</PR>
-            <PM>False</PM>
-            <SR>False</SR>
-            <SM>False</SM>
-            <IR>False</IR>
-            <HR>False</HR>
-          </VarNode>
-          <VarNode>
-            <varType>VAR</varType>
-            <varLimitedFlag>NULL</varLimitedFlag>
-            <varName>MC_GroupStop1</varName>
-            <varAddressText>
-            </varAddressText>
-            <dataType>MC_GroupStop</dataType>
-            <initValue>
-            </initValue>
-            <varAddress>VD426020</varAddress>
+            <varAddress>VD425650</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7042,33 +6988,13 @@ END_PROGRAM</code>
           <VarNode>
             <varType>VAR</varType>
             <varLimitedFlag>NULL</varLimitedFlag>
-            <varName>StopExec</varName>
-            <varAddressText>
-            </varAddressText>
-            <dataType>BOOL</dataType>
-            <initValue>FALSE</initValue>
-            <varAddress>M1044</varAddress>
-            <varSize />
-            <varComment>
-            </varComment>
-            <varexport>False</varexport>
-            <PR>False</PR>
-            <PM>False</PM>
-            <SR>False</SR>
-            <SM>False</SM>
-            <IR>False</IR>
-            <HR>False</HR>
-          </VarNode>
-          <VarNode>
-            <varType>VAR</varType>
-            <varLimitedFlag>NULL</varLimitedFlag>
             <varName>MoveDone</varName>
             <varAddressText>
             </varAddressText>
             <dataType>BOOL</dataType>
             <initValue>
             </initValue>
-            <varAddress>M1045</varAddress>
+            <varAddress>M1044</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7089,7 +7015,7 @@ END_PROGRAM</code>
             <dataType>BOOL</dataType>
             <initValue>
             </initValue>
-            <varAddress>M1046</varAddress>
+            <varAddress>M1045</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7110,7 +7036,7 @@ END_PROGRAM</code>
             <dataType>BOOL</dataType>
             <initValue>
             </initValue>
-            <varAddress>M1047</varAddress>
+            <varAddress>M1046</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7152,7 +7078,7 @@ END_PROGRAM</code>
             <dataType>BOOL</dataType>
             <initValue>
             </initValue>
-            <varAddress>M1050</varAddress>
+            <varAddress>M1047</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7173,7 +7099,7 @@ END_PROGRAM</code>
             <dataType>BOOL</dataType>
             <initValue>
             </initValue>
-            <varAddress>M1051</varAddress>
+            <varAddress>M1050</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7194,7 +7120,7 @@ END_PROGRAM</code>
             <dataType>BOOL</dataType>
             <initValue>
             </initValue>
-            <varAddress>M1052</varAddress>
+            <varAddress>M1051</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7230,94 +7156,10 @@ END_PROGRAM</code>
           <VarNode>
             <varType>VAR</varType>
             <varLimitedFlag>NULL</varLimitedFlag>
-            <varName>StopDone</varName>
-            <varAddressText>
-            </varAddressText>
-            <dataType>BOOL</dataType>
-            <initValue>
-            </initValue>
-            <varAddress>M1053</varAddress>
-            <varSize />
-            <varComment>
-            </varComment>
-            <varexport>False</varexport>
-            <PR>False</PR>
-            <PM>False</PM>
-            <SR>False</SR>
-            <SM>False</SM>
-            <IR>False</IR>
-            <HR>False</HR>
-          </VarNode>
-          <VarNode>
-            <varType>VAR</varType>
-            <varLimitedFlag>NULL</varLimitedFlag>
-            <varName>StopActive</varName>
-            <varAddressText>
-            </varAddressText>
-            <dataType>BOOL</dataType>
-            <initValue>
-            </initValue>
-            <varAddress>M1054</varAddress>
-            <varSize />
-            <varComment>
-            </varComment>
-            <varexport>False</varexport>
-            <PR>False</PR>
-            <PM>False</PM>
-            <SR>False</SR>
-            <SM>False</SM>
-            <IR>False</IR>
-            <HR>False</HR>
-          </VarNode>
-          <VarNode>
-            <varType>VAR</varType>
-            <varLimitedFlag>NULL</varLimitedFlag>
-            <varName>StopError</varName>
-            <varAddressText>
-            </varAddressText>
-            <dataType>BOOL</dataType>
-            <initValue>
-            </initValue>
-            <varAddress>M1055</varAddress>
-            <varSize />
-            <varComment>
-            </varComment>
-            <varexport>False</varexport>
-            <PR>False</PR>
-            <PM>False</PM>
-            <SR>False</SR>
-            <SM>False</SM>
-            <IR>False</IR>
-            <HR>False</HR>
-          </VarNode>
-          <VarNode>
-            <varType>VAR</varType>
-            <varLimitedFlag>NULL</varLimitedFlag>
-            <varName>StopErrorID</varName>
-            <varAddressText>
-            </varAddressText>
-            <dataType>UINT</dataType>
-            <initValue>
-            </initValue>
-            <varAddress>VD423756</varAddress>
-            <varSize />
-            <varComment>
-            </varComment>
-            <varexport>False</varexport>
-            <PR>False</PR>
-            <PM>False</PM>
-            <SR>False</SR>
-            <SM>False</SM>
-            <IR>False</IR>
-            <HR>False</HR>
-          </VarNode>
-          <VarNode>
-            <varType>VAR</varType>
-            <varLimitedFlag>NULL</varLimitedFlag>
             <varName>Home</varName>
             <varAddressText>
             </varAddressText>
-            <dataType>ARRAY[1..3] OF LREAL</dataType>
+            <dataType>ARRAY[1..3] OF REAL</dataType>
             <initValue>0,0,0</initValue>
             <varAddress>VD423760</varAddress>
             <varSize />
@@ -7337,10 +7179,10 @@ END_PROGRAM</code>
             <varName>Target</varName>
             <varAddressText>
             </varAddressText>
-            <dataType>ARRAY[1..3] OF LREAL</dataType>
+            <dataType>ARRAY[1..3] OF REAL</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424010</varAddress>
+            <varAddress>VD424000</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7358,10 +7200,10 @@ END_PROGRAM</code>
             <varName>TargetX</varName>
             <varAddressText>
             </varAddressText>
-            <dataType>LREAL</dataType>
+            <dataType>REAL</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424040</varAddress>
+            <varAddress>VD424014</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7379,10 +7221,10 @@ END_PROGRAM</code>
             <varName>TargetY</varName>
             <varAddressText>
             </varAddressText>
-            <dataType>LREAL</dataType>
+            <dataType>REAL</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424050</varAddress>
+            <varAddress>VD424020</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7400,10 +7242,10 @@ END_PROGRAM</code>
             <varName>TargetZ</varName>
             <varAddressText>
             </varAddressText>
-            <dataType>LREAL</dataType>
+            <dataType>REAL</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424060</varAddress>
+            <varAddress>VD424024</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7418,13 +7260,113 @@ END_PROGRAM</code>
           <VarNode>
             <varType>VAR</varType>
             <varLimitedFlag>NULL</varLimitedFlag>
-            <varName>TargetVel</varName>
+            <varName>vel</varName>
             <varAddressText>
             </varAddressText>
             <dataType>REAL</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424070</varAddress>
+            <varAddress>VD424030</varAddress>
+            <varSize />
+            <varComment>
+            </varComment>
+            <varexport>False</varexport>
+            <PR>False</PR>
+            <PM>False</PM>
+            <SR>False</SR>
+            <SM>False</SM>
+            <IR>False</IR>
+            <HR>False</HR>
+          </VarNode>
+          <VarNode>
+            <varType>VAR</varType>
+            <varLimitedFlag>NULL</varLimitedFlag>
+            <varName>acc</varName>
+            <varAddressText>
+            </varAddressText>
+            <dataType>REAL</dataType>
+            <initValue>300</initValue>
+            <varAddress>VD424034</varAddress>
+            <varSize />
+            <varComment>
+            </varComment>
+            <varexport>False</varexport>
+            <PR>False</PR>
+            <PM>False</PM>
+            <SR>False</SR>
+            <SM>False</SM>
+            <IR>False</IR>
+            <HR>False</HR>
+          </VarNode>
+          <VarNode>
+            <varType>VAR</varType>
+            <varLimitedFlag>NULL</varLimitedFlag>
+            <varName>dec</varName>
+            <varAddressText>
+            </varAddressText>
+            <dataType>REAL</dataType>
+            <initValue>300</initValue>
+            <varAddress>VD424040</varAddress>
+            <varSize />
+            <varComment>
+            </varComment>
+            <varexport>False</varexport>
+            <PR>False</PR>
+            <PM>False</PM>
+            <SR>False</SR>
+            <SM>False</SM>
+            <IR>False</IR>
+            <HR>False</HR>
+          </VarNode>
+          <VarNode>
+            <varType>VAR</varType>
+            <varLimitedFlag>NULL</varLimitedFlag>
+            <varName>jerk</varName>
+            <varAddressText>
+            </varAddressText>
+            <dataType>REAL</dataType>
+            <initValue>3000</initValue>
+            <varAddress>VD424044</varAddress>
+            <varSize />
+            <varComment>
+            </varComment>
+            <varexport>False</varexport>
+            <PR>False</PR>
+            <PM>False</PM>
+            <SR>False</SR>
+            <SM>False</SM>
+            <IR>False</IR>
+            <HR>False</HR>
+          </VarNode>
+          <VarNode>
+            <varType>VAR</varType>
+            <varLimitedFlag>NULL</varLimitedFlag>
+            <varName>z_up</varName>
+            <varAddressText>
+            </varAddressText>
+            <dataType>REAL</dataType>
+            <initValue>0</initValue>
+            <varAddress>VD424050</varAddress>
+            <varSize />
+            <varComment>
+            </varComment>
+            <varexport>False</varexport>
+            <PR>False</PR>
+            <PM>False</PM>
+            <SR>False</SR>
+            <SM>False</SM>
+            <IR>False</IR>
+            <HR>False</HR>
+          </VarNode>
+          <VarNode>
+            <varType>VAR</varType>
+            <varLimitedFlag>NULL</varLimitedFlag>
+            <varName>z_down</varName>
+            <varAddressText>
+            </varAddressText>
+            <dataType>REAL</dataType>
+            <initValue>-25</initValue>
+            <varAddress>VD424054</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7442,10 +7384,10 @@ END_PROGRAM</code>
             <varName>Params</varName>
             <varAddressText>
             </varAddressText>
-            <dataType>ARRAY[1..6] OF LREAL</dataType>
+            <dataType>ARRAY[1..6] OF REAL</dataType>
             <initValue>
             </initValue>
-            <varAddress>VD424100</varAddress>
+            <varAddress>VD424060</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7465,7 +7407,7 @@ END_PROGRAM</code>
             </varAddressText>
             <dataType>USINT</dataType>
             <initValue>0</initValue>
-            <varAddress>VD424160</varAddress>
+            <varAddress>VD424110</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7485,7 +7427,7 @@ END_PROGRAM</code>
             </varAddressText>
             <dataType>BOOL</dataType>
             <initValue>FALSE</initValue>
-            <varAddress>M1056</varAddress>
+            <varAddress>M1052</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7505,7 +7447,7 @@ END_PROGRAM</code>
             </varAddressText>
             <dataType>BOOL</dataType>
             <initValue>FALSE</initValue>
-            <varAddress>M1057</varAddress>
+            <varAddress>M1053</varAddress>
             <varSize />
             <varComment>
             </varComment>
@@ -7632,13 +7574,12 @@ VAR
     MC_MoveLinearRelative1 : MC_MoveLinearRelative;
     MC_MoveLinearAbsolute1 : MC_MoveLinearAbsolute;
     MC_GroupHome1 : MC_GroupHome;
-    MC_GroupStop1 : MC_GroupStop;
 
     // MotionCmd：运动命令选择器
     //   0 = 空闲
     //   1 = MOVE_LINEAR（相对直线运动）
     //   2 = HOME
-    //   5 = STOP
+
     MotionCmd : INT := 0;
     MotionExecute : BOOL := FALSE;   // 运动请求，上升沿触发
     MotionSim : BOOL := FALSE;       // TRUE 时只测 TCP，不执行真实运动
@@ -7647,7 +7588,6 @@ VAR
     // 每个运动 FB 独立的 Execute / 输出，避免互相覆盖
     MoveExec : BOOL := FALSE;
     HomeExec : BOOL := FALSE;
-    StopExec : BOOL := FALSE;
 
     MoveDone : BOOL;
     MoveActive : BOOL;
@@ -7659,19 +7599,21 @@ VAR
     HomeError : BOOL;
     HomeErrorID : UINT;
 
-    StopDone : BOOL;
-    StopActive : BOOL;
-    StopError : BOOL;
-    StopErrorID : UINT;
 
     // ===== 运动参数 / 位置 =====
-    Home : ARRAY[1..3] OF LREAL := [0,0,0];
-    Target : ARRAY[1..3] OF LREAL;
-    TargetX : LREAL;
-    TargetY : LREAL;
-    TargetZ : LREAL;
-    TargetVel : REAL;
-    Params : ARRAY[1..6] OF LREAL;
+    Home : ARRAY[1..3] OF REAL := [0,0,0];
+    Target : ARRAY[1..3] OF REAL;
+    TargetX : REAL;
+    TargetY : REAL;
+    TargetZ : REAL;
+    vel : REAL;
+    acc : REAL := 300;
+    dec : REAL := 300;
+    jerk : REAL := 3000;
+    z_up : REAL := 0;
+    z_down : REAL := -25;
+    //TargetVel : REAL;
+    Params : ARRAY[1..6] OF REAL;
     BusyFlag : USINT := 0;
 
     // ===== 命令执行状态 =====
@@ -7706,7 +7648,7 @@ END_VAR</Var_Code>
       <type>BOOL</type>
     </var>
     <var>
-      <address>VALUED426100</address>
+      <address>VALUED425750</address>
       <type>USINT</type>
     </var>
     <var>
@@ -7718,7 +7660,7 @@ END_VAR</Var_Code>
       <type>BOOL</type>
     </var>
     <var>
-      <address>VALUED426101</address>
+      <address>VALUED425751</address>
       <type>USINT</type>
     </var>
     <var>
@@ -7730,7 +7672,7 @@ END_VAR</Var_Code>
       <type>BOOL</type>
     </var>
     <var>
-      <address>VALUED426102</address>
+      <address>VALUED425752</address>
       <type>USINT</type>
     </var>
     <var>
@@ -7742,7 +7684,7 @@ END_VAR</Var_Code>
       <type>BOOL</type>
     </var>
     <var>
-      <address>VALUED426103</address>
+      <address>VALUED425753</address>
       <type>USINT</type>
     </var>
     <var>
@@ -7754,7 +7696,7 @@ END_VAR</Var_Code>
       <type>BOOL</type>
     </var>
     <var>
-      <address>VALUED426104</address>
+      <address>VALUED425754</address>
       <type>USINT</type>
     </var>
     <var>
@@ -7774,7 +7716,7 @@ END_VAR</Var_Code>
       <type>BOOL</type>
     </var>
     <var>
-      <address>VALUED426105</address>
+      <address>VALUED425755</address>
       <type>USINT</type>
     </var>
     <var>
